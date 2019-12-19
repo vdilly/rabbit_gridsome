@@ -1,0 +1,13 @@
+// .ios, .ipad, .iphone, .ipod
+
+// If input/select/textarea inside Fixed element /!\ conflict with edge: prevent page scrolling
+// html, body{
+// 	// -webkit-overflow-scrolling : touch !important;
+//     overflow: auto !important;
+//     // height: 100% !important;
+// }
+body.macos {
+  select.input-box {
+    height: 5.3rem;
+  }
+}

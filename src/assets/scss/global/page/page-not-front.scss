@@ -1,0 +1,18 @@
+.not-front {
+  main {
+    padding-top: $m8;
+    position: relative;
+
+    @include RWD(mobile) {
+      padding-top: $m7;
+    }
+  }
+  h1 {
+    color: #fff;
+    max-width: 67rem;
+  }
+  .logo + h1,
+  .logo + .ariane {
+    margin-top: 3rem;
+  }
+}

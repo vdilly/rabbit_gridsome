@@ -1,0 +1,36 @@
+.blogpost-tag {
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #c8c8c8;
+  border-radius: 5px;
+  line-height: 1.2em;
+  transition: color, 0.3s;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+
+  &--core {
+    color: $color__core;
+    &:hover,
+    &:focus {
+      border-color: $color__core;
+      color: #fff;
+      background-color: $color__core;
+    }
+  }
+
+  &--grey {
+    background-color: #c8c8c8;
+    color: #ffffff;
+    &:hover,
+    &:focus {
+      color: #c8c8c8;
+      background-color: #fff;
+    }
+  }
+}

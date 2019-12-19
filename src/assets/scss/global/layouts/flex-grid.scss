@@ -1,0 +1,16 @@
+.row {
+  display: flex;
+}
+.col {
+  flex: 1;
+}
+.row:not(.no-gutter) {
+  .col + .col {
+    margin-left: $m3;
+  }
+}
+@for $i from 1 through 10 {
+  .col-#{$i} {
+    flex: #{$i};
+  }
+}

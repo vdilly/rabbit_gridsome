@@ -1,0 +1,15 @@
+@supports (-ms-ime-align: auto) {
+  .banner {
+    @include RWD(desktop) {
+      bottom: calc(-50rem + 100%) !important;
+    }
+
+    @include RWD(tablet) {
+      bottom: calc(-40rem + 100%) !important;
+    }
+
+    @include RWD(mobile) {
+      bottom: calc(-40rem + 100%) !important;
+    }
+  }
+}

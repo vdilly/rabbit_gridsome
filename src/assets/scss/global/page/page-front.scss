@@ -1,0 +1,33 @@
+.front {
+  $step: 0.1s;
+  $items: 6;
+  $delay: 0.3s;
+  .hp-banner__title {
+    transition: 0.25s;
+  }
+  .hp-banner__btn {
+    transition: 0.25s $step;
+  }
+  .hp-banner-services__item {
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        transition: 0.25s #{($i + 1) * $step};
+      }
+    }
+  }
+  .header {
+    transition: 0.25s #{$items * $step + $delay};
+  }
+  .hp-chantiers__title {
+    transition: 0.25s #{$items * $step + $delay + 0.4};
+  }
+  &:not(.loaded) {
+    .hp-banner__title,
+    .hp-banner__btn,
+    .hp-banner-services__item,
+    .hp-chantiers__title {
+      transform: translateY(4rem);
+      opacity: 0;
+    }
+  }
+}

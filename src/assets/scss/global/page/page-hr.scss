@@ -1,0 +1,67 @@
+.page-hr {
+  .ariane {
+    display: flex;
+    margin-bottom: 1.5rem;
+    a {
+      color: white;
+    }
+    li:last-child {
+      color: white;
+      opacity: 0.5;
+      span {
+        margin: 0 1rem 0 1.2rem;
+      }
+    }
+  }
+  .required {
+    color: $color__error;
+    font-weight: bold;
+    cursor: help;
+  }
+
+  #message {
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+
+  #message.ok {
+    color: $color__success;
+  }
+
+  #message.ko {
+    color: $color__error;
+  }
+
+  input[disabled],
+  select[disabled] {
+    background-color: #ddd;
+  }
+
+  .qq-upload-button {
+    background-color: #f5f5f5;
+    border: 2px dotted #979797;
+    border-radius: 5px;
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 1.2em;
+    color: $color__text;
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 0;
+  }
+  .qq-upload-list {
+    padding-left: 0 !important;
+    list-style: none !important;
+    li:before {
+      display: none !important;
+    }
+    li {
+      width: 100% !important;
+    }
+  }
+  .form {
+    width: 60rem;
+    max-width: 100%;
+  }
+}

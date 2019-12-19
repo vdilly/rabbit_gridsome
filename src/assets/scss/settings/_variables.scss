@@ -1,0 +1,51 @@
+// Breakpoints (relié aux breakpoints du store viewport.js
+$break-small: 767;
+$break-large: 1200; // Cette valeur doit être égale à la largeur du container + X pixel. Le passage en tablette se fera dont à X pixel de plus que la largeur du container principal, permettant de ne jamais avoir le contenu collé au bord de l'écran.
+$break-vertical: 750;
+
+// Font size des paragraph
+$fsi: 17;
+$fsim: 17;
+
+// Hauteur des champs de formulaires et marges
+$form-el-height: 55;
+$gutter-y: 40;
+
+// Fonts
+
+// Transition
+$t-bam: cubic-bezier(0.85, 0.01, 0, 1);
+
+// Margins
+
+$m1: 0.8rem;
+$m2: 1.6rem;
+$m3: 2.4rem;
+$m4: 3.2rem;
+$m5: 4rem;
+$m6: 6.4rem;
+$m7: 10.4rem;
+$m8: 16.8rem;
+$m9: 27.2rem;
+
+// Margin RTE
+$margin-p: $m3;
+$margin-item-rte: $m5;
+
+$mt-h1: 2em;
+$mb-h1: 1.5em;
+
+$mt-h2: 0;
+$mb-h2: $m4;
+
+$mt-h3: $m4;
+$mb-h3: 1.2rem;
+
+$mt-h4: 0;
+$mb-h4: 0.555em;
+
+$mt-h5: 0;
+$mb-h5: 0;
+
+// $mt-h6: 1.8em;
+// $mb-h6: 1em;

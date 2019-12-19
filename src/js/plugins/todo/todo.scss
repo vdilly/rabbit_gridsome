@@ -1,0 +1,40 @@
+$labels: (
+  (back, orange),
+  (rwd, lightblue),
+  (icon, lightgreen),
+  (trad, purple),
+  (question, red)
+);
+
+.todo {
+  border: solid;
+  border-style: solid;
+  border-width: 2px;
+
+  @each $label in $labels {
+    &.#{nth($label, 1)} {
+      border-color: nth($label, 2);
+    }
+  }
+  &__labels {
+    display: flex;
+    position: absolute;
+    transform: translateY(-100%);
+  }
+  &__label {
+    margin: 0 3px;
+    padding: 5px 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-bottom: none;
+    color: black;
+    display: inline-flex;
+
+    @each $label in $labels {
+      &.#{nth($label, 1)} {
+        border-color: nth($label, 2);
+        background-color: rgba(nth($label, 2), 0.2);
+      }
+    }
+  }
+}

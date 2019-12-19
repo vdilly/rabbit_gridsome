@@ -7,6 +7,17 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
-    "gridsome": "^0.7.0"
+    "gridsome": "^0.7.0",
+    "current-device": "^0.10.0",
+    "vue-infinite-loading": "^2.4.4",
+    "vue2-touch-events": "^2.1.0",
+    "@vimeo/player": "^2.10.0",
+    "vimeo": "^2.1.1"
+  },
+  "devDependencies": {
+    "vuex": "^3.1.1",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "style-resources-loader": "^1.2.1"
   }
 }

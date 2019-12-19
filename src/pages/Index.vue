@@ -19,7 +19,9 @@
 </template>
 
 <script>
+import pageMixin from "~/js/mixins/page"
 export default {
+  mixins: [pageMixin],
   metaInfo: {
     title: 'Hello, world!'
   }
