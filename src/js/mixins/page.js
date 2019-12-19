@@ -1,6 +1,10 @@
 import animationScroll from "~/js/plugins/animationScroll";
-import lazyImg from "~/js/plugins/lazyImg";
-// import loadJs from "~/mixins/loadJs";
+import lazyImg from "~/js/plugins/lazyImg/lazyImg";
+import "~/js/plugins/lazyImg/lazyImg.scss";
+
+// Todo uniquement en dev mode
+import todo from "~/js/plugins/todo/todo.js";
+
 export default {
   mounted() {
     const _this = this;
@@ -28,5 +32,11 @@ export default {
     this.$store.dispatch("siteLoad/siteLoad", lazyImg);
     // Animation scroll
     animationScroll();
+    // Todo
+    if (process.env.GRIDSOME_BROWSER_ENV != "prod") {
+      this.$debug("> Todo labels");
+      todo();
+      require("~/js/plugins/todo/todo.scss");
+    }
   }
 };

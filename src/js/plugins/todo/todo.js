@@ -1,9 +1,8 @@
 /**
  * Affiche des labels "todo" avec une border de couleur sur les élemtents à faire, en front
- * config : mettr eun attribut [todo=""] : configurer les valeurs possible avec les labels dans le fichier scss
- * le scss est a compiler directement en ligne
+ * config : mettr eun attribut [data-todo=""] : configurer les valeurs possible avec les labels dans le fichier scss
  */
-document.addEventListener("DOMContentLoaded", function() {
+export default function() {
   function createElementFromHTML(htmlString) {
     var div = document.createElement("div");
     div.innerHTML = htmlString.trim();
@@ -12,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return div.firstChild;
   }
   // todo
-  document.querySelectorAll("[todo]").forEach(el => {
+  document.querySelectorAll("[data-todo]").forEach(el => {
     var labels = el.dataset.todo.split(" ");
 
     var str = '<ul class="todo__labels unstyled">';
@@ -34,4 +33,4 @@ document.addEventListener("DOMContentLoaded", function() {
     // move el into wrapper
     wrapper.appendChild(el);
   });
-});
+}

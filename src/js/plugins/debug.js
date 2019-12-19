@@ -4,7 +4,7 @@
  */
 
 export default function() {
-  if (process.env.GRIDSOME_BROWSER_ENV != "production") {
+  if (process.env.GRIDSOME_BROWSER_ENV != "prod") {
     let error;
     try {
       throw new Error("");
