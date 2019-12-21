@@ -1,3 +1,9 @@
+<template>
+  <div class="row">
+    <slot></slot>
+  </div>
+</template>
+<style lang="scss">
 .row {
   display: flex;
 }
@@ -9,8 +15,4 @@
     margin-left: $m3;
   }
 }
-@for $i from 1 through 10 {
-  .col-#{$i} {
-    flex: #{$i};
-  }
-}
+</style>

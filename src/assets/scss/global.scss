@@ -6,36 +6,16 @@
 @import "global/utils/box";
 @import "global/utils/transitions";
 
-@import "global/layouts/gridy";
-@import "global/layouts/flex-grid";
-@import "global/layouts/container";
-@import "global/layouts/section";
-
-// @import "global/atom/shared";
 @import "global/atom/texts";
 @import "global/atom/buttons";
-@import "global/atom/blogpost-tag";
-// @import "global/atom/checkbox";
-// @import "global/atom/input-text";
-// @import "global/atom/select";
-// @import "global/atom/label";
-// @import "global/atom/radio";
-// @import "global/atom/textarea";
 
-@import "global/molecule/wp-gallery";
-@import "global/molecule/wp-content";
-@import "global/molecule/content";
-@import "global/molecule/site-loader";
-// @import "global/molecule/form";
-// @import "global/molecule/hat";
+// @import "global/molecule/wp-gallery";
+// @import "global/molecule/wp-content";
 
 @import "global/page/page-general";
 @import "global/page/page-front";
 @import "global/page/page-not-front";
-@import "global/page/page-chantier";
 @import "global/page/page-404";
-@import "global/page/page-blog";
-@import "global/page/page-hr";
 
 // Hacks
 @import "global/hacks/chrome.scss";

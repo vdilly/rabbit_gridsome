@@ -1,3 +1,9 @@
+<template>
+  <ul class="unstyled gridy">
+    <slot></slot>
+  </ul>
+</template>
+<style lang="scss">
 /**
     Classes pour la construction des distribution des grids (indépendant du mixin grid distribution, qui devient plus ou moins obsolète)
 
@@ -23,13 +29,6 @@
         margin-top: $m4;
       }
     }
-  }
-}
-
-.gridy__item {
-  width: 100%;
-  & > * {
-    // height: 100%;
   }
 }
 
@@ -211,3 +210,4 @@ $gridy-numbers: (2, 3, 4);
     }
   }
 }
+</style>

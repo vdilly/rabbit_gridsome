@@ -2,6 +2,11 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
 import DefaultLayout from "~/layouts/Default.vue";
+import Gridy from "~/components/layouts/grids/Gridy.vue";
+import GridyItem from "~/components/layouts/grids/GridyItem.vue";
+import Row from "~/components/layouts/grids/Row.vue";
+import Col from "~/components/layouts/grids/Col.vue";
+import Container from "~/components/layouts/Container.vue";
 
 import "~/assets/scss/global.scss";
 
@@ -53,4 +58,10 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
 
   // Global components
   Vue.component("Layout", DefaultLayout);
+
+  Vue.component("Container", Container);
+  Vue.component("Gridy", Gridy);
+  Vue.component("GridyItem", GridyItem);
+  Vue.component("Row", Row);
+  Vue.component("Col", Col);
 }

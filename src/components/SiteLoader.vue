@@ -1,3 +1,9 @@
+<template>
+  <div class="site-loader" :class="siteLoaded ? 'loaded' : ''">
+    <g-image alt="Example image" src="~/favicon.png" width="135" />
+  </div>
+</template>
+<style lang="scss">
 .site-loader {
   content: "";
   position: fixed;
@@ -30,3 +36,4 @@
     }
   }
 }
+</style>
