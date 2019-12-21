@@ -1,10 +1,8 @@
 <template>
-  <input type="checkbox" :name="name" :id="id" :required="required" :checked="checked" />
+  <input type="checkbox" />
 </template>
 <script>
-export default {
-  props: ["name", "id", "label", "required", "checked"]
-};
+export default {};
 </script>
 <style lang="scss">
 // Pas de label par défaut dans les groupes de checkbox (on affiche un titre à la palce)

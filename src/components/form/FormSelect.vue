@@ -1,9 +1,6 @@
 <template>
   <select
     class="input-box"
-    :name="name"
-    :id="id"
-    :required="required"
     value
     onchange="this.setAttribute('value', this.value);"
     ref="select"
@@ -14,7 +11,6 @@
 </template>
 <script>
 export default {
-  props: ["name", "id", "required"],
   mounted() {
     const $select = this.$refs.select;
     $select.setAttribute("value", $select.value);

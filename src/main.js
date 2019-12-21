@@ -4,9 +4,9 @@
 import DefaultLayout from "~/layouts/Default.vue";
 import Gridy from "~/components/layouts/grids/Gridy.vue";
 import GridyItem from "~/components/layouts/grids/GridyItem.vue";
-import Row from "~/components/layouts/grids/Row.vue";
-import Col from "~/components/layouts/grids/Col.vue";
 import Container from "~/components/layouts/Container.vue";
+import RTE from "~/components/rte/RTE.vue";
+import Btn from "~/components/buttons/Btn.vue";
 
 import "~/assets/scss/global.scss";
 
@@ -21,14 +21,25 @@ import siteLoadStore from "~/js/store/siteLoad";
 import Vue2TouchEvents from "vue2-touch-events";
 import InfiniteLoading from "vue-infinite-loading";
 import Debugger from "~/js/plugins/debug";
+import smoothScroll from "~/js/plugins/smoothScroll";
 
 const isProduction = process.env.ENV === "production";
 
 export default function(Vue, { app, router, head, isClient, appOptions }) {
+  // Global components
+  Vue.component("Layout", DefaultLayout);
+
+  Vue.component("Container", Container);
+  Vue.component("Gridy", Gridy);
+  Vue.component("GridyItem", GridyItem);
+  Vue.component("RTE", RTE);
+  Vue.component("Btn", Btn);
+
   // Plugins vue
   Vue.use(Vue2TouchEvents);
   Vue.use(InfiniteLoading);
   Vue.prototype.$debug = Debugger;
+  Vue.prototype.$smoothScroll = smoothScroll;
 
   // HEAD
   head.link.push({
@@ -55,13 +66,4 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
       ...mapState("siteLoad", ["siteLoaded"])
     }
   });
-
-  // Global components
-  Vue.component("Layout", DefaultLayout);
-
-  Vue.component("Container", Container);
-  Vue.component("Gridy", Gridy);
-  Vue.component("GridyItem", GridyItem);
-  Vue.component("Row", Row);
-  Vue.component("Col", Col);
 }

@@ -19,8 +19,8 @@
   </FormSelect>
 </template>
 <script>
-import systemString from "../../mixins/systemString";
-import FormSelect from "./FormSelect.vue";
+import systemString from "~/js/plugins/systemString";
+import FormSelect from "~/components/form/FormSelect.vue";
 export default {
   props: ["id", "required"],
   mixins: [systemString],
@@ -297,6 +297,11 @@ export default {
         "Zimbabwe"
       ]
     };
+  },
+  methods: {
+    systemString(string) {
+      return systemString(string);
+    }
   }
 };
 </script>

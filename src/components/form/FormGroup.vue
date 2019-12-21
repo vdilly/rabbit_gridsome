@@ -7,6 +7,13 @@
     </label>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["id", "label", "required"]
+};
+</script>
+
 <style lang="scss">
 .form__subfield {
   padding-left: 2.8rem;
@@ -39,10 +46,37 @@
   &:last-child {
     margin-bottom: 0;
   }
+
+  .form__group {
+    margin-bottom: 0;
+  }
+
+  &.multiple-items {
+    display: flex;
+    flex-direction: column;
+    & > * {
+      max-width: 100%;
+    }
+    & > label {
+      order: 1;
+      @extend .form__label;
+      margin-bottom: 0.5rem;
+    }
+    & > *:not(label) {
+      order: 2;
+    }
+  }
 }
 .form__required {
   color: $color__error;
   margin-left: 0.2em;
+}
+
+.form__label {
+  font-family: $font__main;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: $color__text;
 }
 
 // Champs Input, select, textarea
@@ -60,10 +94,7 @@ textarea {
     padding: 0 5px;
     transition: font-size 0.25s, top 0.25s, background 0s 0.25s, opacity 0.25s;
     opacity: 0.6;
-    font-family: $font__main;
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: $color__text;
+    @extend .form__label;
     &:before {
       border-radius: 0.5rem;
       position: absolute;
@@ -92,9 +123,3 @@ textarea + label {
   top: 2.5rem;
 }
 </style>
-
-<script>
-export default {
-  props: ["id", "label", "required"]
-};
-</script>

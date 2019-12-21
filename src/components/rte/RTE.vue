@@ -4,6 +4,90 @@
   </div>
 </template>
 <style lang="scss">
+.h1 {
+  @extend .h1-raw;
+  &-raw {
+    font-family: $font__fancy;
+    font-size: 4.8rem;
+    font-weight: 500;
+    line-height: 1.2em;
+    color: $color__title;
+    letter-spacing: -0.0313em;
+    @include RWD(mobile) {
+      font-size: 2.6rem;
+    }
+  }
+}
+
+.h2 {
+  @extend .h2-raw;
+  &-raw {
+    font-family: $font__fancy;
+    font-size: 3.6rem;
+    font-weight: 500;
+    line-height: 1.2em;
+    color: $color__title;
+    letter-spacing: -0.0313em;
+    @include RWD(mobile) {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+.h3 {
+  @extend .h3-raw;
+  &-raw {
+    font-family: $font__fancy;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2em;
+    color: $color__title;
+    letter-spacing: -0.0313em;
+    @include RWD(mobile) {
+      font-size: 1.9rem;
+    }
+  }
+}
+
+.h4 {
+  @extend .h4-raw;
+  &-raw {
+    font-family: $font__fancy;
+    font-size: 1.7rem;
+    font-weight: 500;
+    line-height: 1.2em;
+    color: $color__title;
+    letter-spacing: -0.0313em;
+  }
+}
+
+.h5 {
+  @extend .h5-raw;
+  &-raw {
+    font-family: $font__main;
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 1.2em;
+    color: $color__title;
+  }
+}
+
+.link {
+  font-family: $font__fancy;
+  font-weight: 500;
+  line-height: 1.2em;
+  color: $color__core;
+  transition: color, 0.3s;
+  text-decoration: none;
+  position: relative;
+  transition: width 0.5s ease;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
 .rte-inlines {
   strong:not(.unstyled) {
     font-weight: 700;
@@ -40,7 +124,7 @@
   ul:not(.unstyled),
   ol:not(.unstyled) {
     padding-left: 2.5rem;
-    margin-bottom: $margin-p;
+    margin-bottom: $mb-p;
     list-style: none;
 
     @include RWD(mobile) {
@@ -49,6 +133,7 @@
 
     li {
       position: relative;
+      margin-bottom: $mb-p;
 
       &:last-child {
         margin-bottom: 0;
@@ -64,7 +149,7 @@
     li {
       &:before {
         position: absolute;
-        top: 8px;
+        top: 7px;
         left: -2.5rem;
         content: "";
         height: 9px;
@@ -81,25 +166,14 @@
     counter-reset: item;
 
     li {
-      padding-left: 20px;
       &:before {
         position: absolute;
         top: 0px;
-        left: -20px;
+        left: -2.5rem;
         content: counter(item) ". ";
         display: block;
         font-weight: 700;
         counter-increment: item;
-      }
-      &:after {
-        content: "";
-        position: absolute;
-        top: calc(1.2em - 4px);
-        left: 0px;
-        height: 3px;
-        width: 13px;
-        border-radius: 5px;
-        background-color: $color__core;
       }
     }
   }
@@ -120,14 +194,14 @@
   @extend .rte-headless;
 
   p:not(.unstyled) {
-    margin-bottom: $margin-p;
+    margin-bottom: $mb-p;
   }
 
   img {
     height: auto;
   }
   .rte-block {
-    margin-bottom: $margin-item-rte;
+    margin-bottom: $mb-item;
   }
 
   h1:not(.unstyled) {

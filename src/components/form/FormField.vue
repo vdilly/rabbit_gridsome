@@ -86,14 +86,14 @@
   </FormGroup>
 </template>
 <script>
-import FormGroup from "./FormGroup.vue";
-import FormSelect from "./FormSelect.vue";
-import FormCountrySelect from "./FormCountrySelect.vue";
-import FormTextarea from "./FormTextarea.vue";
-import FormInput from "./FormInput.vue";
-import FormCheckbox from "./FormCheckbox.vue";
-import FormRadio from "./FormRadio.vue";
-import systemString from "../../mixins/systemString";
+import FormGroup from "~/components/form/FormGroup.vue";
+import FormSelect from "~/components/form/FormSelect.vue";
+import FormCountrySelect from "~/components/form/FormCountrySelect.vue";
+import FormTextarea from "~/components/form/FormTextarea.vue";
+import FormInput from "~/components/form/FormInput.vue";
+import FormCheckbox from "~/components/form/FormCheckbox.vue";
+import FormRadio from "~/components/form/FormRadio.vue";
+import systemString from "~/js/plugins/systemString";
 export default {
   props: ["field", "parent_labels_display", "parent_id"],
   mixins: [systemString],
@@ -113,7 +113,7 @@ export default {
     FormInput,
     FormCheckbox,
     FormRadio,
-    FormField: () => import("./FormField.vue")
+    FormField: () => import("~/components/form/FormField.vue")
   }
 };
 </script>

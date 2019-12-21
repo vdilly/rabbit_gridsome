@@ -16,15 +16,6 @@ html {
   }
   #app {
     overflow: hidden;
-
-    .header {
-      transition: 0.25s 0.7s;
-    }
-    &:not(.loaded) {
-      .header {
-        opacity: 0;
-      }
-    }
   }
 
   &.no-scroll {

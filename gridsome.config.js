@@ -20,7 +20,7 @@ function addStyleResource(rule) {
 }
 
 module.exports = {
-  siteName: "Framework",
+  siteName: "Rabbit",
   metadata: {
     siteUrl: "https://www.vdillyprod.ovh/"
   },
