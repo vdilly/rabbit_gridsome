@@ -24,7 +24,18 @@ module.exports = {
   metadata: {
     siteUrl: "https://www.vdillyprod.ovh/"
   },
-  plugins: [],
+  plugins: [
+    {
+      use: "@gridsome/source-wordpress",
+      options: {
+        baseUrl: "http://wordpress.local", // required
+        apiBase: "wp-json",
+        typeName: "WordPress",
+        perPage: 100,
+        concurrent: 10
+      }
+    }
+  ],
   chainWebpack: config => {
     // Load variables for all vue-files
     const types = ["vue-modules", "vue", "normal-modules", "normal"];
