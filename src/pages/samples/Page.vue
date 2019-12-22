@@ -1,6 +1,7 @@
 <template>
   <Layout :pageTitle="pageTitle">
-    <Container>
+    <Container class="container--small">
+      <a href="/samples">Revenir au sommaire</a>
       <RTE v-html="content"> </RTE>
     </Container>
   </Layout>

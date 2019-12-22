@@ -1,6 +1,7 @@
 <template>
   <Layout pageTitle="Page Formulaire">
     <Container class="container--small">
+      <a href="/samples">Revenir au sommaire</a>
       <form
         class="contact__form form"
         :class="validate ? 'validate' : ''"

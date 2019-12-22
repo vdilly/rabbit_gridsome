@@ -22,7 +22,7 @@ export default {
 <style lang="scss">
 .btn {
   padding: 1.5rem 2rem;
-  border: solid 2px $color__core;
+  border: solid 2px $color__title;
   .flexbox {
   }
   &__text {

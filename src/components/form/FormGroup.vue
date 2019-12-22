@@ -66,6 +66,15 @@ export default {
       order: 2;
     }
   }
+  &.row {
+    @include RWD(mobile) {
+      display: block;
+      .col {
+        margin-left: 0 !important;
+        margin-bottom: $m2;
+      }
+    }
+  }
 }
 .form__required {
   color: $color__error;

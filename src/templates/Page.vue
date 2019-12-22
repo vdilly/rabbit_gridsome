@@ -1,6 +1,6 @@
 <template>
   <Layout :pageTitle="pageTitle">
-    <Container>
+    <Container class="container--small">
       <RTE v-html="content"></RTE>
     </Container>
   </Layout>
