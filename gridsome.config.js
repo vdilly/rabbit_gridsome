@@ -24,7 +24,17 @@ module.exports = {
   metadata: {
     siteUrl: "https://www.vdillyprod.ovh/"
   },
-  plugins: [],
+  plugins: [
+    {
+      use: "@gridsome/source-datocms",
+      options: {
+        apiToken: process.env.DATO_READ_TOKEN, // required
+        previewMode: false,
+        apiUrl: "https://site-api.datocms.com",
+        typeName: "DatoCms"
+      }
+    }
+  ],
   chainWebpack: config => {
     // Load variables for all vue-files
     const types = ["vue-modules", "vue", "normal-modules", "normal"];
