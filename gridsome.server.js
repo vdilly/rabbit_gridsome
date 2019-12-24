@@ -6,6 +6,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 const createPagesTemplates = require("./server/pages");
+const createArticlesTemplates = require("./server/articles");
 module.exports = function(api) {
   api.loadSource(({ addCollection }) => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
@@ -19,5 +20,6 @@ module.exports = function(api) {
      */
 
     createPagesTemplates({ graphql, createPage });
+    createArticlesTemplates({ graphql, createPage });
   });
 };

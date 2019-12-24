@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import pageMixin from "~/js/mixins/page";
 export default {
   computed: {
     about() {

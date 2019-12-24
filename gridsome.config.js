@@ -22,7 +22,7 @@ function addStyleResource(rule) {
 module.exports = {
   siteName: "Rabbit",
   metadata: {
-    siteUrl: "https://www.vdillyprod.ovh/"
+    siteUrl: process.env.SITE_URL
   },
   plugins: [
     {
