@@ -4,7 +4,8 @@
     :class="[
       window.windowScrolled ? 'js-scrolled ' + window.scrollDirection : '',
       siteLoaded ? 'loaded' : '',
-      isFront ? 'front' : 'not-front'
+      isFront ? 'front' : 'not-front',
+      $context.template ? $context.template : null
     ]"
   >
     <Header></Header>

@@ -21,6 +21,8 @@ function addStyleResource(rule) {
 
 module.exports = {
   siteName: "Rabbit",
+  titleTemplate: "%s",
+  siteUrl: process.env.SITE_URL,
   metadata: {
     siteUrl: process.env.SITE_URL
   },
@@ -28,11 +30,18 @@ module.exports = {
     {
       use: "@gridsome/source-wordpress",
       options: {
-        baseUrl: "http://wordpress.local", // required
+        baseUrl: process.env.WP_URL, // required
         apiBase: "wp-json",
         typeName: "WordPress",
         perPage: 100,
         concurrent: 10
+      }
+    },
+    {
+      use: "@gridsome/plugin-sitemap",
+      options: {
+        // exclude: ["/exclude-me"],
+        config: {}
       }
     }
   ],

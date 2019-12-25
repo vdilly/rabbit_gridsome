@@ -1,9 +1,13 @@
 <template>
   <Layout>
     <Container>
-      <h1 v-html="$context.tag ? blog.title + ' - ' + $context.tag.title : blog.title"></h1>
+      <h1 v-html="title"></h1>
       <ul class="blog__list gridy">
-        <li class="blog__item gridy__item" v-for="edge in articleList" :key="edge.node.slug">
+        <li
+          class="blog__item gridy__item"
+          v-for="edge in articleList"
+          :key="edge.node.slug"
+        >
           <TeaserBlog :post="edge.node"></TeaserBlog>
         </li>
       </ul>
@@ -20,6 +24,11 @@ export default {
   mixins: [pageMixin],
   components: { TeaserBlog, Pager },
   computed: {
+    title() {
+      return this.$context.tag
+        ? this.blog.title + " - " + this.$context.tag.title
+        : this.blog.title;
+    },
     blog() {
       return this.$page.blog;
     },
@@ -40,45 +49,20 @@ export default {
     pageInfo() {
       if (!this.urlTag) return this.$page.articles.pageInfo;
       return this.urlTag.belongsTo.pageInfo;
+    },
+    seo() {
+      return this.seoBuilder(this.$page.blog.yoastMeta, this.title, "");
     }
   },
   metaInfo() {
     return {
-      title: `Blog`,
-      bodyAttrs: {
-        class: "blog"
-      },
-      meta: [
-        {
-          key: "description",
-          name: "description",
-          content: "Description en dur"
-        },
-        { property: "og:type", content: "blog" },
-        { property: "og:title", content: "Blog" },
-        {
-          property: "og:description",
-          content: "Description en dur"
-        },
-        {
-          property: "og:url",
-          content: this.$page.metadata.siteUrl + "blog/"
-        },
-        // { property: "og:image", content: this.ogImageUrl },
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "Blog" },
-        {
-          name: "twitter:description",
-          content: "Description en dur"
-        },
-        { name: "twitter:site", content: "@cossssmin" },
-        { name: "twitter:creator", content: "@cossssmin" }
-        // { name: "twitter:image", content: this.ogImageUrl }
-      ]
+      title: this.seo.title,
+      link: this.seo.link,
+      meta: this.seo.meta
     };
   }
 };
-</script> 
+</script>
 
 <page-query>
 query($page: Int, $id: ID) {
@@ -88,9 +72,21 @@ query($page: Int, $id: ID) {
   blog: wordPressPage(id: $id){
     title
     content
-    yoastMeta{
+    yoastMeta {
       yoastWpseoTitle
       yoastWpseoMetadesc
+      yoastWpseoCanonical
+      yoastWpseoFacebookType
+      yoastWpseoFacebookTitle
+      yoastWpseoFacebookDescription
+      yoastWpseoFacebookImage
+      yoastWpseoTwitterTitle
+      yoastWpseoTwitterDescription
+      yoastWpseoTwitterImage
+      yoastWpseoSocialDefaults {
+        ogDefaultImage
+        twitterCardType
+      }
     }
   }
   articles: allWordPressPost(perPage: 12, page: $page) @paginate {
