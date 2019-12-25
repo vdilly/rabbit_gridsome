@@ -2,7 +2,12 @@
   <Layout>
     <Container>
       <h1>About us</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error doloremque omnis animi, eligendi magni a voluptatum, vitae, consequuntur rerum illum odit fugit assumenda rem dolores inventore iste reprehenderit maxime! Iusto.</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
+        doloremque omnis animi, eligendi magni a voluptatum, vitae, consequuntur
+        rerum illum odit fugit assumenda rem dolores inventore iste
+        reprehenderit maxime! Iusto.
+      </p>
     </Container>
   </Layout>
 </template>
@@ -10,14 +15,24 @@
 <script>
 import pageMixin from "~/js/mixins/page";
 export default {
+  mixins: [pageMixin],
   computed: {
     about() {
       return this.$page.about;
+    },
+    seo() {
+      return this.seoBuilder(
+        this.$page.about.yoastMeta,
+        this.about.title,
+        this.about.content
+      );
     }
   },
   metaInfo() {
     return {
-      title: this.about.yoastMeta.yoastWpseoTitle
+      title: this.seo.title,
+      link: this.seo.link,
+      meta: this.seo.meta
     };
   }
 };
@@ -27,12 +42,21 @@ query($id: ID){
   about: wordPressPage(id: $id){
     title
     content
-    acf{
-      titre
-    }
-    yoastMeta{
+    yoastMeta {
       yoastWpseoTitle
       yoastWpseoMetadesc
+      yoastWpseoCanonical
+      yoastWpseoFacebookType
+      yoastWpseoFacebookTitle
+      yoastWpseoFacebookDescription
+      yoastWpseoFacebookImage
+      yoastWpseoTwitterTitle
+      yoastWpseoTwitterDescription
+      yoastWpseoTwitterImage
+      yoastWpseoSocialDefaults {
+        ogDefaultImage
+        twitterCardType
+      }
     }
   }
 }

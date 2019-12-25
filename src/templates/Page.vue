@@ -13,7 +13,21 @@ export default {
   computed: {
     page() {
       return this.$page.page;
+    },
+    seo() {
+      return this.seoBuilder(
+        this.page.yoastMeta,
+        this.page.title,
+        this.page.content
+      );
     }
+  },
+  metaInfo() {
+    return {
+      title: this.seo.title,
+      link: this.seo.link,
+      meta: this.seo.meta
+    };
   }
 };
 </script>
@@ -22,7 +36,23 @@ export default {
 query($id: ID){
   page: wordPressPage(id: $id){
     title
-    content
+    content,
+    yoastMeta {
+      yoastWpseoTitle
+      yoastWpseoMetadesc
+      yoastWpseoCanonical
+      yoastWpseoFacebookType
+      yoastWpseoFacebookTitle
+      yoastWpseoFacebookDescription
+      yoastWpseoFacebookImage
+      yoastWpseoTwitterTitle
+      yoastWpseoTwitterDescription
+      yoastWpseoTwitterImage
+      yoastWpseoSocialDefaults {
+        ogDefaultImage
+        twitterCardType
+      }
+    }
   }
 }
 </page-query>

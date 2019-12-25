@@ -13,8 +13,15 @@
       </p>
 
       <p class="home-links">
-        <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
-        <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://gridsome.org/docs/" target="_blank" rel="noopener"
+          >Gridsome Docs</a
+        >
+        <a
+          href="https://github.com/gridsome/gridsome"
+          target="_blank"
+          rel="noopener"
+          >GitHub</a
+        >
       </p>
       <img
         lazy="img"
@@ -35,14 +42,20 @@ export default {
   computed: {
     home() {
       return this.$page.home.edges[0].node;
+    },
+    seo() {
+      return this.seoBuilder(
+        this.home.yoastMeta,
+        this.home.title,
+        this.home.content
+      );
     }
   },
   metaInfo() {
     return {
-      title: this.home.yoastMeta.yoastWpseoTitle,
-      meta: [
-        { name: "description", content: this.home.yoastMeta.yoastWpseoMetadesc }
-      ]
+      title: this.seo.title,
+      link: this.seo.link,
+      meta: this.seo.meta
     };
   }
 };
@@ -54,10 +67,24 @@ export default {
     edges {
       node {
         slug
+        title
+        content
         acf{titre}
-        yoastMeta{
+        yoastMeta {
           yoastWpseoTitle
           yoastWpseoMetadesc
+          yoastWpseoCanonical
+          yoastWpseoFacebookType
+          yoastWpseoFacebookTitle
+          yoastWpseoFacebookDescription
+          yoastWpseoFacebookImage
+          yoastWpseoTwitterTitle
+          yoastWpseoTwitterDescription
+          yoastWpseoTwitterImage
+          yoastWpseoSocialDefaults {
+            ogDefaultImage
+            twitterCardType
+          }
         }
       }
     }
