@@ -1,6 +1,14 @@
 <template>
   <Layout>
     <Container>
+      <img
+        v-if="post.featuredMedia"
+        lazy="img"
+        :lazy-src="size(post.featuredMedia.sourceUrl, 'mobile')"
+        :lazy-placeholder="size(post.featuredMedia.sourceUrl, 'lazy')"
+        width="1000"
+        alt
+      />
       <h1 v-html="post.title"></h1>
       <RTE v-html="post.content"></RTE>
     </Container>
@@ -15,7 +23,6 @@ export default {
     post() {
       return this.$page.post;
     },
-
     seo() {
       return this.seoBuilder(
         this.post.yoastMeta,
@@ -39,6 +46,9 @@ query($id: ID){
   post: wordPressPost(id: $id){
     title
     content
+    featuredMedia{
+      sourceUrl
+    }
     yoastMeta {
       yoastWpseoTitle
       yoastWpseoMetadesc
