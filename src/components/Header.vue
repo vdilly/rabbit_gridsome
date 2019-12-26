@@ -26,12 +26,17 @@ query {
 
 <style lang="scss">
 .header {
-  margin-bottom: 20px;
   height: 80px;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  background-color: rgba($color: white, $alpha: 0.7);
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
   }
 }
 </style>

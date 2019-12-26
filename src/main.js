@@ -62,6 +62,12 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   // Global computed related to store
   Vue.mixin(imgSizeMixin);
   Vue.mixin({
+    methods: {
+      parseWpUrl: function(string) {
+        const wpurl = new RegExp(process.env.GRIDSOME_WP_URL, "g");
+        return string.replace(wpurl, process.env.GRIDSOME_SITE_URL);
+      }
+    },
     computed: {
       ...mapState("window", ["window"]),
       ...mapState("device", ["device"]),

@@ -18,7 +18,7 @@ function observeIntersection(el, cb) {
         });
       },
       {
-        rootMargin: "0px 0px 300px 0px"
+        rootMargin: "0px 0px 100px 0px"
       }
     );
     observer.observe(el);
@@ -58,13 +58,25 @@ function lazyImg($el) {
   img.onload = function() {
     $el.setAttribute("src", src);
     $el.classList.remove("lazy");
+    $el.removeAttribute("lazy");
+    $el.removeAttribute("lazy-src");
+    $el.removeAttribute("lazy-placeholder");
   };
   img.src = src;
   if (img.complete) img.onload();
 }
 function lazyBg($el) {
   let src = $el.getAttribute("lazy-src");
-  $el.style.backgroundImage = "url(" + src + ")";
+  let img = new Image();
+  img.onload = function() {
+    $el.style.backgroundImage = "url(" + src + ")";
+    $el.classList.remove("lazy");
+    $el.removeAttribute("lazy");
+    $el.removeAttribute("lazy-src");
+    $el.removeAttribute("lazy-placeholder");
+  };
+  img.src = src;
+  if (img.complete) img.onload();
 }
 function lazyVideo($el) {
   let src = $el.getAttribute("lazy-src");

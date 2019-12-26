@@ -1,7 +1,7 @@
 <template>
   <Layout>
+    <Banner v-slot="banner" :pageTitle="about.title"></Banner>
     <Container>
-      <h1>About us</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
         doloremque omnis animi, eligendi magni a voluptatum, vitae, consequuntur

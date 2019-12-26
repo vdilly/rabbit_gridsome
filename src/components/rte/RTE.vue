@@ -1,13 +1,14 @@
 <template>
   <div class="rte">
-    <template v-for="(item, index) in rte">
+    <template v-for="(item, index) in filteredRte">
       <div
-        v-if="item.blockName == '' || item.blockName == 'core/paragraph'"
+        v-if="!isCustomItem(item)"
         :key="index"
-        class="rte__block"
-        v-html="item.innerHtml"
+        :class="item.blockName"
+        v-html="parseWpUrl(item.innerHtml)"
       ></div>
-      <div class="rte__block" :key="index" v-else>
+      <div :class="item.blockName" :key="index" v-else>
+        {{item.blockName}}
         <RteImg v-if="item.blockName == 'core/image' && item.attrs.id" :img="item"></RteImg>
       </div>
     </template>
@@ -18,7 +19,27 @@
 import RteImg from "~/components/rte/Img.vue";
 export default {
   props: ["rte"],
-  components: { RteImg }
+  components: { RteImg },
+  computed: {
+    filteredRte() {
+      const _this = this;
+      return this.rte.filter(function(item) {
+        return !_this.isEmptyParagraph(item.innerHtml);
+      });
+    }
+  },
+  methods: {
+    isCustomItem(item) {
+      return (
+        ["core/image", "core/gallery", "core/media-text"].indexOf(
+          item.blockName
+        ) != -1
+      );
+    },
+    isEmptyParagraph: function(string) {
+      return string.replace(/\n/g, "").length == 0;
+    }
+  }
 };
 </script>
 

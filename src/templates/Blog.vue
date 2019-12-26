@@ -1,13 +1,9 @@
 <template>
   <Layout>
+    <Banner v-slot="banner" :pageTitle="title"></Banner>
     <Container>
-      <h1 v-html="title"></h1>
       <ul class="blog__list gridy">
-        <li
-          class="blog__item gridy__item"
-          v-for="edge in articleList"
-          :key="edge.node.slug"
-        >
+        <li class="blog__item gridy__item" v-for="edge in articleList" :key="edge.node.slug">
           <TeaserBlog :post="edge.node"></TeaserBlog>
         </li>
       </ul>

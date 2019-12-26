@@ -22,15 +22,15 @@ function addStyleResource(rule) {
 module.exports = {
   siteName: "Rabbit",
   titleTemplate: "%s",
-  siteUrl: process.env.SITE_URL,
+  siteUrl: process.env.GRIDSOME_SITE_URL,
   metadata: {
-    siteUrl: process.env.SITE_URL
+    siteUrl: process.env.GRIDSOME_SITE_URL
   },
   plugins: [
     {
       use: "@gridsome/source-wordpress",
       options: {
-        baseUrl: process.env.WP_URL, // required
+        baseUrl: process.env.GRIDSOME_WP_URL, // required
         apiBase: "wp-json",
         typeName: "WordPress",
         perPage: 100,

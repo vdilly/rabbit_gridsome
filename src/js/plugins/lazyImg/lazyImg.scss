@@ -1,6 +1,6 @@
 [lazy] {
   &.lazy {
-    transition: 0.5s ease;
+    transition: filter 5s ease;
     filter: blur(10px);
     transform: scale(0.98);
   }

@@ -1,5 +1,6 @@
 <template>
-  <Layout :pageTitle="page.title">
+  <Layout>
+    <Banner v-slot="banner" :pageTitle="page.title"></Banner>
     <Container class="container--small">
       <RTE v-html="page.content"></RTE>
     </Container>

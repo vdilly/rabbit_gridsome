@@ -1,15 +1,13 @@
 <template>
   <Layout>
-    <Container>
-      <img
-        v-if="post.featuredMedia"
-        lazy="img"
-        :lazy-src="size(post.featuredMedia.sourceUrl, 'mobile')"
-        :lazy-placeholder="size(post.featuredMedia.sourceUrl, 'lazy')"
-        width="1000"
-        alt
-      />
-      <h1 v-html="post.title"></h1>
+    <Banner
+      v-slot="banner"
+      :pageTitle="post.title"
+      lazy="bg"
+      :lazy-src="bannerSrc"
+      :lazy-placeholder="bannerPlaceholder"
+    ></Banner>
+    <Container class="container--small">
       <RTE :rte="post.blocks"></RTE>
     </Container>
   </Layout>
@@ -20,6 +18,16 @@ import pageMixin from "~/js/mixins/page";
 export default {
   mixins: [pageMixin],
   computed: {
+    bannerSrc() {
+      return this.post.featuredMedia
+        ? this.size(this.post.featuredMedia.sourceUrl, "mobile")
+        : null;
+    },
+    bannerPlaceholder() {
+      return this.post.featuredMedia
+        ? this.size(this.post.featuredMedia.sourceUrl, "lazy")
+        : null;
+    },
     post() {
       return this.$page.post;
     },

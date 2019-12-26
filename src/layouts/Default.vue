@@ -9,7 +9,7 @@
     ]"
   >
     <Header></Header>
-    <Banner :pageTitle="pageTitle"></Banner>
+    <slot name="banner"></slot>
     <slot />
     <Footer></Footer>
   </div>
@@ -18,10 +18,9 @@
 <script>
 import Header from "~/components/Header.vue";
 import Footer from "~/components/Footer.vue";
-import Banner from "~/components/Banner.vue";
 export default {
   props: ["isFront", "pageTitle"],
-  components: { Header, Banner, Footer }
+  components: { Header, Footer }
 };
 </script>
 
