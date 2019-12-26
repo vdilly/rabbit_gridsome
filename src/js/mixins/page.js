@@ -1,7 +1,6 @@
 import animationScroll from "~/js/plugins/animationScroll";
 import lazyImg from "~/js/plugins/lazyImg/lazyImg";
 import seoBuilder from "~/js/plugins/seoBuilder";
-import imgSize from "~/js/plugins/imgSize";
 import "~/js/plugins/lazyImg/lazyImg.scss";
 
 // Todo uniquement en dev mode
@@ -42,7 +41,6 @@ export default {
     }
   },
   methods: {
-    seoBuilder: seoBuilder,
-    size: imgSize
+    seoBuilder: seoBuilder
   }
 };

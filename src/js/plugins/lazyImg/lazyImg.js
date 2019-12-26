@@ -18,7 +18,7 @@ function observeIntersection(el, cb) {
         });
       },
       {
-        rootMargin: "0px 0px 700px 0px"
+        rootMargin: "0px 0px 300px 0px"
       }
     );
     observer.observe(el);

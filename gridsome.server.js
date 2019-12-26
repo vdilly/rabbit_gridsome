@@ -8,7 +8,7 @@
 const createPagesTemplates = require("./server/pages");
 const createArticlesTemplates = require("./server/articles");
 module.exports = function(api) {
-  api.loadSource(({ addCollection }) => {
+  api.loadSource(actions => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
   });
 

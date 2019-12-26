@@ -10,7 +10,7 @@
         alt
       />
       <h1 v-html="post.title"></h1>
-      <RTE v-html="post.content"></RTE>
+      <RTE :rte="post.blocks"></RTE>
     </Container>
   </Layout>
 </template>
@@ -46,6 +46,17 @@ query($id: ID){
   post: wordPressPost(id: $id){
     title
     content
+    blocks{
+      innerHtml
+      innerContent
+      blockName
+      attrs{
+        id
+        sizeSlug
+        width
+        height
+      }
+    }
     featuredMedia{
       sourceUrl
     }

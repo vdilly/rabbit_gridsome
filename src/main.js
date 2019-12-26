@@ -22,6 +22,7 @@ import Vue2TouchEvents from "vue2-touch-events";
 import InfiniteLoading from "vue-infinite-loading";
 import Debugger from "~/js/plugins/debug";
 import smoothScroll from "~/js/plugins/smoothScroll";
+import imgSizeMixin from "./js/mixins/imgSize";
 
 const isProduction = process.env.ENV === "production";
 
@@ -59,6 +60,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   });
 
   // Global computed related to store
+  Vue.mixin(imgSizeMixin);
   Vue.mixin({
     computed: {
       ...mapState("window", ["window"]),

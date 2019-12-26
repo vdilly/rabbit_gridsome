@@ -1,8 +1,27 @@
 <template>
   <div class="rte">
-    <slot></slot>
+    <template v-for="(item, index) in rte">
+      <div
+        v-if="item.blockName == '' || item.blockName == 'core/paragraph'"
+        :key="index"
+        class="rte__block"
+        v-html="item.innerHtml"
+      ></div>
+      <div class="rte__block" :key="index" v-else>
+        <RteImg v-if="item.blockName == 'core/image' && item.attrs.id" :img="item"></RteImg>
+      </div>
+    </template>
   </div>
 </template>
+
+<script>
+import RteImg from "~/components/rte/Img.vue";
+export default {
+  props: ["rte"],
+  components: { RteImg }
+};
+</script>
+
 <style lang="scss">
 .h1 {
   @extend .h1-raw;
