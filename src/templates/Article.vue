@@ -8,7 +8,7 @@
       :lazy-placeholder="bannerPlaceholder"
     ></Banner>
     <Container class="container--small">
-      <RTE :rte="post.blocks"></RTE>
+      <RTE :rte="post.content"></RTE>
     </Container>
   </Layout>
 </template>

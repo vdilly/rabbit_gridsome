@@ -48,6 +48,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
     href:
       "https://fonts.googleapis.com/css?family=Rubik:400,500|Source+Sans+Pro:400,400i,600,700,700i&display=swap"
   });
+  head.htmlAttrs = { lang: "fr" };
 
   // Main App store
   Vue.use(Vuex);

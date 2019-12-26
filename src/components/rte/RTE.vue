@@ -1,6 +1,6 @@
 <template>
-  <div class="rte">
-    <template v-for="(item, index) in filteredRte">
+  <div class="rte" v-html="parsedRte">
+    <!-- <template v-for="(item, index) in filteredRte">
       <div
         v-if="!isCustomItem(item)"
         :key="index"
@@ -11,21 +11,28 @@
         {{item.blockName}}
         <RteImg v-if="item.blockName == 'core/image' && item.attrs.id" :img="item"></RteImg>
       </div>
-    </template>
+    </template>-->
   </div>
 </template>
 
 <script>
 import RteImg from "~/components/rte/Img.vue";
+import "~/assets/scss/wp-content.scss";
 export default {
   props: ["rte"],
   components: { RteImg },
   computed: {
     filteredRte() {
+      // V1
       const _this = this;
       return this.rte.filter(function(item) {
         return !_this.isEmptyParagraph(item.innerHtml);
       });
+    },
+    parsedRte() {
+      let rte = this.rte;
+      rte = this.parseWpUrl(rte);
+      return rte;
     }
   },
   methods: {
