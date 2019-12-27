@@ -1,6 +1,12 @@
 <template>
   <div class="teaser-blog">
     <a :href="link" class="teaser-blog__overlay-link"></a>
+    <div
+      class="teaser-blog__bg"
+      lazy="bg"
+      :lazy-src="size(thumbnail, 'mobile')"
+      :lazy-placeholder="size(thumbnail, 'lazy')"
+    ></div>
     <h3 class="teaser-blog__title" v-html="post.title"></h3>
     <p class="teaser-blog__date" v-html="formatDate(post.date)"></p>
     <p class="teaser-blog__lead" v-html="excerpt"></p>
@@ -19,11 +25,16 @@
 <script>
 import dateMixin from "~/js/mixins/date";
 export default {
-  props: ["post"],
+  props: ["post", "defaultThumbnail"],
   mixins: [dateMixin],
   computed: {
     link() {
       return this.$page.metadata.siteUrl + "/blog/" + this.post.slug + "/";
+    },
+    thumbnail() {
+      return this.post.featuredMedia
+        ? this.post.featuredMedia.sourceUrl
+        : this.defaultThumbnail;
     },
     excerpt() {
       return this.post.excerpt
@@ -54,12 +65,27 @@ export default {
       }
     }
   }
+  &__bg {
+    height: 20rem;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+  }
+  &__title {
+    margin-bottom: 1rem;
+  }
+  &__date {
+    margin-bottom: 2rem;
+  }
   &__tag {
     pointer-events: all;
     position: relative;
     &s {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       margin-bottom: $m1;
       pointer-events: none;
       position: relative;

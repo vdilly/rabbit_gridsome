@@ -2,12 +2,12 @@
   <Layout>
     <Banner v-slot="banner" :pageTitle="title"></Banner>
     <Container>
-      <ul class="blog__list gridy">
+      <ul class="blog__list gridy gridy-d-3-40">
         <li class="blog__item gridy__item" v-for="edge in articleList" :key="edge.node.slug">
-          <TeaserBlog :post="edge.node"></TeaserBlog>
+          <TeaserBlog :post="edge.node" :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl"></TeaserBlog>
         </li>
       </ul>
-      <Pager :info="pageInfo" />
+      <Pager :info="pageInfo" class="pagination" linkClass="pagination__link" />
     </Container>
   </Layout>
 </template>
@@ -60,6 +60,17 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.blog {
+  &__list {
+    margin-bottom: -4rem;
+  }
+  &__item {
+    margin-bottom: 4rem;
+  }
+}
+</style>
+
 <page-query>
 query($page: Int, $id: ID) {
   metadata{
@@ -68,6 +79,11 @@ query($page: Int, $id: ID) {
   blog: wordPressPage(id: $id){
     title
     content
+    acf {
+      blogDefaultThumbnail {
+        sourceUrl
+      }
+    }
     yoastMeta {
       yoastWpseoTitle
       yoastWpseoMetadesc
@@ -122,6 +138,7 @@ fragment Teaser on WordPressPost{
   sticky
   title
   date
+  featuredMedia{sourceUrl}
   tags{
     slug
     title
