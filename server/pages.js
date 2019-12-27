@@ -63,7 +63,7 @@ module.exports = async function({ graphql, createPage }) {
           path: `/blog/tag/${edge.node.slug}`,
           component: `./src/templates/Blog.vue`,
           context: {
-            pageIs: "blog",
+            template: "blog",
             id: node.id,
             tag: edge.node
           }
@@ -71,12 +71,12 @@ module.exports = async function({ graphql, createPage }) {
       });
     }
     // Formulaires
-    if (node.template == "forms.php") {
+    if (node.template == "form.php") {
       createPage({
         path: `/${node.slug}`,
         component: `./src/templates/Formulaire.vue`,
         context: {
-          template: "",
+          template: "form",
           id: node.id
         }
       });

@@ -7,6 +7,7 @@ module.exports = async function({ graphql, createPage }) {
         edges {
           node {
             id
+            title
             slug
           }
         }
@@ -19,7 +20,17 @@ module.exports = async function({ graphql, createPage }) {
       path: `/blog/${node.slug}`,
       component: `./src/templates/Article.vue`,
       context: {
-        pageIs: "article",
+        template: "article",
+        ariane: [
+          {
+            label: "Blog",
+            link: "/blog"
+          },
+          {
+            label: node.title,
+            link: `/blog/${node.slug}`
+          }
+        ],
         id: node.id
       }
     });

@@ -3,12 +3,13 @@ import lazyImg from "~/js/plugins/lazyImg/lazyImg";
 import seoBuilder from "~/js/plugins/seoBuilder";
 import "~/js/plugins/lazyImg/lazyImg.scss";
 import Banner from "~/components/Banner.vue";
+import Ariane from "~/components/navs/Ariane.vue";
 
 // Todo uniquement en dev mode
 import todo from "~/js/plugins/todo/todo.js";
 
 export default {
-  components: { Banner },
+  components: { Banner, Ariane },
   mounted() {
     const _this = this;
 

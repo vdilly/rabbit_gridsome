@@ -8,6 +8,7 @@
       :lazy-placeholder="bannerPlaceholder"
     ></Banner>
     <Container class="container--small">
+      <Ariane :ariane="$context.ariane"></Ariane>
       <RTE :rte="post.content"></RTE>
     </Container>
   </Layout>
