@@ -15,23 +15,6 @@ module.exports = async function({ graphql, createPage }) {
     }
   `);
 
-  // Blog Tags
-  const {
-    data: { allWordPressPostTag: allWordPressPostTag }
-  } = await graphql(`
-    {
-      allWordPressPostTag {
-        edges {
-          node {
-            id
-            slug
-            title
-          }
-        }
-      }
-    }
-  `);
-
   allWordPressPage.edges.forEach(function({ node }) {
     // Hp gérée dans page/index.vue
     if (node.template == "homepage.php") return;
@@ -56,18 +39,6 @@ module.exports = async function({ graphql, createPage }) {
           template: "blog",
           id: node.id
         }
-      });
-
-      allWordPressPostTag.edges.forEach(function(edge) {
-        createPage({
-          path: `/blog/tag/${edge.node.slug}`,
-          component: `./src/templates/Blog.vue`,
-          context: {
-            template: "blog",
-            id: node.id,
-            tag: edge.node
-          }
-        });
       });
     }
     // Formulaires

@@ -30,33 +30,19 @@ export default {
   components: { TeaserBlog, Pager },
   computed: {
     title() {
-      return this.$context.tag
-        ? this.blog.title + " - " + this.$context.tag.title
-        : this.blog.title;
+      return this.blog.title;
     },
     blog() {
       return this.$page.blog;
     },
-    tagList() {
-      return this.$page.tags.edges;
-    },
-    urlTag() {
-      const contextTag = this.$context.tag;
-      return contextTag
-        ? this.tagList.find(el => el.node.slug == contextTag.slug).node
-        : null;
-    },
     stickyArticleList() {
-      return this.urlTag ? null : this.$page.stickyArticles.edges;
+      return this.$page.stickyArticles.edges;
     },
     articleList() {
-      const articleList = this.$page.articles.edges;
-      if (!this.urlTag) return articleList;
-      return this.urlTag.belongsTo.edges;
+      return this.$page.articles.edges;
     },
     pageInfo() {
-      if (!this.urlTag) return this.$page.articles.pageInfo;
-      return this.urlTag.belongsTo.pageInfo;
+      return this.$page.articles.pageInfo;
     },
     seo() {
       return this.seoBuilder(this.$page.blog.yoastMeta, this.title, "");
@@ -131,26 +117,6 @@ query($page: Int, $id: ID) {
     edges {
       node {
         ...Teaser
-      }
-    }
-  }
-  tags: allWordPressPostTag {
-    edges {
-      node {
-        slug
-        belongsTo(perPage: 12, page: $page) @paginate {
-          pageInfo {
-            totalPages
-            currentPage
-          }
-          edges {
-            node {
-              ...on WordPressPost{
-                ...Teaser
-              }
-            }
-          }
-        }
       }
     }
   }

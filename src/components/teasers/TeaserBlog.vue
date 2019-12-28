@@ -12,11 +12,7 @@
     <p class="teaser-blog__lead" v-html="excerpt"></p>
     <ul class="teaser-blog__tags">
       <li class="teaser-blog__tag" v-for="tag in post.tags" :key="tag.slug">
-        <a
-          class="blogpost-tag blogpost-tag--grey"
-          :href="`${$page.metadata.siteUrl}/blog/tag/${tag.slug}/`"
-          v-html="tag.title"
-        ></a>
+        <div class="blogpost-tag blogpost-tag--grey" v-html="tag.title"></div>
       </li>
     </ul>
   </div>
