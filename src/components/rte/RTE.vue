@@ -1,5 +1,5 @@
 <template>
-  <div class="rte" v-html="parsedRte">
+  <div v-if="rte" class="rte" v-html="parsedRte">
     <!-- <template v-for="(item, index) in filteredRte">
       <div
         v-if="!isCustomItem(item)"

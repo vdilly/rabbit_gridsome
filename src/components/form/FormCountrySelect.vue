@@ -23,8 +23,10 @@ import systemString from "~/js/plugins/systemString";
 import FormSelect from "~/components/form/FormSelect.vue";
 export default {
   props: ["id", "required"],
-  mixins: [systemString],
   components: { FormSelect },
+  methods: {
+    systemString: systemString
+  },
   data() {
     return {
       populars: [
