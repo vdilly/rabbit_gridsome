@@ -8,6 +8,8 @@ import Ariane from "~/components/navs/Ariane.vue";
 // Todo uniquement en dev mode
 import todo from "~/js/plugins/todo/todo.js";
 
+// Acf options
+
 export default {
   components: { Banner, Ariane },
   mounted() {

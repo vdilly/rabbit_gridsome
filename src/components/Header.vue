@@ -1,19 +1,24 @@
 <template>
   <header class="header">
     <Container>
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/about/">About</g-link>
-        <g-link class="nav__link" to="/blog/">Blog</g-link>
-      </nav>
+      <g-link to="/" class="logo">
+        <img :src="logo.url" :alt="logo.alt" />
+      </g-link>
+      <MainMenu></MainMenu>
     </Container>
   </header>
 </template>
 
 <script>
-export default {};
+import MainMenu from "~/components/navs/MainMenu.vue";
+export default {
+  components: { MainMenu },
+  computed: {
+    logo() {
+      return this.$static.allAcfOption.edges[0].node.header_logo;
+    }
+  }
+};
 </script>
 
 <static-query>
@@ -21,17 +26,26 @@ query {
   metadata {
     siteName
   }
+  allAcfOption {
+    edges {
+      node {
+        header_logo {
+          url
+          alt
+        }
+      }
+    }
+  }
 }
 </static-query>
 
 <style lang="scss">
 .header {
   height: 80px;
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
   background-color: rgba($color: white, $alpha: 0.7);
+  .logo img {
+    height: 7rem;
+  }
   .container {
     display: flex;
     justify-content: space-between;

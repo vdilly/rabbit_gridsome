@@ -7,9 +7,21 @@
 
 const createPagesTemplates = require("./server/pages");
 const createArticlesTemplates = require("./server/articles");
+const axios = require("axios");
 module.exports = function(api) {
-  api.loadSource(actions => {
+  api.loadSource(async actions => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
+
+    /**
+     *  ACF OPTIONS
+     */
+    const { data } = await axios.get(
+      process.env.GRIDSOME_WP_URL + "/wp-json/acf/v3/options/option/"
+    );
+    const collection = actions.addCollection({
+      typeName: "AcfOption"
+    });
+    collection.addNode(data.acf);
   });
 
   api.createPages(async ({ graphql, createPage }) => {
@@ -19,7 +31,13 @@ module.exports = function(api) {
      *  PAGES
      */
 
-    createPagesTemplates({ graphql, createPage });
-    createArticlesTemplates({ graphql, createPage });
+    createPagesTemplates({
+      graphql,
+      createPage
+    });
+    createArticlesTemplates({
+      graphql,
+      createPage
+    });
   });
 };
