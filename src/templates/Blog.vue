@@ -2,6 +2,15 @@
   <Layout>
     <Banner v-slot="banner" :pageTitle="title"></Banner>
     <Container>
+      <ul class="blog__list blog__list--sticky gridy gridy-d-2-40" v-if="stickyArticleList">
+        <li
+          class="blog__item blog__item--sticky gridy__item"
+          v-for="edge in stickyArticleList"
+          :key="edge.node.slug"
+        >
+          <TeaserBlog :post="edge.node" :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl"></TeaserBlog>
+        </li>
+      </ul>
       <ul class="blog__list gridy gridy-d-3-40">
         <li class="blog__item gridy__item" v-for="edge in articleList" :key="edge.node.slug">
           <TeaserBlog :post="edge.node" :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl"></TeaserBlog>
@@ -37,6 +46,9 @@ export default {
         ? this.tagList.find(el => el.node.slug == contextTag.slug).node
         : null;
     },
+    stickyArticleList() {
+      return this.urlTag ? null : this.$page.stickyArticles.edges;
+    },
     articleList() {
       const articleList = this.$page.articles.edges;
       if (!this.urlTag) return articleList;
@@ -64,6 +76,9 @@ export default {
 .blog {
   &__list {
     margin-bottom: -4rem;
+    &--sticky {
+      margin-bottom: 0;
+    }
   }
   &__item {
     margin-bottom: 4rem;
@@ -101,7 +116,14 @@ query($page: Int, $id: ID) {
       }
     }
   }
-  articles: allWordPressPost(perPage: 12, page: $page) @paginate {
+  stickyArticles: allWordPressPost(filter: {sticky: {eq: true}}) {
+    edges {
+      node {
+        ...Teaser
+      }
+    }
+  }
+  articles: allWordPressPost(perPage: 12, page: $page, filter: {sticky: {eq: false}}) @paginate {
     pageInfo{
       totalPages
       currentPage

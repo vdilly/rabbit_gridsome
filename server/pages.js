@@ -71,16 +71,16 @@ module.exports = async function({ graphql, createPage }) {
       });
     }
     // Formulaires
-    if (node.template == "form.php") {
-      createPage({
-        path: `/${node.slug}`,
-        component: `./src/templates/Formulaire.vue`,
-        context: {
-          template: "form",
-          id: node.id
-        }
-      });
-    }
+    // if (node.template == "form.php") {
+    //   createPage({
+    //     path: `/${node.slug}`,
+    //     component: `./src/templates/Formulaire.vue`,
+    //     context: {
+    //       template: "form",
+    //       id: node.id
+    //     }
+    //   });
+    // }
     // About
     if (node.template == "about.php") {
       createPage({
