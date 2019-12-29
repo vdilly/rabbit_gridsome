@@ -1,11 +1,11 @@
 {
   "folders": [
-	{
-		"path": "."
-	},
-	{
-		"path": "C:\\www\\wordpress\\wp-content\\themes\\rabbit"
-	}
-],
+    {
+      "path": "."
+    },
+    {
+      "path": "C:\\www\\rabbit_wordpress"
+    }
+  ],
   "settings": {}
 }
