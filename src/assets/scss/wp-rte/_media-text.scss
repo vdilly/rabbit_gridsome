@@ -1,0 +1,25 @@
+.wp-block-media-text {
+  display: grid;
+  grid-template-rows: auto;
+  align-items: center;
+  grid-template-areas: "media-text-media media-text-content";
+  grid-template-columns: 50% auto;
+  align-items: start;
+  margin-bottom: $mb-item;
+  @include RWD(mobile) {
+    display: block;
+  }
+}
+.wp-block-media-text .wp-block-media-text__media {
+  grid-area: media-text-media;
+  margin: 0;
+}
+.wp-block-media-text .wp-block-media-text__content {
+  word-break: break-word;
+  grid-area: media-text-content;
+  padding: 0 8%;
+  @include RWD(mobile) {
+    padding: 0;
+    margin-top: $m2;
+  }
+}

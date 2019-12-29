@@ -1,72 +1,3 @@
-.wp-block-media-text {
-  display: grid;
-  grid-template-rows: auto;
-  align-items: center;
-  grid-template-areas: "media-text-media media-text-content";
-  grid-template-columns: 50% auto;
-  align-items: start;
-  margin-bottom: $margin-item-rte;
-  @include RWD(mobile) {
-    display: block;
-  }
-}
-.wp-block-media-text .wp-block-media-text__media {
-  grid-area: media-text-media;
-  margin: 0;
-}
-.wp-block-media-text .wp-block-media-text__content {
-  word-break: break-word;
-  grid-area: media-text-content;
-  padding: 0 8%;
-  @include RWD(mobile) {
-    padding: 0;
-    margin-top: $m2;
-  }
-}
-
-// Table
-.wp-block-table {
-  width: 100%;
-  margin-bottom: $margin-item-rte;
-  clear: both;
-  border-collapse: separate;
-
-  clear: both;
-
-  caption {
-    visibility: hidden;
-  }
-
-  td {
-    padding: 1em;
-    font-size: 1.5rem;
-    text-align: center;
-
-    & > *:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  th {
-    padding: 15px;
-    padding: 20px;
-    font-size: 1.6rem;
-    font-weight: 700;
-    text-align: center !important;
-    text-transform: uppercase;
-
-    & > *:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  tbody > tr {
-    &:nth-child(even) {
-      background-color: #f4f4f4;
-    }
-  }
-}
-
 // OLD
 /* =WordPress Core
 -------------------------------------------------------------- */
@@ -180,45 +111,20 @@ a img.aligncenter {
   /* Above WP toolbar. */
 }
 
-.content {
+.rte {
   // WP QUOTE
   blockquote {
-    $color: #b0e429;
+    $color: $color__core;
     border-left: 3px solid $color;
     // color: #1a1a1a;
     // font-family: Georgia, Times, "Times New Roman", serif;
-    font-style: italic;
+    // font-style: italic;
     line-height: 1.8em;
     margin: 1.1em 3em;
     padding: 1em 2em;
     position: relative;
     transition: 0.2s border ease-in-out;
     z-index: 0;
-    &:before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: -4px;
-      height: 2em;
-      background-color: #ffffff;
-      width: 5px;
-      margin-top: -1em;
-    }
-    &:after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 0;
-      color: $color;
-      background-image: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KPHBhdGggZmlsbD0iI2IwZTQyOSIgZD0iTTkgOXYtN2g3djcuMWMwIDQuOC00LjUgNS40LTQuNSA1LjRsLTAuNi0xLjRjMCAwIDItMC4zIDIuNC0xLjkgMC40LTEuMi0wLjQtMi4yLTAuNC0yLjJoLTMuOXoiPjwvcGF0aD4KPHBhdGggZmlsbD0iI2IwZTQyOSIgZD0iTTAgOXYtN2g3djcuMWMwIDQuOC00LjUgNS40LTQuNSA1LjRsLTAuNi0xLjRjMCAwIDItMC4zIDIuNC0xLjkgMC40LTEuMi0wLjQtMi4yLTAuNC0yLjJoLTMuOXoiPjwvcGF0aD4KPC9zdmc+Cg==");
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 1.5rem;
-      height: 1.5rem;
-      margin-top: -0.6em;
-      transition: 0.2s all ease-in-out, 0.4s transform ease-in-out;
-      transform: translateX(-50%);
-    }
     cite {
       display: block;
       font-size: 0.75em;

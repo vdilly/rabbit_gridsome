@@ -1,0 +1,131 @@
+.wp-block-gallery {
+  .slider {
+    & > * + * {
+      margin-left: 4rem;
+    }
+    &__wrapper {
+      width: 57.5rem;
+      margin: 0 auto;
+      margin-bottom: $mb-item;
+      margin-top: $mb-item;
+      max-width: 100%;
+    }
+    &__shadow.shadowed {
+      position: relative;
+      & > * {
+        position: relative;
+        z-index: 1;
+      }
+      &:before {
+        box-shadow: 0 2px 44px 0 rgba(0, 0, 0, 0.3);
+        width: 95%;
+        height: 70%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+        content: "";
+      }
+    }
+    &__overflow {
+      overflow: hidden;
+      border-radius: 1rem;
+    }
+
+    &__navigation {
+      margin-top: 2rem;
+    }
+
+    &.display {
+      &__item {
+        display: none;
+      }
+      @for $i from 1 through 5 {
+        &.js-slide-#{$i} {
+          .slider__item:nth-child(#{$i}) {
+            display: block;
+          }
+        }
+      }
+    }
+
+    &.translateX {
+      display: flex;
+      transition: 0.7s ease-in-out;
+      .slider__item {
+        width: 100%;
+        flex-shrink: 0;
+        transition: 0.25s;
+      }
+      @for $i from 1 through 5 {
+        &.js-slide-#{$i} {
+          .slider__item:nth-child(#{$i}) {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .slider__item {
+    display: flex;
+  }
+  .teaser-slide {
+    height: 35rem;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+    position: relative;
+
+    @include RWD(mobile) {
+      padding-bottom: 61%;
+      height: auto;
+    }
+
+    &--vimeo {
+      iframe {
+        height: 100%;
+        width: 100%;
+        border-radius: 1rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  .slider__dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-item + .slider__dot-item {
+      margin-left: 1.2rem;
+    }
+    &-btn {
+      height: 1.2rem;
+      width: 1.2rem;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.12);
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+// Slide
+.wp-block-gallery {
+  @for $i from 1 through 10 {
+    &[data-slide="#{$i}"] {
+      .slider {
+        transform: translateX(-#{($i - 1) * 100%})
+          translateX(-#{($i - 1) * 40px});
+      }
+      .slider__dot-item:nth-child(#{$i}) .slider__dot-btn {
+        background-color: $color__core;
+      }
+    }
+  }
+}

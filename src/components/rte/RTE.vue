@@ -46,6 +46,18 @@ export default {
     isEmptyParagraph: function(string) {
       return string.replace(/\n/g, "").length == 0;
     }
+  },
+  mounted() {
+    // Slider
+    document.querySelectorAll(".wp-block-gallery").forEach(function(el) {
+      var $dots = el.querySelectorAll(".wp-block-gallery .slider__dot-btn");
+      $dots.forEach($dot => {
+        $dot.addEventListener("click", function() {
+          var index = this.getAttribute("data-to-slide");
+          el.setAttribute("data-slide", index);
+        });
+      });
+    });
   }
 };
 </script>
@@ -180,7 +192,7 @@ export default {
 
     li {
       position: relative;
-      margin-bottom: $mb-p;
+      margin-bottom: 0.8em;
 
       &:last-child {
         margin-bottom: 0;
@@ -241,6 +253,7 @@ export default {
   @extend .rte-headless;
 
   p:not(.unstyled) {
+    line-height: 1.2em;
     margin-bottom: $mb-p;
   }
 
