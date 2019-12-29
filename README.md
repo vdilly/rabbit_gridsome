@@ -11,3 +11,5 @@
 puis
 
 `npm install`
+
+Copier coller env.model en .env et adapter les valeurs
