@@ -72,7 +72,35 @@ module.exports = function(api) {
         selected: Boolean
       }
     `);
+
+    // Type Menu
+    actions.addSchemaTypes(`
+      type AcfOption implements Node @infer{
+        header_menu: [MenuEntry]
+      }
+      type MenuEntry{
+        acf_fc_layout: String
+        label_is_link: Boolean
+        label: String
+        liens: Liens
+        submenu : [SubMenuEntry]
+      }
+      type SubMenuEntry{
+        liens: Liens
+      }
+      type Liens {
+        title: String
+        url: String
+        target: String
+      }
+    `);
+
     actions.addSchemaResolvers({
+      AcfOption: {
+        async header_menu(obj) {
+          return obj.header_menu;
+        }
+      },
       WordPressPage: {
         async form(obj) {
           return obj.acf;
