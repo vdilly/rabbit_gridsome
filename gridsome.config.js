@@ -46,6 +46,28 @@ module.exports = {
         // exclude: ["/exclude-me"],
         config: {}
       }
+    },
+    {
+      use: "gridsome-plugin-robots-txt"
+      // options: {
+      //   host: "https://my-awesome-fast-site.com",
+      //   sitemap: "https://my-awesome-fast-site.com/configs/sitemap.xml",
+      //   policy: [
+      //     {
+      //       userAgent: "Googlebot",
+      //       allow: "/",
+      //       disallow: "/search",
+      //       crawlDelay: 2
+      //     },
+      //     {
+      //       userAgent: "*",
+      //       allow: "/",
+      //       disallow: "/search",
+      //       crawlDelay: 10,
+      //       cleanParam: "ref /articles/"
+      //     }
+      //   ]
+      // }
     }
   ],
   chainWebpack: config => {
