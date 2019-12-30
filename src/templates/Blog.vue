@@ -24,7 +24,7 @@
           </li>
         </ul>
       </transition>
-      <Pager :info="pageInfo" class="pagination" linkClass="pagination__link" />
+      <!-- <Pager :info="pageInfo" class="pagination" linkClass="pagination__link" /> -->
     </Container>
   </Layout>
 </template>
