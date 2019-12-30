@@ -9,7 +9,7 @@
     ></div>
     <h3 class="teaser-blog__title" v-html="post.title"></h3>
     <p class="teaser-blog__date" v-html="formatDate(post.date)"></p>
-    <p class="teaser-blog__lead" v-html="excerpt"></p>
+    <div class="teaser-blog__lead" v-html="excerpt"></div>
     <div v-for="(tag, index) in tags" :key="index">
       <div>Test</div>
     </div>
