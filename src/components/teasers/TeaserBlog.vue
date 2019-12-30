@@ -1,6 +1,7 @@
 <template>
   <div class="teaser-blog">
-    <a :href="link" class="teaser-blog__overlay-link"></a>
+    ok
+    <!-- <a :href="link" class="teaser-blog__overlay-link"></a>
     <div
       class="teaser-blog__bg"
       lazy="bg"
@@ -9,12 +10,12 @@
     ></div>
     <h3 class="teaser-blog__title" v-html="post.title"></h3>
     <p class="teaser-blog__date" v-html="formatDate(post.date)"></p>
-    <p class="teaser-blog__lead" v-html="excerpt"></p>
-    <ul class="teaser-blog__tags">
+    <p class="teaser-blog__lead" v-html="excerpt"></p>-->
+    <!-- <ul class="teaser-blog__tags">
       <li class="teaser-blog__tag" v-for="tag in post.tags" :key="tag.slug">
         <div class="blogpost-tag blogpost-tag--grey" v-html="tag.title"></div>
       </li>
-    </ul>
+    </ul>-->
   </div>
 </template>
 
