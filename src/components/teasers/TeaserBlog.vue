@@ -10,9 +10,7 @@
     <h3 class="teaser-blog__title" v-html="post.title"></h3>
     <p class="teaser-blog__date" v-html="formatDate(post.date)"></p>
     <p class="teaser-blog__lead" v-html="excerpt"></p>
-    <div v-if="post.tags.length > 0">
-      <pre v-for="(tag, index) in post.tags" v-html="tag.title" :key="index"></pre>
-    </div>
+    <pre v-for="(tag, index) in tags" v-html="tag.title" :key="index"></pre>
     <!-- <ul class="teaser-blog__tags">
       <li class="teaser-blog__tag" v-for="(tag, index) in post.tags" :key="index">
         <div class="blogpost-tag blogpost-tag--grey" v-html="tag.title"></div>
@@ -27,6 +25,9 @@ export default {
   props: ["post", "defaultThumbnail"],
   mixins: [dateMixin],
   computed: {
+    tags() {
+      return this.post.tags ? this.post.tags : null;
+    },
     link() {
       return this.$page.metadata.siteUrl + "/blog/" + this.post.slug + "/";
     },
