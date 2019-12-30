@@ -2,7 +2,10 @@
   <Layout>
     <Banner v-slot="banner" :pageTitle="title"></Banner>
     <Container>
-      <ul class="blog__list blog__list--sticky gridy gridy-d-2-40" v-if="stickyArticleList">
+      <ul
+        class="blog__list blog__list--sticky gridy gridy-d-2-40"
+        v-show="stickyArticleList && pageInfo.currentPage == 1"
+      >
         <li
           class="blog__item blog__item--sticky gridy__item"
           v-for="edge in stickyArticleList"
