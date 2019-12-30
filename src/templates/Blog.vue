@@ -82,7 +82,7 @@ export default {
 </style>
 
 <page-query>
-query($page: Int, $id: ID) {
+query($id: ID) {
   metadata{
     siteUrl
   }
@@ -118,7 +118,7 @@ query($page: Int, $id: ID) {
       }
     }
   }
-  articles: allWordPressPost(perPage: 12, page: $page, filter: {sticky: {eq: false}}) @paginate {
+  articles: allWordPressPost {
     pageInfo{
       totalPages
       currentPage
