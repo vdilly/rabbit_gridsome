@@ -26,9 +26,9 @@ module.exports = {
   metadata: {
     siteUrl: process.env.GRIDSOME_SITE_URL
   },
-  configureWebpack: {
-    mode: "development"
-  },
+  // configureWebpack: {
+  //   mode: "development"
+  // },
   plugins: [
     {
       use: "@gridsome/source-wordpress",
