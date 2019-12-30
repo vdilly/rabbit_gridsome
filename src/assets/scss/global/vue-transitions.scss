@@ -6,3 +6,22 @@
   opacity: 0;
   transform: translate(-50%, 100%) translateX(4rem) !important;
 }
+
+// Y O
+.gridy-enter-active,
+.gridy-leave-active {
+  .gridy__item {
+    transition: 0.25s;
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{($i - 1) * 0.1s};
+      }
+    }
+  }
+}
+.gridy-enter, .gridy-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  .gridy__item {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+}
