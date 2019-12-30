@@ -1,9 +1,12 @@
 <template>
   <header class="header">
     <Container>
-      <g-link to="/" class="logo">
-        <img :src="logo.url" :alt="logo.alt" />
-      </g-link>
+      <div>
+        <g-link to="/" class="logo">
+          <img :src="logo.url" :alt="logo.alt" />
+        </g-link>
+        {{ $static.metadata.siteName }}
+      </div>
       <MainMenu></MainMenu>
     </Container>
   </header>
