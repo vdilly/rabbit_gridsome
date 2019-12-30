@@ -28,22 +28,24 @@ function observeIntersection(el, cb) {
 }
 
 function dispatchType($el) {
-  let type = $el.getAttribute("lazy");
+  let type = $el.getAttribute("lazy"),
+    src = $el.getAttribute("lazy-src");
+
+  if (!src) return;
 
   observeIntersection($el, function() {
     if (type == "img") {
-      lazyImg($el);
+      lazyImg($el, src);
     }
     if (type == "bg") {
-      lazyBg($el);
+      lazyBg($el, src);
     }
     if (type == "video") {
-      lazyVideo($el);
+      lazyVideo($el, src);
     }
   });
 }
-function lazyImg($el) {
-  let src = $el.getAttribute("lazy-src");
+function lazyImg($el, src) {
   let img = new Image();
   img.onload = function() {
     $el.setAttribute("src", src);
@@ -54,8 +56,7 @@ function lazyImg($el) {
   img.src = src;
   if (img.complete) img.onload();
 }
-function lazyBg($el) {
-  let src = $el.getAttribute("lazy-src");
+function lazyBg($el, src) {
   let img = new Image();
   img.onload = function() {
     $el.style.backgroundImage = "url(" + src + ")";
@@ -66,9 +67,7 @@ function lazyBg($el) {
   img.src = src;
   if (img.complete) img.onload();
 }
-function lazyVideo($el) {
-  let src = $el.getAttribute("lazy-src");
-}
+function lazyVideo($el, src) {}
 
 export default function($root) {
   debug("Lazyload imgs and bgs");
