@@ -1,5 +1,10 @@
 <template>
-  <div class="banner">
+  <div
+    class="banner"
+    lazy="bg"
+    :lazy-src="bannerSrc"
+    :style="`background-image: url(${bannerPlaceholder})`"
+  >
     <Container class="container--small">
       <h1 class="h1" v-html="pageTitle"></h1>
     </Container>

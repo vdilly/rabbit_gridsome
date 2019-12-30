@@ -1,6 +1,6 @@
 <template>
   <figure>
-    <img lazy="img" :lazy-src="src" :lazy-placeholder="placeholder" :width="width" />
+    <img lazy="img" :lazy-src="src" :src="placeholder" :width="width" />
   </figure>
 </template>
 

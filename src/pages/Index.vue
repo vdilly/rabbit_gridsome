@@ -18,7 +18,7 @@
       <img
         lazy="img"
         lazy-src="https://images.pexels.com/photos/1953451/pexels-photo-1953451.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-        lazy-placeholder="https://images.pexels.com/photos/1953451/pexels-photo-1953451.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=32&w=63"
+        src="https://images.pexels.com/photos/1953451/pexels-photo-1953451.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=32&w=63"
         height="1260"
         width="750"
         alt

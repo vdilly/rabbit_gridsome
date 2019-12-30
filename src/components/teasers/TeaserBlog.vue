@@ -5,7 +5,7 @@
       class="teaser-blog__bg"
       lazy="bg"
       :lazy-src="size(thumbnail, 'mobile')"
-      :lazy-placeholder="size(thumbnail, 'lazy')"
+      :style="`background-image: url(${size(thumbnail, 'lazy')});`"
     ></div>
     <h3 class="teaser-blog__title" v-html="post.title"></h3>
     <p class="teaser-blog__date" v-html="formatDate(post.date)"></p>
