@@ -14,7 +14,7 @@
           <TeaserBlog :post="edge.node" :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl"></TeaserBlog>
         </li>
       </ul>-->
-      <!-- <transition appear name="gridy" mode="out-in" duration="3000">
+      <transition appear name="gridy" mode="out-in" duration="3000">
         <ul class="blog__list gridy gridy-d-3-40" domChange>
           <li class="blog__item gridy__item" v-for="edge in articleList" :key="edge.node.slug">
             <TeaserBlog
@@ -23,7 +23,7 @@
             ></TeaserBlog>
           </li>
         </ul>
-      </transition>-->
+      </transition>
       <Pager :info="pageInfo" class="pagination" linkClass="pagination__link" />
     </Container>
   </Layout>
