@@ -82,9 +82,10 @@ function lazyVideo($el) {
   let src = $el.getAttribute("lazy-src");
 }
 
-export default function() {
+export default function($root) {
   debug("Lazyload imgs and bgs");
-  let $els = document.querySelectorAll("[lazy]");
+  $root = $root ? $root : document;
+  let $els = $root.querySelectorAll("[lazy]");
   $els.forEach($el => {
     dispatchType($el);
   });

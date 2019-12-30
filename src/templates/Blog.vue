@@ -11,7 +11,7 @@
           <TeaserBlog :post="edge.node" :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl"></TeaserBlog>
         </li>
       </ul>
-      <ul class="blog__list gridy gridy-d-3-40">
+      <ul class="blog__list gridy gridy-d-3-40" domChange>
         <li class="blog__item gridy__item" v-for="edge in articleList" :key="edge.node.slug">
           <TeaserBlog :post="edge.node" :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl"></TeaserBlog>
         </li>
@@ -25,6 +25,7 @@
 import { Pager } from "gridsome";
 import pageMixin from "~/js/mixins/page";
 import TeaserBlog from "~/components/teasers/TeaserBlog.vue";
+import lazyImg from "~/js/plugins/lazyImg/lazyImg";
 export default {
   mixins: [pageMixin],
   components: { TeaserBlog, Pager },
