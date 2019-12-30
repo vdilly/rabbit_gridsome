@@ -1,3 +1,4 @@
+import parseWpUrl from "~/js/plugins/parseWpUrl";
 export default function(yoast, postTitle, postContent) {
   let _this = this;
   const title = yoast.yoastWpseoTitle ? yoast.yoastWpseoTitle : postTitle,
@@ -41,7 +42,7 @@ export default function(yoast, postTitle, postContent) {
       },
       {
         property: "og:image",
-        content: img
+        content: parseWpUrl(img)
       },
       {
         name: "twitter:card",
@@ -62,8 +63,8 @@ export default function(yoast, postTitle, postContent) {
       {
         name: "twitter:image",
         content: yoast.yoastWpseoTwitterImage
-          ? yoast.yoastWpseoTwitterImage
-          : img
+          ? parseWpUrl(yoast.yoastWpseoTwitterImage)
+          : parseWpUrl(img)
       }
     ]
   };
