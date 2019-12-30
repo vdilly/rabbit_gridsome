@@ -10,11 +10,12 @@
     <h3 class="teaser-blog__title" v-html="post.title"></h3>
     <p class="teaser-blog__date" v-html="formatDate(post.date)"></p>
     <p class="teaser-blog__lead" v-html="excerpt"></p>
-    <ul class="teaser-blog__tags" v-if="post.tags">
+    <pre v-html="post.tags"></pre>
+    <!-- <ul class="teaser-blog__tags">
       <li class="teaser-blog__tag" v-for="(tag, index) in post.tags" :key="index">
         <div class="blogpost-tag blogpost-tag--grey" v-html="tag.title"></div>
       </li>
-    </ul>
+    </ul>-->
   </div>
 </template>
 
