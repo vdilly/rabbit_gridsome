@@ -2,7 +2,7 @@
   <Layout>
     <Banner v-slot="banner" :pageTitle="title"></Banner>
     <Container>
-      <ul
+      <!-- <ul
         class="blog__list blog__list--sticky gridy gridy-d-2-40"
         v-show="stickyArticleList && pageInfo.currentPage == 1"
       >
@@ -13,7 +13,7 @@
         >
           <TeaserBlog :post="edge.node" :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl"></TeaserBlog>
         </li>
-      </ul>
+      </ul>-->
       <!-- <transition appear name="gridy" mode="out-in" duration="3000">
         <ul class="blog__list gridy gridy-d-3-40" domChange>
           <li class="blog__item gridy__item" v-for="edge in articleList" :key="edge.node.slug">
