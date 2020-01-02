@@ -48,26 +48,17 @@ module.exports = {
       }
     },
     {
-      use: "gridsome-plugin-robots-txt"
-      // options: {
-      //   host: "https://my-awesome-fast-site.com",
-      //   sitemap: "https://my-awesome-fast-site.com/configs/sitemap.xml",
-      //   policy: [
-      //     {
-      //       userAgent: "Googlebot",
-      //       allow: "/",
-      //       disallow: "/search",
-      //       crawlDelay: 2
-      //     },
-      //     {
-      //       userAgent: "*",
-      //       allow: "/",
-      //       disallow: "/search",
-      //       crawlDelay: 10,
-      //       cleanParam: "ref /articles/"
-      //     }
-      //   ]
-      // }
+      use: "gridsome-plugin-robots-txt",
+      options: {
+        host: process.env.GRIDSOME_SITE_URL,
+        sitemap: process.env.GRIDSOME_SITE_URL + "/sitemap.xml",
+        policy: [
+          {
+            userAgent: "*",
+            disallow: "/"
+          }
+        ]
+      }
     },
     {
       use: "@gridsome/plugin-critical"
