@@ -76,7 +76,11 @@ module.exports = function(api) {
     // Type Menu
     actions.addSchemaTypes(`
       type AcfOption implements Node @infer{
-        header_menu: [MenuEntry]
+        menu_header: MenuClone,
+        menu_footer: MenuClone
+      }
+      type MenuClone{
+        menu: [MenuEntry]
       }
       type MenuEntry{
         acf_fc_layout: String
@@ -96,11 +100,6 @@ module.exports = function(api) {
     `);
 
     actions.addSchemaResolvers({
-      AcfOption: {
-        async header_menu(obj) {
-          return obj.header_menu;
-        }
-      },
       WordPressPage: {
         async form(obj) {
           return obj.acf;

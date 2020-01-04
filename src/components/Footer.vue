@@ -1,11 +1,28 @@
 <template>
   <footer class="footer">
-    <Container>Footer</Container>
+    <Container>
+      <ul>
+        <li v-for="(item, index) in menu" :key="index">
+          <a
+            :href="parseWpUrl(item.liens.url)"
+            :title="item.liens.title"
+            :target="item.liens.target"
+            v-html="item.liens.title"
+          ></a>
+        </li>
+      </ul>
+    </Container>
   </footer>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    menu() {
+      return this.$static.allAcfOption.edges[0].node.menu_footer.menu;
+    }
+  }
+};
 </script>
 
 <style lang="scss">
@@ -15,3 +32,23 @@ export default {};
   background-color: #2d2d2d;
 }
 </style>
+
+<static-query>
+{
+  allAcfOption {
+    edges {
+      node {
+        menu_footer {
+          menu{
+            liens {
+              title
+              url
+              target
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</static-query>

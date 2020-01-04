@@ -1,8 +1,13 @@
 <template>
   <nav class="main-menu">
     <template v-for="(item, index) in menu">
-      <div class="main-menu__item" :key="index" v-if="item.acf_fc_layout == 'liens'">
+      <div
+        class="main-menu__item"
+        :key="index"
+        v-if="item.acf_fc_layout == 'liens'"
+      >
         <a
+          class="main-menu__label"
           :href="parseWpUrl(item.liens.url)"
           :title="item.liens.title"
           :target="item.liens.target"
@@ -17,11 +22,14 @@
         @mouseleave="closeSubmenu($event)"
       >
         <a
+          v-if="item.label_is_link"
+          class="main-menu__label"
           :href="parseWpUrl(item.liens.url)"
           :title="item.liens.title"
           :target="item.liens.target"
           v-html="item.liens.title"
         ></a>
+        <div class="main-menu__label" v-else v-html="item.label"></div>
         <transition name="slideIn">
           <div
             class="main-menu__sub-wrap"
@@ -30,6 +38,7 @@
             <ul>
               <li v-for="(subitem, subindex) in item.submenu" :key="subindex">
                 <a
+                  class="main-menu__label"
                   :href="parseWpUrl(subitem.liens.url)"
                   :target="subitem.liens.target"
                   :title="subitem.liens.title"
@@ -56,7 +65,7 @@ export default {
       return this.$static.allAcfOption.edges[0].node;
     },
     menu() {
-      return this.option.header_menu;
+      return this.option.menu_header.menu;
     }
   },
   methods: {
@@ -80,15 +89,17 @@ export default {
     &:not(:last-child) {
       margin-right: 2rem;
     }
-    a {
-      text-decoration: none;
-      padding: 1.5rem 0;
-      display: flex;
-      align-items: center;
-      &:hover,
-      &:focus {
-        text-decoration: underline;
-      }
+  }
+  &__label {
+    text-decoration: none;
+    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+  }
+  a {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
     }
   }
   &__sub-wrap {
@@ -117,20 +128,22 @@ export default {
   allAcfOption {
     edges {
       node {
-        header_menu {
-          acf_fc_layout
-          label_is_link
-          label
-          liens {
-            title
-            url
-            target
-          }
-          submenu {
+        menu_header {
+          menu{
+            acf_fc_layout
+            label_is_link
+            label
             liens {
               title
               url
               target
+            }
+            submenu {
+              liens {
+                title
+                url
+                target
+              }
             }
           }
         }
