@@ -4,7 +4,9 @@ export default function(yoast, postTitle, postContent) {
   const title = yoast.yoastWpseoTitle ? yoast.yoastWpseoTitle : postTitle,
     desc = yoast.yoastWpseoMetadesc
       ? yoast.yoastWpseoMetadesc
-      : postContent.substring(0, 600) + "...",
+      : postContent
+      ? postContent.substring(0, 600) + "..."
+      : "",
     img = yoast.yoastWpseoFacebookImage
       ? yoast.yoastWpseoFacebookImage
       : yoast.yoastWpseoSocialDefaults.ogDefaultImage;
