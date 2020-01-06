@@ -24,13 +24,18 @@
         alt
       />
     </Container>
+    <SwipeSample></SwipeSample>
   </Layout>
 </template>
 
 <script>
 import pageMixin from "~/js/mixins/page";
+import SwipeSample from "~/components/layouts/sliders/SwipeSample.vue";
 export default {
   mixins: [pageMixin],
+  components: {
+    SwipeSample
+  },
   computed: {
     home() {
       return this.$page.home.edges[0].node;
@@ -84,4 +89,5 @@ export default {
 }
 </page-query>
 
-<style lang="scss"></style>
+<style lang="scss">
+</style>
