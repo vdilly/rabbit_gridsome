@@ -13,6 +13,9 @@ html {
     @include RWD(mobile) {
       font-size: #{$fsim / 10}rem;
     }
+    & > svg {
+      display: none;
+    }
   }
   #app {
     overflow: hidden;

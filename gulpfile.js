@@ -3,8 +3,8 @@ m.gulp = require("gulp");
 m.plugins = require("gulp-load-plugins")();
 m.plugins.colors = require("colors");
 
-const src = "assets/icons",
-  dest = "assets/images/sprite";
+const src = "./src/assets/icons",
+  dest = "./src/assets/images/sprite";
 
 config = {
   svg: {
