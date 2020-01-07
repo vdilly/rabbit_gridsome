@@ -5,7 +5,7 @@
         <div class="swiper-slide" v-for="i in 6" :key="i">
           <div class="swiper-slide__inner">
             <div class="swiper-slide__title-container">
-              <div class="swiper-slide__title">Slide {{i}}</div>
+              <div class="swiper-slide__title">Slide {{ i }}</div>
             </div>
             <div class="swiper-slide__bg"></div>
           </div>
@@ -106,6 +106,7 @@ export default {
 
     // Etat Grab
     &.grabbing {
+      transition: 0.5s ease-out !important; // Important le ease-out
       .swiper-slide__bg {
         transform: scale(0.85);
         transition: 0.2s ease-out;

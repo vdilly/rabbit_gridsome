@@ -12,8 +12,15 @@
       </p>
 
       <p class="home-links">
-        <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
-        <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://gridsome.org/docs/" target="_blank" rel="noopener"
+          >Gridsome Docs</a
+        >
+        <a
+          href="https://github.com/gridsome/gridsome"
+          target="_blank"
+          rel="noopener"
+          >GitHub</a
+        >
       </p>
       <img
         lazy="img"
@@ -25,16 +32,19 @@
       />
     </Container>
     <SwipeSample></SwipeSample>
+    <ParaSlideSample></ParaSlideSample>
   </Layout>
 </template>
 
 <script>
 import pageMixin from "~/js/mixins/page";
 import SwipeSample from "~/components/layouts/sliders/SwipeSample.vue";
+import ParaSlideSample from "~/components/layouts/sliders/ParaSlideSample.vue";
 export default {
   mixins: [pageMixin],
   components: {
-    SwipeSample
+    SwipeSample,
+    ParaSlideSample
   },
   computed: {
     home() {
@@ -90,4 +100,8 @@ export default {
 </page-query>
 
 <style lang="scss">
+.swipe-sample,
+.paraslide {
+  margin-top: 8rem;
+}
 </style>

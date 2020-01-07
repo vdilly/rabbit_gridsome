@@ -43,7 +43,7 @@ export default {
     }
 
     // Smooth wheel
-    smoothWheel(document, 120, 15);
+    // smoothWheel(document, 120, 12);
 
     // Scripts à lancer quand le dom change ou est ready
     function domScripts($el) {
