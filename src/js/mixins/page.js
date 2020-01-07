@@ -1,4 +1,5 @@
 import animationScroll from "~/js/plugins/animationScroll";
+import smoothWheel from "~/js/plugins/smoothWheel";
 import lazyImg from "~/js/plugins/lazyImg/lazyImg";
 import domChange from "~/js/plugins/domChange";
 import seoBuilder from "~/js/plugins/seoBuilder";
@@ -40,6 +41,9 @@ export default {
       todo();
       require("~/js/plugins/todo/todo.scss");
     }
+
+    // Smooth wheel
+    smoothWheel(document, 120, 15);
 
     // Scripts à lancer quand le dom change ou est ready
     function domScripts($el) {
