@@ -8,6 +8,13 @@
       $context.template ? $context.template : null
     ]"
   >
+    <FollowCursor
+      bounds=".swipe-sample"
+      :customHovers="[
+        { selector: '.swiper__prev', class: 'slider-prev' },
+        { selector: '.swiper__next', class: 'slider-next' }
+      ]"
+    ></FollowCursor>
     <Header></Header>
     <slot name="banner"></slot>
     <slot />
@@ -18,8 +25,9 @@
 <script>
 import Header from "~/components/Header.vue";
 import Footer from "~/components/Footer.vue";
+import FollowCursor from "~/components/FollowCursor.vue";
 export default {
   props: ["isFront", "pageTitle"],
-  components: { Header, Footer }
+  components: { Header, Footer, FollowCursor }
 };
 </script>

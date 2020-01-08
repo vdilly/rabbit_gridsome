@@ -53,6 +53,7 @@ export default {
           el: ".swiper-pagination",
           clickable: true
         },
+        touchStartPreventDefault: false, // Utile pour le Follow Cursor
         on: {
           touchStart: function(e) {
             if (
@@ -172,10 +173,12 @@ export default {
       transform: translatey(-50%);
       z-index: 10;
       height: 100%;
+      width: 8rem;
       .icon {
         fill: black;
         height: 4rem;
         width: 4rem;
+        opacity: 0.3;
       }
     }
     &__prev {

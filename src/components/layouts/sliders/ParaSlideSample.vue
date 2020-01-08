@@ -1,13 +1,5 @@
 <template>
   <div class="paraslide">
-    <!-- <Swype class="paraslide__viewport">
-      <SwypeItem class="paraslide__slide" v-for="i in 10" :key="i">
-        <img
-          src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=325&w=630"
-          alt=""
-        />
-      </SwypeItem>
-    </Swype> -->
     <ClientOnly>
       <div
         v-swiper:mySwiper="swiperOption"
@@ -15,12 +7,62 @@
         ref="swiper"
       >
         <div class="swiper-wrapper" ref="wrapper">
-          <div class="swiper-slide" v-for="i in 7" :key="i">
-            <img
-              src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=325&w=630"
-              alt=""
-            />
-          </div>
+          <template>
+            <div class="swiper-slide">
+              <img
+                src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
+                alt
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.pexels.com/photos/372042/pexels-photo-372042.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
+                alt
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
+                alt
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.pexels.com/photos/756453/pexels-photo-756453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
+                alt
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.pexels.com/photos/2332415/pexels-photo-2332415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
+                alt
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.pexels.com/photos/1036627/pexels-photo-1036627.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
+                alt
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
+                alt
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.pexels.com/photos/975657/pexels-photo-975657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
+                alt
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.pexels.com/photos/371160/pexels-photo-371160.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
+                alt
+              />
+            </div>
+          </template>
         </div>
       </div>
     </ClientOnly>
@@ -44,6 +86,7 @@ export default {
         freeMode: true,
         freeModeMomentumRatio: 1,
         freeModeMomentumVelocityRatio: 0.2,
+        touchStartPreventDefault: false, // Utile pour le Follow Cursor
         on: {
           touchStart: function(e) {
             if (
@@ -126,6 +169,7 @@ export default {
       transform: translate(-50%, -50%);
       height: 100%;
       width: auto;
+      filter: grayscale(0.3);
     }
   }
 }
