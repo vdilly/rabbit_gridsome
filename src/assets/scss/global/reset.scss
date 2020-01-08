@@ -170,6 +170,7 @@ button {
     padding-bottom: 0px;
   }
   &:focus {
+    outline: none;
     // outline: dotted 1px;
   }
 }
