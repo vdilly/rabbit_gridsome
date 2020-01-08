@@ -67,10 +67,7 @@ export default {
             const length = _this.imgs.length;
             const range = length * 10;
             _this.imgs.forEach((el, index) => {
-              const x =
-                -50 -
-                (index / (length - 1)) * (length * 10) +
-                progress * (length * 10);
+              const x = length * 10 * (progress - index / (length - 1)) - 50;
               el.style.transform = `translate3d(${x}%,-50%,0)`;
             });
           },
