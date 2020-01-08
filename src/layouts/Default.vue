@@ -9,7 +9,6 @@
     ]"
   >
     <FollowCursor
-      bounds=".swipe-sample"
       :customHovers="[
         { selector: '.swiper__prev', class: 'slider-prev' },
         { selector: '.swiper__next', class: 'slider-next' }
