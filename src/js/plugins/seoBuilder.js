@@ -12,9 +12,7 @@ export default function(yoast, postTitle, postContent) {
       : yoast.yoastWpseoSocialDefaults.ogDefaultImage;
   let seo = {
     title: title,
-    link: [
-      { rel: "canonical", href: parseWpUrl(yoast.yoastWpseoCanonical, true) }
-    ],
+    link: [{ rel: "canonical", href: parseWpUrl(yoast.yoastWpseoCanonical) }],
     meta: [
       {
         key: "robots",
