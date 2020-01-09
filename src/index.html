@@ -2,23 +2,30 @@
 <html ${htmlAttrs}>
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155176140-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-155176140-1', {
-            'anonymize_ip': true
+    <!-- Cookie Consent by https://www.FreePrivacyPolicy.com -->
+    <script type="text/javascript" src="//www.FreePrivacyPolicy.com/cookie-consent/releases/3.0.0/cookie-consent.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            cookieconsent.run({
+                "notice_banner_type": "simple",
+                "consent_type": "express",
+                "palette": "light",
+                "change_preferences_selector": "#changePreferences",
+                "language": "fr",
+                "website_name": "Rabbit"
+            });
         });
     </script>
-    <!--Start Cookie Script-->
-    <script type="text/javascript" charset="UTF-8" src="http://chs03.cookie-script.com/s/cac6898cd5b9c79106119b12f2f42f09.js"></script>
-    <!--End Cookie Script-->
+
+    <!-- GTAG -->
+    <script type="text/plain" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-155176140-1"></script>
+    <script type="text/plain" cookie-consent="tracking">
+        window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-155176140-1', { 'anonymize_ip': true });
+    </script>
+    <!-- end of GTAG-->
+
+    <noscript>GDPR Cookie Consent by <a href="https://www.freeprivacypolicy.com/">Free Privacy Policy</a></noscript>
+    <!-- End Cookie Consent -->
     ${head}
 </head>
 
