@@ -2,25 +2,28 @@
 <html ${htmlAttrs}>
 
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155176140-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155176140-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-155176140-1');
-  </script>
-  ${head}
+        gtag('config', 'UA-155176140-1', {
+            'anonymize_ip': true
+        });
+    </script>
+    <!--Start Cookie Script-->
+    <script type="text/javascript" charset="UTF-8" src="http://chs03.cookie-script.com/s/cac6898cd5b9c79106119b12f2f42f09.js"></script>
+    <!--End Cookie Script-->
+    ${head}
 </head>
 
 <body ${bodyAttrs}>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="0 0 185.3 185.3" id="chevron" xmlns="http://www.w3.org/2000/svg"><path d="M92.7 144.4c-2.8 0-5.5-1-7.6-3.1l-82-82c-4.2-4.2-4.2-11 0-15.2 4.2-4.2 11-4.2 15.2 0l74.3 74.3 74.3-74.3c4.2-4.2 11-4.2 15.2 0 4.2 4.2 4.2 11 0 15.2l-81.9 81.9c-2 2.1-4.8 3.2-7.5 3.2z"/></symbol></svg>
-  ${app}
-  ${scripts}
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="0 0 185.3 185.3" id="chevron" xmlns="http://www.w3.org/2000/svg"><path d="M92.7 144.4c-2.8 0-5.5-1-7.6-3.1l-82-82c-4.2-4.2-4.2-11 0-15.2 4.2-4.2 11-4.2 15.2 0l74.3 74.3 74.3-74.3c4.2-4.2 11-4.2 15.2 0 4.2 4.2 4.2 11 0 15.2l-81.9 81.9c-2 2.1-4.8 3.2-7.5 3.2z"/></symbol></svg>    ${app} ${scripts}
 </body>
 
 </html>
