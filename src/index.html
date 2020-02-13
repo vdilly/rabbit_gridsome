@@ -1,34 +1,100 @@
 <!DOCTYPE html>
 <html ${htmlAttrs}>
-
-<head>
+  <head>
     <!-- Cookie Consent by https://www.FreePrivacyPolicy.com -->
-    <script type="text/javascript" src="//www.FreePrivacyPolicy.com/cookie-consent/releases/3.0.0/cookie-consent.js"></script>
+    <script
+      type="text/javascript"
+      src="//www.FreePrivacyPolicy.com/cookie-consent/releases/3.0.0/cookie-consent.js"
+    ></script>
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            cookieconsent.run({
-                "notice_banner_type": "simple",
-                "consent_type": "express",
-                "palette": "light",
-                "change_preferences_selector": "#changePreferences",
-                "language": "fr",
-                "website_name": "Rabbit"
-            });
+      document.addEventListener("DOMContentLoaded", function() {
+        cookieconsent.run({
+          notice_banner_type: "headline",
+          consent_type: "express",
+          palette: "light",
+          change_preferences_selector: "#changePreferences",
+          language: "fr",
+          website_name: "Rabbit"
         });
+      });
     </script>
 
     <!-- GTAG -->
-    <script type="text/plain" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-155176140-1"></script>
+    <script
+      type="text/plain"
+      cookie-consent="tracking"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-155176140-1"
+    ></script>
     <script type="text/plain" cookie-consent="tracking">
-        window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-155176140-1', { 'anonymize_ip': true });
+      window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-155176140-1', { 'anonymize_ip': true });
     </script>
     <!-- end of GTAG-->
     <!-- End Cookie Consent -->
     ${head}
-</head>
+    <style>
+      /* Cookies */
+      .cc_dialog.headline {
+        background-color: #2d2d38 !important;
+        padding: 1.5rem 2rem !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        top: auto !important;
+      }
 
-<body ${bodyAttrs}>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="0 0 185.3 185.3" id="chevron" xmlns="http://www.w3.org/2000/svg"><path d="M92.7 144.4c-2.8 0-5.5-1-7.6-3.1l-82-82c-4.2-4.2-4.2-11 0-15.2 4.2-4.2 11-4.2 15.2 0l74.3 74.3 74.3-74.3c4.2-4.2 11-4.2 15.2 0 4.2 4.2 4.2 11 0 15.2l-81.9 81.9c-2 2.1-4.8 3.2-7.5 3.2z"/></symbol></svg>    ${app} ${scripts}
-</body>
+      .cc_dialog_headline {
+        display: none !important;
+      }
 
+      .cc_dialog_text {
+        font-size: 13px !important;
+      }
+
+      @media (max-width: 1200px) {
+        .cc_dialog {
+          max-width: 100% !important;
+        }
+      }
+
+      .cc-dialog * {
+        color: white !important;
+      }
+
+      .light.cc_dialog button.cc_b_ok {
+        border-radius: 10px;
+        background-color: white !important;
+        color: black !important;
+      }
+
+      .light.cc_dialog button.cc_b_cp {
+        border-radius: 10px;
+        color: white !important;
+        background-color: black !important;
+        margin-left: 10px !important;
+      }
+
+      .light.cc_dialog .cc_dialog_headline,
+      .light.cc_dialog .cc_dialog_text {
+        color: white !important;
+      }
+    </style>
+  </head>
+
+  <body ${bodyAttrs}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <symbol
+        viewBox="0 0 185.3 185.3"
+        id="chevron"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M92.7 144.4c-2.8 0-5.5-1-7.6-3.1l-82-82c-4.2-4.2-4.2-11 0-15.2 4.2-4.2 11-4.2 15.2 0l74.3 74.3 74.3-74.3c4.2-4.2 11-4.2 15.2 0 4.2 4.2 4.2 11 0 15.2l-81.9 81.9c-2 2.1-4.8 3.2-7.5 3.2z"
+        />
+      </symbol>
+    </svg>
+    ${app} ${scripts}
+  </body>
 </html>
