@@ -5,20 +5,6 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 const path = require("path");
 
-// Rend settings accessible partout
-function addStyleResource(rule) {
-  rule
-    .use("style-resource")
-    .loader("style-resources-loader")
-    .options({
-      patterns: [
-        path.resolve(__dirname, "./src/assets/scss/_settings.scss")
-        // you can also use a glob if you'd prefer
-        // path.resolve(__dirname, './src/assets/sass/*.sass'),
-      ]
-    });
-}
-
 module.exports = {
   siteName: "Rabbit",
   titleTemplate: "%s",
@@ -29,6 +15,13 @@ module.exports = {
   // configureWebpack: {
   //   mode: "development"
   // },
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: `@import "@/assets/scss/_settings.scss";`
+      }
+    }
+  },
   plugins: [
     {
       use: "@gridsome/source-wordpress",
@@ -79,12 +72,5 @@ module.exports = {
         }
       }
     }
-  ],
-  chainWebpack: config => {
-    // Load variables for all vue-files
-    const types = ["vue-modules", "vue", "normal-modules", "normal"];
-    types.forEach(type =>
-      addStyleResource(config.module.rule("scss").oneOf(type))
-    );
-  }
+  ]
 };
