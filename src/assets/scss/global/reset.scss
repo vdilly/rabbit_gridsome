@@ -162,9 +162,12 @@ summary {
   display: block;
 }
 button {
+  font: inherit;
+  color: inherit;
   padding: 0px;
   border-width: 0px;
   background-color: transparent;
+  text-align: inherit;
   cursor: pointer;
   @media screen and (-webkit-min-device-pixel-ratio: 0) {
     padding-bottom: 0px;
