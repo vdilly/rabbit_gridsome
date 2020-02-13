@@ -1,0 +1,33 @@
+$delay: 0.2s;
+
+[js-observe-scroll] {
+  &[scroll-anim],
+  [scroll-anim] {
+    transition: 0.8s ease;
+
+    &[scroll-delay] {
+      @for $i from 1 through 10 {
+        &[scroll-delay="#{$i}"] {
+          transition-delay: #{$i * $delay};
+        }
+      }
+    }
+  }
+
+  &:not([js-observe-scroll="in-view"]) {
+    &[scroll-anim="y8"],
+    [scroll-anim="y8"] {
+      transform: translateY(8rem);
+      opacity: 0;
+    }
+    &[scroll-anim="scale0"],
+    [scroll-anim="scale0"] {
+      transform: scale(0);
+      &:not([scroll-nopacity]) {
+        opacity: 0;
+      }
+    }
+  }
+  &[js-observe-scroll="in-view"] {
+  }
+}
