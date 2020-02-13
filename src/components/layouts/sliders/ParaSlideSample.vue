@@ -85,7 +85,7 @@ export default {
         touchRatio: 1,
         freeMode: true,
         freeModeMomentumRatio: 1,
-        freeModeMomentumVelocityRatio: 0.2,
+        freeModeMomentumVelocityRatio: 0.5,
         touchStartPreventDefault: false, // Utile pour le Follow Cursor
         on: {
           touchStart: function(e) {
