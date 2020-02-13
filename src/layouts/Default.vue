@@ -9,10 +9,7 @@
     ]"
   >
     <FollowCursor
-      :customHovers="[
-        { selector: '.swiper__prev', class: 'slider-prev' },
-        { selector: '.swiper__next', class: 'slider-next' }
-      ]"
+      :customHovers="[{ selector: 'swiper-wrapper', class: 'slider_drag' }]"
     ></FollowCursor>
     <Header></Header>
     <slot name="banner"></slot>

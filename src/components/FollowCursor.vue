@@ -4,7 +4,11 @@
     :class="cursorHover ? 'over_link' : null"
     v-show="showCursor"
     ref="cursor"
-  ></div>
+  >
+    <svg class="grab">
+      <use xlink:href="#grab" />
+    </svg>
+  </div>
 </template>
 <style lang="scss">
 html:not(.desktop) {
@@ -13,22 +17,36 @@ html:not(.desktop) {
   }
 }
 .cursor {
-  border: solid 2px $color__core-font;
+  border: solid 2px $color__core;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 6rem;
+  height: 6rem;
   transform: translate(-50%, -50%);
   position: absolute;
   left: 50%;
   top: 50%;
   pointer-events: none;
   z-index: 9999999;
-  transition: background-color 0.25s, width 0.25s, height 0.25s;
+  transition: background-color 0.25s, width 0.25s, height 0.25s,
+    border 0.25s ease;
+
+  .grab {
+    fill: $color__core;
+    width: 10rem;
+    height: 10rem;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
 
   &.over_link {
-    width: 10px;
-    height: 10px;
-    background-color: $color__core-font;
+    width: 2rem;
+    height: 2rem;
+    background-color: $color__core;
+    opacity: 0.7;
   }
   &.slider-prev {
     height: 6rem;
@@ -73,9 +91,22 @@ html:not(.desktop) {
       transform: translate(-50%, -50%) rotate(-45deg) translateX(-2px);
     }
   }
+  &.slider_drag {
+    background-color: $color__core;
+    .grab {
+      opacity: 1;
+    }
+  }
 }
 </style>
 <script>
+/**
+ * A appeler dans le layout
+ *
+ * Props:
+ *  customHovers : [{selector, class}],  selector = cible, class = class à appliquer sur le followcursor
+ *  hovers: [selector] : selector = cible de la classe over_link
+ */
 export default {
   props: {
     bounds: {
@@ -143,10 +174,18 @@ export default {
       // Etat Hover
       let hover = false;
       this.hovers.forEach(el => {
-        if (e.target.tagName.toLowerCase == el || e.target.closest(el)) {
+        if (
+          e.target.tagName.toLowerCase == el ||
+          e.target.classList.contains(el) ||
+          e.target.closest(el)
+        ) {
           hover = true;
         }
       });
+      // Additionals hovers simple
+      // if (e.target.classList.contains(".pill")) {
+      //   hover = true;
+      // }
       this.cursorHover = hover;
 
       // Custom Hovers
@@ -154,7 +193,7 @@ export default {
         this.customHovers.forEach(el => {
           if (
             e.target.classList.contains(el.selector) ||
-            e.target.closest(el.selector)
+            e.target.closest("." + el.selector)
           ) {
             this.cursor.classList.add(el.class);
           } else {
