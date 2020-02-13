@@ -49,7 +49,9 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
     href:
       "https://fonts.googleapis.com/css?family=Rubik:400,500|Source+Sans+Pro:400,400i,600,700,700i&display=swap"
   });
-  head.htmlAttrs = { lang: "fr" };
+  head.htmlAttrs = {
+    lang: "fr"
+  };
 
   // Main App store
   Vue.use(Vuex);
@@ -73,4 +75,21 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
       ...mapState("siteLoad", ["siteLoaded"])
     }
   });
+
+  // Scrollbehavior on link
+  router.options.scrollBehavior = function(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return {
+        selector: to.hash
+      };
+    }
+    setTimeout(function() {
+      // Force le retour top après un changement de page, timeout à gérer par rapport au temps de l'animation de page
+      window.scrollTo(0, 0);
+    }, 500);
+    return window.scrollHeight; // On retourne le scroll actuel pour tricker la transition de page, sinon il remonte au top avant d'appliquer la transition ça flickr
+  };
 }

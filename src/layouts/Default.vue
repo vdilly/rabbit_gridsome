@@ -8,6 +8,7 @@
       $context.template ? $context.template : null
     ]"
   >
+    <div class="page-transition-overlay"></div>
     <FollowCursor
       :customHovers="[{ selector: 'swiper-wrapper', class: 'slider_drag' }]"
     ></FollowCursor>
