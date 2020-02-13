@@ -1,12 +1,9 @@
-<template>
-  <Layout>
-    <Banner :pageTitle="page.title"></Banner>
-    <Container>
-      <RTE :rte="page.content"></RTE>
-    </Container>
-  </Layout>
+<template lang="pug">
+  Layout
+    Banner(:pageTitle="page.title")
+    Container
+      RTE(:rte="page.content")
 </template>
-
 <script>
 import pageMixin from "~/js/mixins/page";
 export default {
