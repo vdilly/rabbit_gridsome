@@ -67,6 +67,17 @@ module.exports = {
       //   width: 1300,
       //   height: 900
       // }
+    },
+    {
+      use: "gridsome-plugin-pug",
+      options: {
+        pug: {
+          /* Options for `pug-plain-loader` */
+        },
+        pugLoader: {
+          /* Options for `pug-loader` */
+        }
+      }
     }
   ],
   chainWebpack: config => {
