@@ -5,6 +5,7 @@
     Navbar(:autoAppPadding="true")
       Header
         Logo.img-contain-left(slot="logo", :linked="!isFront")
+        MainMenu(slot="menu")
     main
       slot(name="banner")
       slot
@@ -14,10 +15,11 @@
 <script>
 import Navbar from "~/components/layouts/Navbar.vue";
 import Header from "~/components/layouts/Header.vue";
+import MainMenu from "~/components/navs/MainMenu.vue";
 import Footer from "~/components/Footer.vue";
 import FollowCursor from "~/components/FollowCursor.vue";
 export default {
   props: ["isFront", "pageTitle"],
-  components: { Header, Footer, FollowCursor, Navbar }
+  components: { Header, Footer, FollowCursor, Navbar, MainMenu }
 };
 </script>

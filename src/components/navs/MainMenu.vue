@@ -1,65 +1,37 @@
-<template>
-  <nav class="main-menu">
-    <template v-for="(item, index) in menu">
-      <div
-        class="main-menu__item"
-        :key="index"
-        v-if="item.acf_fc_layout == 'liens'"
-      >
-        <a
-          class="main-menu__label"
-          :href="parseWpUrl(item.liens.url)"
-          :title="item.liens.title"
-          :target="item.liens.target"
-          v-html="item.liens.title"
-        ></a>
-      </div>
-      <div
-        class="main-menu__item"
-        :key="index"
-        v-if="item.acf_fc_layout == 'submenu'"
-        @mouseenter="openSubmenu($event, index)"
-        @mouseleave="closeSubmenu($event)"
-      >
-        <a
-          v-if="item.label_is_link"
-          class="main-menu__label"
-          :href="parseWpUrl(item.liens.url)"
-          :title="item.liens.title"
-          :target="item.liens.target"
-          v-html="item.liens.title"
-        ></a>
-        <div class="main-menu__label" v-else v-html="item.label"></div>
-        <transition name="slideIn">
-          <div
-            class="main-menu__sub-wrap"
-            v-show="submenuOpen == index || window.range != 'desktop'"
-          >
-            <ul>
-              <li v-for="(subitem, subindex) in item.submenu" :key="subindex">
-                <a
-                  class="main-menu__label"
-                  :href="parseWpUrl(subitem.liens.url)"
-                  :target="subitem.liens.target"
-                  :title="subitem.liens.title"
-                  v-html="subitem.liens.title"
-                ></a>
-              </li>
-            </ul>
-          </div>
-        </transition>
-      </div>
-    </template>
-  </nav>
+<template lang="pug">
+  nav.main-menu
+    div.main-menu__item(v-for="(item, index) in menu")
+      a.main-menu__label(
+        v-if="item.acf_fc_layout == 'liens'" 
+        :href="parseWpUrl(item.liens.url)"
+        :title="item.liens.title"
+        :target="item.liens.target"
+        v-html="item.liens.title"
+        :key='index'
+        :class="item.liens.url.indexOf($route.path) != -1 && $route.path != '/' ? 'active' : null"
+      )
+      Dropdown(v-if="item.acf_fc_layout == 'submenu'" :key='index')
+        component.main-menu__label(
+          slot="trigger" 
+          :is="item.liens ? 'a' : 'div'" 
+          :href="item.liens ? parseWpUrl(item.liens.url) : null" 
+          :title="item.liens ? item.liens.title : null" :target="item.liens ? item.liens.target : null" 
+          v-html="item.liens ? item.liens.title : item.label" 
+          :class="getActiveClassFromSublist(item.submenu) && $route.path != '/' ? 'active': null"
+        )
+        a.main-menu__label(
+          v-for="(subitem, subindex) in item.submenu" 
+          :key="subindex" 
+          :href="parseWpUrl(subitem.liens.url)" 
+          :target="subitem.liens.target" 
+          :title="subitem.liens.title" 
+          v-html="subitem.liens.title"
+        )
+    Btn Devis
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      submenuOpen: null
-    };
-  },
   computed: {
     option() {
       return this.$static.allAcfOption.edges[0].node;
@@ -69,13 +41,15 @@ export default {
     }
   },
   methods: {
-    openSubmenu: function(e, index) {
-      e.stopPropagation();
-      this.submenuOpen = index;
-    },
-    closeSubmenu: function(e) {
-      e.stopPropagation();
-      this.submenuOpen = null;
+    getActiveClassFromSublist(submenu) {
+      let vm = this;
+      let r = false;
+      submenu.forEach(el => {
+        if (el.liens && el.liens.url.indexOf(vm.$route.path) != -1) {
+          r = true;
+        }
+      });
+      return r;
     }
   }
 };
@@ -92,9 +66,23 @@ export default {
   }
   &__label {
     text-decoration: none;
-    padding: 1.5rem 0;
+    padding: 1.5rem;
     display: flex;
     align-items: center;
+
+    &.active {
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $color__core;
+        height: 0.5rem;
+        width: 0.5rem;
+        border-radius: 50%;
+      }
+    }
   }
   a {
     &:hover,
@@ -102,23 +90,8 @@ export default {
       text-decoration: underline;
     }
   }
-  &__sub-wrap {
-    position: absolute;
-    bottom: 0rem;
-    left: 50%;
-    transform: translate(-50%, 100%);
-    z-index: 3;
-    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
-
-    ul {
-      background-color: white;
-      overflow: hidden;
-      position: relative;
-    }
-    a {
-      padding: 1.5rem 2.5rem;
-      white-space: nowrap;
-    }
+  .dropdown {
+    height: 100%;
   }
 }
 </style>

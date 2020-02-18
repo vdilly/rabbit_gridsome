@@ -1,5 +1,5 @@
 <template lang="pug">
-  nav.navbar(ref="navbar")
+  div.navbar(ref="navbar")
     slot
 </template>
 
@@ -9,10 +9,10 @@ export default {};
 
 <style lang="scss">
 // Position
-$navbar-position: fixed;
+$navbar-position: fixed; // Si on passe en absolute, mettre false aux autres options
 $navbar-height: 8rem;
 $navbar-height-m: 6rem;
-$navbar-apply-ptop: true;
+$navbar-apply-ptop: false; // applique un padding top sur le main
 $navbar-disappear-onscroll: true;
 $navbar-appear-onscrolltop: true; // $navbar-disappear-onscroll must be true
 
