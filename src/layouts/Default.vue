@@ -13,7 +13,7 @@
         )
           BurgerIcon(slot="trigger") 
           div(slot="close") Close
-          div Panel content
+          MainMenuRwd
     main
       slot(name="banner")
       slot
@@ -25,10 +25,19 @@ import Navbar from "~/components/layouts/Navbar.vue";
 import Header from "~/components/layouts/Header.vue";
 import BurgerIcon from "~/components/atoms/BurgerIcon.vue";
 import MainMenu from "~/components/navs/MainMenu.vue";
+import MainMenuRwd from "~/components/navs/MainMenuRwd.vue";
 import Footer from "~/components/Footer.vue";
 import FollowCursor from "~/components/FollowCursor.vue";
 export default {
   props: ["isFront", "pageTitle"],
-  components: { Header, Footer, FollowCursor, Navbar, MainMenu, BurgerIcon }
+  components: {
+    Header,
+    Footer,
+    FollowCursor,
+    Navbar,
+    MainMenu,
+    MainMenuRwd,
+    BurgerIcon
+  }
 };
 </script>
