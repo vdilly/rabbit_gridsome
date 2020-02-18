@@ -29,7 +29,7 @@ export default {
     updateScroll({ state, commit }) {
       let windowScrolled,
         scrollDirection,
-        scrolly = state.scrolly;
+        scrolly = state.window.scrolly;
 
       if (window.scrollY > 0) {
         windowScrolled = true;

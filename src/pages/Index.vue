@@ -1,6 +1,6 @@
 <template lang="pug">
   Layout(:isFront="true")
-    Banner(v-slot="banner" :pageTitle="home.title")
+    Banner(slot="banner" :pageTitle="home.title")
     Container
       //- Learn how to use images here: https://gridsome.org/docs/images 
       g-image(alt="Example image" src="~/favicon.png" width="135")

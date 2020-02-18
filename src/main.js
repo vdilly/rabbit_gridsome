@@ -8,7 +8,7 @@ import GridyItem from "~/components/layouts/grids/GridyItem.vue";
 import Container from "~/components/layouts/Container.vue";
 import RTE from "~/components/rte/RTE.vue";
 import Btn from "~/components/buttons/Btn.vue";
-import parseWpUrl from "~/js/plugins/parseWpUrl";
+import Logo from "~/components/atoms/Logo.vue";
 
 // CSS
 import "~/assets/scss/global.scss";
@@ -27,6 +27,7 @@ import Debugger from "~/js/plugins/debug";
 import smoothScroll from "~/js/plugins/smoothScroll";
 import imgSizeMixin from "./js/mixins/imgSize";
 import InterSectionObserverDirective from "~/js/directives/intersectionObserver.js";
+import parseWpUrl from "~/js/plugins/parseWpUrl";
 
 const isProduction = process.env.ENV === "production";
 
@@ -39,6 +40,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   Vue.component("GridyItem", GridyItem);
   Vue.component("RTE", RTE);
   Vue.component("Btn", Btn);
+  Vue.component("Logo", Logo);
 
   // Plugins vue
   Vue.use(Vue2TouchEvents);
