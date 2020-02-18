@@ -26,6 +26,16 @@ export default {
     }
   },
   actions: {
+    setOverlay({ state, commit }) {
+      commit("set", {
+        overlayed: true
+      });
+    },
+    removeOverlay({ state, commit }) {
+      commit("set", {
+        overlayed: false
+      });
+    },
     updateScroll({ state, commit }) {
       let windowScrolled,
         scrollDirection,

@@ -74,7 +74,7 @@ export default {
       &:after {
         content: "";
         position: absolute;
-        bottom: 1.5rem;
+        bottom: 0.5rem;
         left: 50%;
         transform: translateX(-50%);
         background-color: $color__core;

@@ -7,6 +7,14 @@
   transform: translate(-50%, 100%) translateX(4rem) !important;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: $transition-m;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 // Y O
 .gridy-enter-active,
 .gridy-leave-active {
