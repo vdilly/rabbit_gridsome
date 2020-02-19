@@ -2,7 +2,7 @@
   <div
     class="cursor"
     :class="cursorHover ? 'over_link' : null"
-    v-show="showCursor"
+    v-show="showCursor && siteLoaded"
     ref="cursor"
   >
     <svg class="grab">

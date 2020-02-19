@@ -1,5 +1,5 @@
 <template>
-  <transition name="pageTransition" appear duration="500">
+  <transition name="pageTransition" duration="500">
     <router-view :key="$route.fullPath" />
   </transition>
 </template>

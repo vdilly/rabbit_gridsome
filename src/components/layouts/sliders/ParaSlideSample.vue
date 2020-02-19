@@ -1,44 +1,40 @@
 <template>
-  <div class="paraslide">
+  <div class="paraslide" js-observe-scroll>
     <ClientOnly>
-      <div
-        v-swiper:mySwiper="swiperOption"
-        class="paraslide-sample"
-        ref="swiper"
-      >
+      <div v-swiper:mySwiper="swiperOption" class="paraslide-sample" ref="swiper">
         <div class="swiper-wrapper" ref="wrapper">
           <template>
-            <div class="swiper-slide">
+            <div class="swiper-slide" scroll-anim="y8" scroll-delay="0">
               <img
                 src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
                 alt
               />
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" scroll-anim="y8" scroll-delay="1">
               <img
                 src="https://images.pexels.com/photos/372042/pexels-photo-372042.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
                 alt
               />
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" scroll-anim="y8" scroll-delay="2">
               <img
                 src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
                 alt
               />
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" scroll-anim="y8" scroll-delay="3">
               <img
                 src="https://images.pexels.com/photos/756453/pexels-photo-756453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
                 alt
               />
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" scroll-anim="y8" scroll-delay="4">
               <img
                 src="https://images.pexels.com/photos/2332415/pexels-photo-2332415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
                 alt
               />
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" scroll-anim="y8" scroll-delay="5">
               <img
                 src="https://images.pexels.com/photos/1036627/pexels-photo-1036627.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
                 alt

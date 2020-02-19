@@ -58,9 +58,11 @@ export default {
   getters: {},
   actions: {
     siteLoaded({ commit }, cb) {
-      this._vm.$debug("Site loaded !");
-      commit("set", true);
-      cb();
+      setTimeout(() => {
+        this._vm.$debug("Site loaded !");
+        commit("set", true);
+        cb();
+      }, 1000);
     },
     siteLoad({ dispatch, state }, cb) {
       this._vm.$debug("Site is loading ...");

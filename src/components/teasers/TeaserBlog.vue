@@ -1,21 +1,13 @@
-<template>
-  <div class="teaser-blog">
-    <a :href="link" class="teaser-blog__overlay-link"></a>
-    <div
-      class="teaser-blog__bg"
-      lazy="bg"
-      :lazy-src="size(thumbnail, 'mobile')"
-      :style="`background-image: url(${size(thumbnail, 'lazy')});`"
-    ></div>
-    <h3 class="teaser-blog__title" v-html="post.title"></h3>
-    <p class="teaser-blog__date" v-html="formatDate(post.date)"></p>
-    <div class="teaser-blog__lead" v-html="excerpt"></div>
-    <ul class="teaser-blog__tags">
-      <li class="teaser-blog__tag" v-for="(tag, index) in post.tags" :key="index">
-        <div class="blogpost-tag blogpost-tag--grey" v-html="tag.title"></div>
-      </li>
-    </ul>
-  </div>
+<template lang="pug">
+div.teaser-blog
+  a.teaser-blog__overlay-link(:href='link')
+  div.teaser-blog__bg(lazy='bg', :lazy-src="size(thumbnail, 'mobile')", :style="`background-image: url(${size(thumbnail, 'lazy')});`")
+  h3.teaser-blog__title(v-html='post.title')
+  p.teaser-blog__date(v-html='formatDate(post.date)')
+  div.teaser-blog__lead(v-html='excerpt')
+  ul.teaser-blog__tags
+    li.teaser-blog__tag(v-for='(tag, index) in post.tags', :key='index')
+      .blogpost-tag.blogpost-tag--grey(v-html='tag.title')
 </template>
 
 <script>

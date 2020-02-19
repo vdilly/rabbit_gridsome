@@ -1,29 +1,31 @@
 <template>
-  <ClientOnly>
-    <div v-swiper:mySwiper="swiperOption" class="swipe-sample">
-      <div class="swiper-wrapper" ref="wrapper">
-        <div class="swiper-slide" v-for="i in 6" :key="i">
-          <div class="swiper-slide__inner">
-            <div class="swiper-slide__title-container">
-              <div class="swiper-slide__title">Slide {{ i }}</div>
+  <div class="swiper" js-observe-scroll>
+    <ClientOnly>
+      <div v-swiper:mySwiper="swiperOption" class="swipe-sample">
+        <div class="swiper-wrapper" ref="wrapper">
+          <div class="swiper-slide" v-for="i in 6" :key="i" scroll-anim="y8" :scroll-delay="i">
+            <div class="swiper-slide__inner">
+              <div class="swiper-slide__title-container">
+                <div class="swiper-slide__title">Slide {{ i }}</div>
+              </div>
+              <div class="swiper-slide__bg"></div>
             </div>
-            <div class="swiper-slide__bg"></div>
           </div>
         </div>
+        <button class="swiper__prev swiper__control" slot="button-prev">
+          <svg class="icon">
+            <use xlink:href="#chevron" />
+          </svg>
+        </button>
+        <button class="swiper__next swiper__control" slot="button-next">
+          <svg class="icon">
+            <use xlink:href="#chevron" />
+          </svg>
+        </button>
+        <div class="swiper-pagination"></div>
       </div>
-      <button class="swiper__prev swiper__control" slot="button-prev">
-        <svg class="icon">
-          <use xlink:href="#chevron" />
-        </svg>
-      </button>
-      <button class="swiper__next swiper__control" slot="button-next">
-        <svg class="icon">
-          <use xlink:href="#chevron" />
-        </svg>
-      </button>
-      <div class="swiper-pagination"></div>
-    </div>
-  </ClientOnly>
+    </ClientOnly>
+  </div>
 </template>
 
 <script>

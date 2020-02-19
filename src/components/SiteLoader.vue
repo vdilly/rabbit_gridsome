@@ -1,7 +1,6 @@
-<template>
-  <div class="site-loader" :class="siteLoaded ? 'loaded' : ''">
-    <g-image alt="Example image" src="~/favicon.png" width="135" />
-  </div>
+<template lang="pug">
+div.site-loader(:class="siteLoaded ? 'loaded' : ''")
+  Logo
 </template>
 <style lang="scss">
 .site-loader {
@@ -12,7 +11,7 @@
   width: 100%;
   height: 100%;
   z-index: 2;
-  background-color: #1f1f1f;
+  background-color: white;
   z-index: 99999;
   display: flex;
   align-items: center;
@@ -20,8 +19,6 @@
   overflow: hidden;
   &.loaded {
     transition: 0s 0.5s;
-    // transform: translate(100%);
-    // opacity: 0;
     height: 0;
     width: 0;
     animation: fadeOut 0.5s;
@@ -32,6 +29,26 @@
       }
       100% {
         opacity: 0;
+      }
+    }
+  }
+  .logo {
+    animation: bounce 1.5s infinite ease 0.2s;
+    @keyframes bounce {
+      0% {
+        transform: scale(1, 1) translateY(0);
+      }
+      7% {
+        transform: scale(1.1, 0.9) translateY(0);
+      }
+      22% {
+        transform: scale(0.9, 1.1) translateY(-2rem);
+      }
+      37% {
+        transform: scale(1, 1) translateY(0);
+      }
+      75% {
+        transform: scale(1, 1) translateY(0);
       }
     }
   }

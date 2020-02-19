@@ -1,32 +1,14 @@
-<template>
-  <Layout>
-    <Banner v-slot="banner" :pageTitle="title"></Banner>
-    <Container>
-      <ul
-        class="blog__list blog__list--sticky gridy gridy-d-2-40"
-        v-show="stickyArticleList && pageInfo.currentPage == 1"
-      >
-        <li
-          class="blog__item blog__item--sticky gridy__item"
-          v-for="edge in stickyArticleList"
-          :key="edge.node.slug"
-        >
-          <TeaserBlog :post="edge.node" :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl"></TeaserBlog>
-        </li>
-      </ul>
-      <transition appear name="gridy" mode="out-in" duration="3000">
-        <ul class="blog__list gridy gridy-d-3-40" domChange>
-          <li class="blog__item gridy__item" v-for="edge in articleList" :key="edge.node.slug">
-            <TeaserBlog
-              :post="edge.node"
-              :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl"
-            ></TeaserBlog>
-          </li>
-        </ul>
-      </transition>
-      <Pager :info="pageInfo" class="pagination" linkClass="pagination__link" />
-    </Container>
-  </Layout>
+<template lang="pug">
+  Layout
+    Banner(slot="banner" :pageTitle="title")
+    Container
+      ul.blog__list.blog__list--sticky.gridy.gridy-d-2-40(v-show="stickyArticleList && pageInfo.currentPage == 1")
+        li.blog__item.blog__item--sticky.gridy__item(v-for="(edge, index) in stickyArticleList" :key="edge.node.slug")
+          TeaserBlog(:post="edge.node" :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl" js-observe-scroll scroll-anim="y8" :scroll-delay="index % 3")
+      ul.blog__list.gridy.gridy-d-3-40(domChange)
+        li.blog__item.gridy__item(v-for="(edge, index) in articleList" :key="edge.node.slug")
+          TeaserBlog(:post="edge.node" :defaultThumbnail="blog.acf.blogDefaultThumbnail.sourceUrl"  js-observe-scroll scroll-anim="y8" :scroll-delay="index % 3")
+      Pager.pagination(:info="pageInfo" linkClass="pagination__link")
 </template>
 
 <script>
