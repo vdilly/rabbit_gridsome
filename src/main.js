@@ -7,6 +7,7 @@ import Gridy from "~/components/layouts/grids/Gridy.vue";
 import GridyItem from "~/components/layouts/grids/GridyItem.vue";
 import Container from "~/components/layouts/Container.vue";
 import Dropdown from "~/components/layouts/Dropdown.vue";
+import Drawer from "~/components/layouts/Drawer.vue";
 import Popin from "~/components/layouts/Popin.vue";
 import RTE from "~/components/rte/RTE.vue";
 import Btn from "~/components/buttons/Btn.vue";
@@ -39,6 +40,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
 
   Vue.component("Container", Container);
   Vue.component("Dropdown", Dropdown);
+  Vue.component("Drawer", Drawer);
   Vue.component("Popin", Popin);
   Vue.component("Gridy", Gridy);
   Vue.component("GridyItem", GridyItem);

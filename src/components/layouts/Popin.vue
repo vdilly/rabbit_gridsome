@@ -154,6 +154,7 @@ export default {
         top: 0;
         bottom: 0;
         width: auto;
+        max-width: calc(100% - 8rem);
       }
     }
   }

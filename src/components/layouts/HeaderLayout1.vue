@@ -1,5 +1,5 @@
 <template lang="pug">
-  header.header
+  header.header.header-layout-1
     Container
       slot(name="logo")
       div.filler
@@ -15,9 +15,9 @@ export default {};
 </script>
 
 <style lang="scss">
-$header-bg: white;
 $header-force-full-height: false;
-.header {
+$header-bg: white;
+.header-layout-1 {
   height: 100%;
   background-color: $header-bg;
   .container {

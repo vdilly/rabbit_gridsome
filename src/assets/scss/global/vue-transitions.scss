@@ -2,7 +2,8 @@
 .slideIn-leave-active {
   transition: 0.25s;
 }
-.slideIn-enter, .slideIn-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.slideIn-enter,
+.slideIn-leave-to {
   opacity: 0;
   transform: translate(-50%, 100%) translateX(4rem) !important;
 }
@@ -11,7 +12,8 @@
 .fade-leave-active {
   transition: $transition-m;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
@@ -27,7 +29,8 @@
     }
   }
 }
-.gridy-enter, .gridy-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.gridy-enter,
+.gridy-leave-to {
   .gridy__item {
     opacity: 0;
     transform: translateY(4rem);
