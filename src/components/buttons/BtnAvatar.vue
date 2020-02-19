@@ -1,5 +1,5 @@
 <template lang="pug">
-component.btn-avatar(:is='href ? "a" : "button"' :href="href", @click="$emit('click')")
+component.btn-avatar(:is="forceDiv ? 'div' : href ? 'a' : 'button'" :href="href", @click="$emit('click')")
   .flexbox
     slot(name="pre")
     .btn-avatar__text
@@ -13,6 +13,9 @@ export default {
     href: {
       type: String,
       default: null
+    },
+    forceDiv: {
+      default: false
     }
   }
 };

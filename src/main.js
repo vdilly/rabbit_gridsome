@@ -14,6 +14,7 @@ import Btn from "~/components/buttons/Btn.vue";
 import BtnAvatar from "~/components/buttons/BtnAvatar.vue";
 import Logo from "~/components/atoms/Logo.vue";
 import Avatar from "~/components/atoms/Avatar.vue";
+import Loader from "~/components/atoms/Loader.vue";
 
 // CSS
 import "~/assets/scss/global.scss";
@@ -50,6 +51,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   Vue.component("Btn", Btn);
   Vue.component("BtnAvatar", BtnAvatar);
   Vue.component("Logo", Logo);
+  Vue.component("Loader", Loader);
   Vue.component("Avatar", Avatar);
 
   // Plugins vue

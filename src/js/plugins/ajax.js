@@ -1,8 +1,9 @@
-export default function ajax(url, jsonData, success, error) {
+export function ajaxPost(url, data, success, error) {
   const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", url, true);
   xhttp.onload = function() {
+    // xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText); // This is my response
       success(this.responseText);
     } else {
       if (error) {
@@ -12,8 +13,6 @@ export default function ajax(url, jsonData, success, error) {
       }
     }
   };
-  jsonData = "json=" + JSON.stringify(jsonData);
-  xhttp.open("POST", url, true);
-  xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhttp.send(jsonData);
+  xhttp.send(data);
 }
+export function ajaxGet() {}

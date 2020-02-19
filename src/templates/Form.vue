@@ -1,11 +1,14 @@
-<template>
-  <Layout>
-    <Banner v-slot="banner" :pageTitle="page.title"></Banner>
-    <Container class="container--small">
-      <RTE :rte="page.content"></RTE>
-      <Formulaire :form="page.form"></Formulaire>
-    </Container>
-  </Layout>
+<template lang="pug">
+  Layout
+    Banner(v-slot="banner" :pageTitle="page.title")
+    Container.container--small
+      RTE(:rte="page.content")
+      Formulaire.contact-form(ajaxTo="https://usebasin.com/f/1dc668b32447")
+        input.input-box(required name="input")
+        Btn(slot="send" :forceDiv="true") Envoyer
+        Loader(slot="pending")
+        div(slot="success") Formulaire bien envoyé
+        div(slot="error") Une erreur est survenue, #[a(href="javascript:history.go(0)") cliquer-ici] pour réessayer
 </template>
 
 <script>
@@ -35,6 +38,25 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.contact-form {
+  position: relative;
+
+  .form__state {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+</style>
 
 <page-query>
 query($id: ID){
@@ -107,5 +129,3 @@ query($id: ID){
   }
 }
 </page-query>
-
-<style lang="scss"></style>
