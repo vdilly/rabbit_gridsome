@@ -1,9 +1,5 @@
-<template>
-  <input
-    class="input-box"
-    onkeyup="this.setAttribute('value', this.value);"
-    ref="input"
-  />
+<template lang="pug">
+input.form__field(onkeyup="this.setAttribute('value', this.value);" ref="input")
 </template>
 <script>
 export default {

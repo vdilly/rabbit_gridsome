@@ -3,20 +3,16 @@
     Banner(v-slot="banner" :pageTitle="page.title")
     Container.container--small
       RTE(:rte="page.content")
-      Formulaire.contact-form(ajaxTo="https://usebasin.com/f/1dc668b32447")
-        input.input-box(required name="input")
-        Btn(slot="send" :forceDiv="true") Envoyer
-        Loader(slot="pending")
-        div(slot="success") Formulaire bien envoyé
-        div(slot="error") Une erreur est survenue, #[a(href="javascript:history.go(0)") cliquer-ici] pour réessayer
+      FormWP.contact-form(:form="page.form")
 </template>
 
 <script>
+import FormMaterial from "~/components/FormMaterial";
+import FormWP from "~/components/FormWP.vue";
 import pageMixin from "~/js/mixins/page";
-import Formulaire from "~/components/form/Formulaire.vue";
 export default {
   mixins: [pageMixin],
-  components: { Formulaire },
+  components: { FormWP, FormMaterial },
   computed: {
     page() {
       return this.$page.page;
@@ -38,25 +34,6 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-.contact-form {
-  position: relative;
-
-  .form__state {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-</style>
 
 <page-query>
 query($id: ID){

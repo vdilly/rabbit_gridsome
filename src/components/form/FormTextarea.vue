@@ -1,11 +1,13 @@
 <template>
-  <textarea
-    class="input-box"
-    cols="30"
-    rows="10"
-    onkeyup="this.setAttribute('value', this.value);"
-    ref="textarea"
-  ></textarea>
+  <textarea class="form__field"></textarea>
+</template>
+<template lang="pug">
+textarea.form__field(
+  cols="30"
+  rows="10"
+  onkeyup="this.setAttribute('value', this.value);"
+  ref="textarea"
+)
 </template>
 <script>
 export default {

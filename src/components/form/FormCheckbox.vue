@@ -1,15 +1,15 @@
-<template>
-  <input type="checkbox" />
+<template lang="pug">
+  input.form__checkbox(type="checkbox")
 </template>
 <script>
 export default {};
 </script>
 <style lang="scss">
-// Pas de label par défaut dans les groupes de checkbox (on affiche un titre à la palce)
+// Pas de label par défaut dans les groupes de checkbox (on affiche un titre à la place)
 .form__field--checkboxes > label {
   display: none;
 }
-input[type="checkbox"] {
+.form__checkbox {
   position: absolute;
   height: 1px;
   width: 1px;

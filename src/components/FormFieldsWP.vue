@@ -5,8 +5,17 @@
     :required="field.requis"
     :class="'form__field--' + field.acfFcLayout"
   >
-    <h2 class="h4" v-if="field.acfFcLayout == 'titre'" v-html="field.titre"></h2>
-    <FormSelect v-if="field.acfFcLayout == 'select'" :name="id" :id="id" :required="field.requis">
+    <h2
+      class="h4"
+      v-if="field.acfFcLayout == 'titre'"
+      v-html="field.titre"
+    ></h2>
+    <FormSelect
+      v-if="field.acfFcLayout == 'select'"
+      :name="id"
+      :id="id"
+      :required="field.requis"
+    >
       <option
         v-for="(option, index) in field.options"
         :value="systemString(option.value)"
@@ -102,7 +111,7 @@ export default {
     FormInput,
     FormCheckbox,
     FormRadio,
-    FormField: () => import("~/components/form/FormField.vue")
+    FormFieldsWp: () => import("~/components/FormFieldsWP.vue")
   },
   methods: {
     systemString: systemString

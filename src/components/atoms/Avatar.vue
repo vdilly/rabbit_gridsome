@@ -22,5 +22,9 @@ export default {
   &.bordered {
     border: solid 2px $color__core;
   }
+  &.img-contain-center svg {
+    max-height: 80%;
+    max-width: 80%;
+  }
 }
 </style>

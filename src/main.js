@@ -15,6 +15,13 @@ import BtnAvatar from "~/components/buttons/BtnAvatar.vue";
 import Logo from "~/components/atoms/Logo.vue";
 import Avatar from "~/components/atoms/Avatar.vue";
 import Loader from "~/components/atoms/Loader.vue";
+import FormCheckbox from "~/components/form/FormCheckbox.vue";
+import FormGroup from "~/components/form/FormGroup.vue";
+import FormInput from "~/components/form/FormInput.vue";
+import FormRadio from "~/components/form/FormRadio.vue";
+import FormSelect from "~/components/form/FormSelect.vue";
+import FormTextarea from "~/components/form/FormTextarea.vue";
+import FormFieldset from "~/components/form/FormFieldset.vue";
 
 // CSS
 import "~/assets/scss/global.scss";
@@ -53,6 +60,13 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   Vue.component("Logo", Logo);
   Vue.component("Loader", Loader);
   Vue.component("Avatar", Avatar);
+  Vue.component("FormGroup", FormGroup);
+  Vue.component("FormFieldset", FormFieldset);
+  Vue.component("FormCheckbox", FormCheckbox);
+  Vue.component("FormInput", FormInput);
+  Vue.component("FormRadio", FormRadio);
+  Vue.component("FormSelect", FormSelect);
+  Vue.component("FormTextarea", FormTextarea);
 
   // Plugins vue
   Vue.use(Vue2TouchEvents);

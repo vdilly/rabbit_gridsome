@@ -1,6 +1,6 @@
 <template>
   <select
-    class="input-box"
+    class="form__field"
     value
     onchange="this.setAttribute('value', this.value);"
     ref="select"
