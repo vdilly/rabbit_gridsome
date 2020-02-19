@@ -2,7 +2,7 @@
   Navbar
     HeaderLayout1
       Logo.img-contain-left(slot="logo", :linked="!isFront")
-      MainMenu(slot="menu",  v-show="window.range == 'desktop'")
+      MainMenu1(slot="menu",  v-show="window.range == 'desktop'")
       Popin(
         slot="burger"
         v-show="window.range != 'desktop'"
@@ -11,18 +11,18 @@
       )
         BurgerIcon(slot="trigger") 
         div(slot="close") Close
-        MainMenuRwd(ref="menuRwd")
+        MainMenuRwd1(ref="menuRwd")
 </template>
 
 <script>
 import Navbar from "~/components/layouts/Navbar.vue";
 import HeaderLayout1 from "~/components/layouts/HeaderLayout1";
 import BurgerIcon from "~/components/atoms/BurgerIcon.vue";
-import MainMenu from "~/components/navs/MainMenu.vue";
-import MainMenuRwd from "~/components/navs/MainMenuRwd.vue";
+import MainMenu1 from "~/components/navs/MainMenu1.vue";
+import MainMenuRwd1 from "~/components/navs/MainMenuRwd1.vue";
 export default {
   props: ["isFront"],
-  components: { HeaderLayout1, Navbar, MainMenu, MainMenuRwd, BurgerIcon },
+  components: { HeaderLayout1, Navbar, MainMenu1, MainMenuRwd1, BurgerIcon },
   methods: {
     closeDrawers: function() {
       // Au close du burger on close les éventuels drawers, on achemine l'event: Default -> MainMenuRwd -> Drawer
