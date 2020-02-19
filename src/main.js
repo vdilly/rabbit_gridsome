@@ -11,7 +11,9 @@ import Drawer from "~/components/layouts/Drawer.vue";
 import Popin from "~/components/layouts/Popin.vue";
 import RTE from "~/components/rte/RTE.vue";
 import Btn from "~/components/buttons/Btn.vue";
+import BtnAvatar from "~/components/buttons/BtnAvatar.vue";
 import Logo from "~/components/atoms/Logo.vue";
+import Avatar from "~/components/atoms/Avatar.vue";
 
 // CSS
 import "~/assets/scss/global.scss";
@@ -46,7 +48,9 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   Vue.component("GridyItem", GridyItem);
   Vue.component("RTE", RTE);
   Vue.component("Btn", Btn);
+  Vue.component("BtnAvatar", BtnAvatar);
   Vue.component("Logo", Logo);
+  Vue.component("Avatar", Avatar);
 
   // Plugins vue
   Vue.use(Vue2TouchEvents);

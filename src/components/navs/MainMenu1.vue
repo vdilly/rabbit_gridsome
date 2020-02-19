@@ -27,7 +27,9 @@
           :title="subitem.liens.title" 
           v-html="subitem.liens.title"
         )
-    Btn Devis
+    BtnAvatar( target="_blank").main-menu__item.main-menu__highlight-btn V. Dilly
+      Avatar(slot="pre" :bordered="false")
+        img(src="https://avatars0.githubusercontent.com/u/41357661?s=88&v=4")
 </template>
 
 <script>
@@ -92,6 +94,9 @@ export default {
   }
   .dropdown {
     height: 100%;
+  }
+  .main-menu__highlight-btn {
+    align-self: center;
   }
 }
 </style>

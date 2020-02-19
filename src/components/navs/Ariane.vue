@@ -1,14 +1,10 @@
-<template>
-  <nav class="ariane" role="navigation" aria-label="Fil d'ariane">
-    <ul class="ariane__list">
-      <li class="ariane__item">
-        <a href="/">Home</a>
-      </li>
-      <li class="ariane__item" v-for="item in ariane" :key="item.link">
-        <a :href="item.link" v-html="item.label"></a>
-      </li>
-    </ul>
-  </nav>
+<template lang="pug">
+nav.ariane(role='navigation', aria-label="Fil d'ariane")
+  ul.ariane__list
+    li.ariane__item
+      a(href='/') Home
+    li.ariane__item(v-for='item in ariane', :key='item.link')
+      a(:href='item.link', v-html='item.label')
 </template>
 
 <script>
