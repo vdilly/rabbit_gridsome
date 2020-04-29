@@ -99,7 +99,7 @@ export default {
 }
 
 // Center
-.popin.center-panel {
+.popin.center {
   .popin__panel {
     position: fixed;
     top: 50%;
