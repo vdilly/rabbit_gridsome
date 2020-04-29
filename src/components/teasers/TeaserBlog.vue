@@ -2,37 +2,19 @@
 div.teaser-blog
   a.teaser-blog__overlay-link(:href='link')
   div.teaser-blog__bg(lazy='bg', :lazy-src="size(thumbnail, 'mobile')", :style="`background-image: url(${size(thumbnail, 'lazy')});`")
-  h3.teaser-blog__title(v-html='post.title')
-  p.teaser-blog__date(v-html='formatDate(post.date)')
+  h3.teaser-blog__title(v-html='title')
+  p.teaser-blog__date(v-html='formatDate(date)')
   div.teaser-blog__lead(v-html='excerpt')
   ul.teaser-blog__tags
-    li.teaser-blog__tag(v-for='(tag, index) in post.tags', :key='index')
+    li.teaser-blog__tag(v-for='(tag, index) in tags', :key='index')
       .blogpost-tag.blogpost-tag--grey(v-html='tag.title')
 </template>
 
 <script>
 import dateMixin from "~/js/mixins/date";
 export default {
-  props: ["post", "defaultThumbnail"],
+  props: ["link", "thumbnail", "title", "date", "excerpt", "tags"],
   mixins: [dateMixin],
-  computed: {
-    tags() {
-      return this.post.tags ? this.post.tags : null;
-    },
-    link() {
-      return this.$page.metadata.siteUrl + "/blog/" + this.post.slug + "/";
-    },
-    thumbnail() {
-      return this.post.featuredMedia
-        ? this.post.featuredMedia.sourceUrl
-        : this.defaultThumbnail;
-    },
-    excerpt() {
-      return this.post.excerpt
-        ? this.post.excerpt
-        : this.post.content.substring(0, 600) + "...";
-    }
-  }
 };
 </script>
 
