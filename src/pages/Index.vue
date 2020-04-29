@@ -6,13 +6,13 @@
 
 <script>
 import pageMixin from "~/js/mixins/page";
-import SwipeSample from "~/components/layouts/sliders/SwipeSample.vue";
-import ParaSlideSample from "~/components/layouts/sliders/ParaSlideSample.vue";
+import Swipe1 from "~/components/layouts/sliders/Swipe1.vue";
+import ParaSlide from "~/components/layouts/sliders/ParaSlide.vue";
 export default {
   mixins: [pageMixin],
   components: {
-    SwipeSample,
-    ParaSlideSample
+    Swipe1,
+    ParaSlide
   },
   computed: {
     home() {
