@@ -26,9 +26,9 @@
 <script>
 import Player from "@vimeo/player";
 export default {
-  props: ["vimeo", "image"],
+  props: ["vimeo", "image", "playInView"],
   mounted() {
-    if ("IntersectionObserver" in window && this.device.type == "desktop") {
+    if ("IntersectionObserver" in window && this.device.type == "desktop" && this.playInView) {
       let elem = this.$refs.vimeo;
       if (elem) {
         const player = new Player(elem);
