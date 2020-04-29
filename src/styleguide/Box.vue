@@ -30,6 +30,7 @@ export default {
   &.small{
     width: 33.33%;
     padding-left: 1rem;
+    padding-right: 1rem;
     border-left: solid .2rem $color__core;
   }
 }
