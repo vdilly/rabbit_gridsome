@@ -1,20 +1,20 @@
 <template>
   <div
     class="teaser-slide"
-    :class="slide.vimeo ? 'teaser-slide--vimeo' : ''"
-    :lazy="!slide.vimeo ? 'bg' : null"
+    :class="vimeo ? 'teaser-slide--vimeo' : ''"
+    :lazy="!vimeo ? 'bg' : null"
     :lazy-src="
-      !slide.vimeo && slide.image
-        ? slide.image.mediaDetails.sizes.mobile.sourceUrl
+      !vimeo && image
+        ? image
         : null
     "
   >
     <iframe
       ref="vimeo"
-      v-if="slide.vimeo"
+      v-if="vimeo"
       :src="
         'https://player.vimeo.com/video/' +
-          slide.vimeo +
+          vimeo +
           '?&transparent=false&muted=true'
       "
       webkitallowfullscreen
@@ -26,9 +26,9 @@
 <script>
 import Player from "@vimeo/player";
 export default {
-  props: ["slide"],
+  props: ["vimeo", "image", "playInView"],
   mounted() {
-    if ("IntersectionObserver" in window && this.device.type == "desktop") {
+    if ("IntersectionObserver" in window && this.device.type == "desktop" && this.playInView) {
       let elem = this.$refs.vimeo;
       if (elem) {
         const player = new Player(elem);

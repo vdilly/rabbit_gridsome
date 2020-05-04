@@ -17,19 +17,19 @@
       p.home-links(js-observe-scroll)
         a(href="https://gridsome.org/docs/" target="_blank" rel="noopener" scroll-anim="y8" style="display: inline-block;") Gridsome Docs
         a(href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener" scroll-anim="y8" scroll-delay="1" style="display: inline-block;") Github
-    SwipeSample
-    ParaSlideSample
+    Swipe1
+    ParaSlide
 </template>
 
 <script>
 import pageMixin from "~/js/mixins/page";
-import SwipeSample from "~/components/layouts/sliders/SwipeSample.vue";
-import ParaSlideSample from "~/components/layouts/sliders/ParaSlideSample.vue";
+import Swipe1 from "~/components/layouts/sliders/Swipe1.vue";
+import ParaSlide from "~/components/layouts/sliders/ParaSlide.vue";
 export default {
   mixins: [pageMixin],
   components: {
-    SwipeSample,
-    ParaSlideSample
+    Swipe1,
+    ParaSlide
   },
   computed: {
     home() {
