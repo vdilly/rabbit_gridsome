@@ -74,7 +74,6 @@ export default function($root) {
   $root = $root ? $root : document;
   let $els = $root.querySelectorAll("[lazy]");
   $els.forEach(($el) => {
-    $el.classList.add("lazy");
     dispatchType($el);
   });
 }
