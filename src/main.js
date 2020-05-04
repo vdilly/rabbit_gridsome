@@ -22,6 +22,7 @@ import FormRadio from "~/components/form/FormRadio.vue";
 import FormSelect from "~/components/form/FormSelect.vue";
 import FormTextarea from "~/components/form/FormTextarea.vue";
 import FormFieldset from "~/components/form/FormFieldset.vue";
+import Box from "~/styleguide/Box.vue";
 
 // CSS
 import "~/assets/scss/global.scss";
@@ -67,6 +68,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   Vue.component("FormRadio", FormRadio);
   Vue.component("FormSelect", FormSelect);
   Vue.component("FormTextarea", FormTextarea);
+  Vue.component("Box", Box);
 
   // Plugins vue
   Vue.use(Vue2TouchEvents);

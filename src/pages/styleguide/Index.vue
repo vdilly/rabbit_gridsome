@@ -1,7 +1,6 @@
 <template lang="pug">
   Layout
     div Home
-    a(href="/styleguide/Buttons") Boutons
 </template>
 
 <script>

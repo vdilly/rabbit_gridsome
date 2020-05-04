@@ -1,5 +1,5 @@
-export default function($target, offset) {
-  const distanceToTop = el => Math.floor(el.getBoundingClientRect().top);
-  const originalTop = distanceToTop($target) - offset;
+export default function(selector, offset = 0) {
+  const distanceToTop = el => Math.floor(document.querySelector(el).getBoundingClientRect().top);
+  const originalTop = distanceToTop(selector) - offset;
   window.scrollBy({ top: originalTop, left: 0, behavior: "smooth" });
 }

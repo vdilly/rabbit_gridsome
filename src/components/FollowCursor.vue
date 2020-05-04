@@ -17,7 +17,7 @@ html:not(.desktop) {
   }
 }
 .cursor {
-  border: solid 2px $color__core;
+  border: solid .2rem $color__core;
   border-radius: 50%;
   width: 6rem;
   height: 6rem;
