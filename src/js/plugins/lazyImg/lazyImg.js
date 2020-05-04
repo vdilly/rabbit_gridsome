@@ -18,7 +18,7 @@ function observeIntersection(el, cb) {
         });
       },
       {
-        rootMargin: "0px 0px 100px 0px"
+        rootMargin: "0px 0px 100px 0px",
       }
     );
     observer.observe(el);
@@ -73,7 +73,8 @@ export default function($root) {
   debug("Lazyload imgs and bgs");
   $root = $root ? $root : document;
   let $els = $root.querySelectorAll("[lazy]");
-  $els.forEach($el => {
+  $els.forEach(($el) => {
+    $el.classList.add("lazy");
     dispatchType($el);
   });
 }
