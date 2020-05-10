@@ -15,26 +15,34 @@ import todo from "~/js/plugins/todo/todo.js";
 export default {
   components: { Banner, Ariane },
   mounted() {
+    if (!process.isClient) return;
     const _this = this;
 
     // Device
     this.$debug("> current-device");
-    if (process.isClient) {
-      let currentDevice = require("current-device")["default"];
-      this.$store.dispatch("device/updateDevice", currentDevice);
+    let currentDevice = require("current-device")["default"];
+    this.$store.dispatch("device/updateDevice", currentDevice);
+    if (!window.gotTouchstartEvent)
       window.addEventListener("touchstart", function() {
         _this.$store.commit("device/setNoMouse", currentDevice);
       });
-    }
+    window.gotTouchstartEvent = true;
+
     // Window
     this.$debug("> window-events");
     this.$store.dispatch("window/update");
-    window.addEventListener("scroll", function() {
-      _this.$store.dispatch("window/updateScroll");
-    });
-    window.addEventListener("resize", function() {
-      _this.$store.dispatch("window/updateRange");
-    });
+    if (!window.gotScrollEvent) {
+      window.addEventListener("scroll", function() {
+        _this.$store.dispatch("window/updateScroll");
+      });
+      window.gotScrollEvent = true;
+    }
+    if (!window.gotResizeEvent) {
+      window.addEventListener("resize", function() {
+        _this.$store.dispatch("window/updateRange");
+      });
+      window.gotResizeEvent = true;
+    }
     // Todo
     if (process.env.GRIDSOME_BROWSER_ENV != "prod") {
       this.$debug("> Todo labels");
@@ -57,6 +65,6 @@ export default {
     domChange(domScripts);
   },
   methods: {
-    seoBuilder: seoBuilder
-  }
+    seoBuilder: seoBuilder,
+  },
 };
