@@ -31,7 +31,7 @@ function testBg(el) {
       });
       observer.observe(el, {
         attributes: true,
-        attributeFilter: ["style"]
+        attributeFilter: ["style"],
       });
     } else {
       var img = new Image();
@@ -48,18 +48,27 @@ function testBg(el) {
 export default {
   namespaced: true,
   state: {
-    siteLoaded: false
+    siteLoaded: false,
+    siteLoad: 0,
   },
   mutations: {
     set: function(state, loaded) {
       state.siteLoaded = loaded;
-    }
+    },
+    load: function(state, load) {
+      state.siteLoad = load;
+    },
   },
   getters: {},
   actions: {
+    updateLoad({ commit }, [index, length]) {
+      let load = ((index + 1) / length) * 100;
+      commit("load", load);
+    },
     siteLoaded({ commit }, cb) {
       setTimeout(() => {
         this._vm.$debug("Site loaded !");
+        commit("load", 100);
         commit("set", true);
         cb();
       }, 1000);
@@ -81,19 +90,21 @@ export default {
       }, 4000);
 
       const test = async () => {
-        for (const el of blockingElements) {
+        for (const [index, el] of blockingElements.entries()) {
           if (el.hasAttribute("src")) {
             await testImg(el);
+            dispatch("updateLoad", [index, testToComplete]);
           } else if (el.getAttribute("site-load") == "bg") {
             await testBg(el);
+            dispatch("updateLoad", [index, testToComplete]);
           } else {
-            console.error("Siteload: unknown element");
+            console.error("Siteload: unknown element :", el);
           }
         }
       };
       test().then(function() {
         dispatch("siteLoaded", cb);
       });
-    }
-  }
+    },
+  },
 };

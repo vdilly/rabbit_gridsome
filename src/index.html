@@ -33,6 +33,22 @@
     <!-- End Cookie Consent -->
     ${head}
     <style>
+      .cc_dialog {
+        opacity: 0;
+        pointer-events: none;
+        animation: appear .5s 4s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes appear {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
       /* Cookies */
       .cc_dialog.headline {
         background-color: #2d2d38 !important;

@@ -76,8 +76,8 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   Vue.mixin(imgSizeMixin);
   Vue.mixin({
     methods: {
-      parseWpUrl: parseWpUrl
-    }
+      parseWpUrl: parseWpUrl,
+    },
   });
 
   // Directives
@@ -87,10 +87,10 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   head.link.push({
     rel: "stylesheet",
     href:
-      "https://fonts.googleapis.com/css?family=Rubik:400,500|Source+Sans+Pro:400,400i,600,700,700i&display=swap"
+      "https://fonts.googleapis.com/css?family=Rubik:400,500|Source+Sans+Pro:400,400i,600,700,700i&display=swap",
   });
   head.htmlAttrs = {
-    lang: "fr"
+    lang: "fr",
   };
 
   // Main App store
@@ -99,8 +99,8 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
     modules: {
       window: windowStore,
       device: deviceStore,
-      siteLoad: siteLoadStore
-    }
+      siteLoad: siteLoadStore,
+    },
   });
 
   // Global computed related to store
@@ -108,8 +108,8 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
     computed: {
       ...mapState("window", ["window"]),
       ...mapState("device", ["device"]),
-      ...mapState("siteLoad", ["siteLoaded"])
-    }
+      ...mapState("siteLoad", ["siteLoaded", "siteLoad"]),
+    },
   });
 
   // Scrollbehavior on link
@@ -119,7 +119,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
     }
     if (to.hash) {
       return {
-        selector: to.hash
+        selector: to.hash,
       };
     }
     setTimeout(function() {
