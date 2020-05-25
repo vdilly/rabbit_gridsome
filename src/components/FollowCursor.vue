@@ -117,6 +117,10 @@ export default {
       type: Array,
       default: () => ["a", "button"]
     },
+    disable: {
+      type: Array,
+      default: () => ["iframe", ".calendly-overlay"]
+    },
     customHovers: {
       type: Array,
       default: () => []
@@ -170,7 +174,20 @@ export default {
     },
     mouseMoveHandler(e) {
       this.getMouseCoordinates(e);
+
+      // Etat Disable
       this.showCursor = true;
+      this.disable.forEach(el => {
+        if (
+          e.target.tagName.toLowerCase == el ||
+          e.target.classList.contains(el) ||
+          e.target.closest(el)
+        ) {
+          this.showCursor = false;
+        }
+      });
+      this.getMouseCoordinates(e);
+
       // Etat Hover
       let hover = false;
       this.hovers.forEach(el => {
