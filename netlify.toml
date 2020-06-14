@@ -20,6 +20,8 @@
   GRIDSOME_WP_PERSO_URL = "https://vdillyprod.tech/rabbit/admin"
   GRIDSOME_WP_LOCAL_URL = "http://wordpress.local"
   GRIDSOME_WP_FRAMEWORK_URL = "https://vdillyprod.tech/rabbit/admin"
+[context.branch-deploy.environment]
+  GRIDSOME_SITE_URL = "https://develop--rabbit.netlify.app"
 
 # Redirects and headers are GLOBAL for all builds – they do not get scoped to
 # contexts no matter where you define them in the file.
