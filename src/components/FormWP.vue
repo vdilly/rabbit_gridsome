@@ -8,7 +8,7 @@
         :key="index"
       )
         FormFieldsWP(v-for="(subfield, index) in field.fields" :field="subfield" :key="index")
-      FormFieldsWP(v-else v-for="(subfield, index) in field.fields" :field="subfield" :key="index")
+      FormFieldsWP(v-else :field="field" :key="index")
 </template>
 
 <script>

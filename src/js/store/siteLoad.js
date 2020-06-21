@@ -31,7 +31,7 @@ function testBg(el) {
       });
       observer.observe(el, {
         attributes: true,
-        attributeFilter: ["style"]
+        attributeFilter: ["style"],
       });
     } else {
       var img = new Image();
@@ -48,24 +48,48 @@ function testBg(el) {
 export default {
   namespaced: true,
   state: {
-    siteLoaded: false
+    siteLoaded: false,
+    siteLoad: 0,
+    firstVisit: true,
   },
   mutations: {
     set: function(state, loaded) {
       state.siteLoaded = loaded;
-    }
+    },
+    load: function(state, load) {
+      state.siteLoad = load;
+    },
+    visit: function(state, visit) {
+      state.firstVisit = visit;
+    },
   },
   getters: {},
   actions: {
-    siteLoaded({ commit }, cb) {
-      setTimeout(() => {
-        this._vm.$debug("Site loaded !");
+    updateLoad({ commit }, [index, length]) {
+      let load = ((index + 1) / length) * 100;
+      this._vm.$debug("SiteLoad: Site is loading ..." + load + "/100");
+      commit("load", load);
+    },
+    siteLoaded({ state, commit }, cb) {
+      const _this = this;
+      function load() {
+        _this._vm.$debug("Site loaded !");
+        commit("load", 100);
         commit("set", true);
         cb();
-      }, 1000);
+      }
+      if (state.firstVisit) {
+        _this._vm.$debug("Siteload: First visit, delaying siteload by 1s...");
+        setTimeout(() => {
+          commit("visit", false);
+          load();
+        }, 1000);
+      } else {
+        load();
+      }
     },
     siteLoad({ dispatch, state }, cb) {
-      this._vm.$debug("Site is loading ...");
+      this._vm.$debug("SiteLoad: Site is loading ...");
       blockingElements = document.querySelectorAll("[site-load]");
       testToComplete = blockingElements.length;
 
@@ -81,19 +105,25 @@ export default {
       }, 4000);
 
       const test = async () => {
-        for (const el of blockingElements) {
+        for (const [index, el] of blockingElements.entries()) {
+          this._vm.$debug("Siteload: loading element", el);
+
           if (el.hasAttribute("src")) {
             await testImg(el);
+            el.removeAttribute("site-load");
+            dispatch("updateLoad", [index, testToComplete]);
           } else if (el.getAttribute("site-load") == "bg") {
             await testBg(el);
+            el.removeAttribute("site-load");
+            dispatch("updateLoad", [index, testToComplete]);
           } else {
-            console.error("Siteload: unknown element");
+            console.error("Siteload: unknown element :", el);
           }
         }
       };
       test().then(function() {
         dispatch("siteLoaded", cb);
       });
-    }
-  }
+    },
+  },
 };
