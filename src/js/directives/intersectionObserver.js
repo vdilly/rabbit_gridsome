@@ -33,14 +33,12 @@ export default {
           manageIntersection(entries, observer, cb, vnode);
         },
         {
-          rootMargin: "0px 0px -200px 0px"
+          rootMargin: "0px 0px -200px 0px",
         }
       );
       observer.observe(el);
     } else {
-      elems.forEach(function(el) {
-        el.setAttribute(attribute, attrValue);
-      });
+      cb(vnode);
     }
-  }
+  },
 };
