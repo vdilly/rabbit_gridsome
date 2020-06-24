@@ -18,7 +18,7 @@ function observeIntersection(el, cb) {
         });
       },
       {
-        rootMargin: "0px 0px 100px 0px"
+        rootMargin: "0px 0px 100px 0px",
       }
     );
     observer.observe(el);
@@ -49,7 +49,7 @@ function lazyImg($el, src) {
   let img = new Image();
   img.onload = function() {
     $el.setAttribute("src", src);
-    $el.classList.remove("lazy");
+    // $el.classList.remove("lazy");
     $el.removeAttribute("lazy");
     $el.removeAttribute("lazy-src");
   };
@@ -60,7 +60,7 @@ function lazyBg($el, src) {
   let img = new Image();
   img.onload = function() {
     $el.style.backgroundImage = "url(" + src + ")";
-    $el.classList.remove("lazy");
+    // $el.classList.remove("lazy");
     $el.removeAttribute("lazy");
     $el.removeAttribute("lazy-src");
   };
@@ -73,7 +73,7 @@ export default function($root) {
   debug("Lazyload imgs and bgs");
   $root = $root ? $root : document;
   let $els = $root.querySelectorAll("[lazy]");
-  $els.forEach($el => {
+  $els.forEach(($el) => {
     dispatchType($el);
   });
 }

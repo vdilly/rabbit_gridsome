@@ -1,7 +1,10 @@
 [lazy] {
   &.lazy {
-    transition: filter 5s ease;
     filter: blur(10px);
-    transform: scale(0.98);
+    transform: scale(0.95);
   }
+}
+.lazy {
+  filter: none;
+  transition: filter 0.7s ease;
 }
