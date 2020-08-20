@@ -1,19 +1,16 @@
-<template>
-  <div
-    class="banner"
-    lazy="bg"
-    :lazy-src="bannerSrc"
-    :style="bannerPlaceholder ? `background-image: url(${bannerPlaceholder})` : null"
-  >
-    <Container class="container--small">
-      <h1 class="h1" v-html="pageTitle"></h1>
-    </Container>
-  </div>
+<template lang="pug">
+.banner(
+  lazy="bg",
+  :lazy-src="bannerSrc",
+  :style="bannerPlaceholder ? `background-image: url(${bannerPlaceholder})` : null"
+)
+  Container.container--small
+    h1.h1(v-html="pageTitle")
 </template>
 
 <script>
 export default {
-  props: ["pageTitle", "bannerSrc", "bannerPlaceholder"]
+  props: ["pageTitle", "bannerSrc", "bannerPlaceholder"],
 };
 </script>
 

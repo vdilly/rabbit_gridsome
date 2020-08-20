@@ -1,7 +1,6 @@
-<template>
-  <transition name="pageTransition" duration="500">
-    <router-view :key="$route.fullPath" />
-  </transition>
+<template lang="pug">
+transition(name="pageTransition", duration="500")
+  router-view(:key="$route.fullPath")
 </template>
 
 <static-query>
@@ -25,11 +24,11 @@ export default {
         {
           key: "description",
           name: "description",
-          content: this.$static.metadata.siteDescription
-        }
-      ]
+          content: this.$static.metadata.siteDescription,
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 

@@ -1,22 +1,19 @@
-<template>
-  <FormSelect :name="id" :id="id" :required="required">
-    <optgroup label="Les plus choisis">
-      <option
-        v-for="(option, index) in populars"
-        :value="systemString(option)"
-        :key="index"
-        v-html="option"
-      ></option>
-    </optgroup>
-    <optgroup label="Tous les pays">
-      <option
-        v-for="(option, index) in countries"
-        :value="systemString(option)"
-        :key="index"
-        v-html="option"
-      ></option>
-    </optgroup>
-  </FormSelect>
+<template lang="pug">
+FormSelect(:name="id", :id="id", :required="required")
+  optgroup(label="Les plus choisis")
+    option(
+      v-for="(option, index) in populars",
+      :value="systemString(option)",
+      :key="index",
+      v-html="option"
+    )
+  optgroup(label="Tous les pays")
+    option(
+      v-for="(option, index) in countries",
+      :value="systemString(option)",
+      :key="index",
+      v-html="option"
+    )
 </template>
 <script>
 import systemString from "~/js/plugins/systemString";
@@ -25,7 +22,7 @@ export default {
   props: ["id", "required"],
   components: { FormSelect },
   methods: {
-    systemString: systemString
+    systemString: systemString,
   },
   data() {
     return {
@@ -39,7 +36,7 @@ export default {
         "Italie",
         "Maroc",
         "Royaume-Uni",
-        "Suisse"
+        "Suisse",
       ],
       countries: [
         "Afghanistan",
@@ -296,14 +293,14 @@ export default {
         "Wallis-et-Futuna",
         "Yémen",
         "Zambie",
-        "Zimbabwe"
-      ]
+        "Zimbabwe",
+      ],
     };
   },
   methods: {
     systemString(string) {
       return systemString(string);
-    }
-  }
+    },
+  },
 };
 </script>

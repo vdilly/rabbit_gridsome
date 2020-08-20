@@ -1,18 +1,13 @@
-<template>
-  <footer class="footer">
-    <Container>
-      <ul>
-        <li v-for="(item, index) in menu" :key="index">
-          <a
-            :href="parseWpUrl(item.liens.url)"
-            :title="item.liens.title"
-            :target="item.liens.target"
-            v-html="item.liens.title"
-          ></a>
-        </li>
-      </ul>
-    </Container>
-  </footer>
+<template lang="pug">
+footer.footer
+  ul
+    li(v-for="(item, index) in menu", :key="index")
+      a(
+        :href="parseWpUrl(item.liens.url)",
+        :title="item.liens.title",
+        :target="item.liens.target",
+        v-html="item.liens.title"
+      )
 </template>
 
 <script>
@@ -20,8 +15,8 @@ export default {
   computed: {
     menu() {
       return this.$static.allAcfOption.edges[0].node.menu_footer.menu;
-    }
-  }
+    },
+  },
 };
 </script>
 

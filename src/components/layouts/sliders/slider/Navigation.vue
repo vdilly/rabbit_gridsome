@@ -1,16 +1,12 @@
-<template>
-  <div class="slider__navigation">
-    <ul class="slider__dot">
-      <li class="slider__dot-item" v-for="index in slider.slideCount" :key="index">
-        <button
-          :class="index == slider.index ? 'active' : ''"
-          class="slider__dot-btn"
-          @click="goToPage(index)"
-          :title="'Aller à la slide ' + index"
-        ></button>
-      </li>
-    </ul>
-  </div>
+<template lang="pug">
+.slider__navigation
+  ul.slider__dot
+    li.slider__dot-item(v-for="index in slider.slideCount", :key="index")
+      button.slider__dot-btn(
+        :class="index == slider.index ? 'active' : ''",
+        @click="goToPage(index)",
+        :title="'Aller à la slide ' + index"
+      )
 </template>
 <script>
 export default {
@@ -18,8 +14,8 @@ export default {
   methods: {
     goToPage(index) {
       this.$emit("dotClick", index);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

@@ -1,31 +1,25 @@
-<template>
-  <div class="swiper" js-observe-scroll>
-    <ClientOnly>
-      <div v-swiper:mySwiper="swiperOption" class="swipe-sample">
-        <div class="swiper-wrapper" ref="wrapper">
-          <div class="swiper-slide" v-for="i in 6" :key="i" scroll-anim="y8" :scroll-delay="i">
-            <div class="swiper-slide__inner">
-              <div class="swiper-slide__title-container">
-                <div class="swiper-slide__title">Slide {{ i }}</div>
-              </div>
-              <div class="swiper-slide__bg"></div>
-            </div>
-          </div>
-        </div>
-        <button class="swiper__prev swiper__control" slot="button-prev">
-          <svg class="icon">
-            <use xlink:href="#chevron" />
-          </svg>
-        </button>
-        <button class="swiper__next swiper__control" slot="button-next">
-          <svg class="icon">
-            <use xlink:href="#chevron" />
-          </svg>
-        </button>
-        <div class="swiper-pagination"></div>
-      </div>
-    </ClientOnly>
-  </div>
+<template lang="pug">
+.swiper(js-observe-scroll)
+  ClientOnly
+    .swipe-sample(v-swiper:mySwiper="swiperOption")
+      .swiper-wrapper(ref="wrapper")
+        .swiper-slide(
+          v-for="i in 6",
+          :key="i",
+          scroll-anim="y8",
+          :scroll-delay="i"
+        )
+          .swiper-slide__inner
+            .swiper-slide__title-container
+              .swiper-slide__title(v-html="`Slide ${i}`")
+            .swiper-slide__bg
+      button.swiper__prev.swiper__control(slot="button-prev")
+        svg.icon
+          use(xlink:href="#chevron")
+      button.swiper__next.swiper__control(slot="button-next")
+        svg.icon
+          use(xlink:href="#chevron")
+      .swiper-pagination
 </template>
 
 <script>
@@ -49,15 +43,15 @@ export default {
         // mousewheel: true,
         navigation: {
           nextEl: ".swiper__next",
-          prevEl: ".swiper__prev"
+          prevEl: ".swiper__prev",
         },
         pagination: {
           el: ".swiper-pagination",
-          clickable: true
+          clickable: true,
         },
         touchStartPreventDefault: false, // Utile pour le Follow Cursor
         on: {
-          touchStart: function(e) {
+          touchStart: function (e) {
             if (
               e.target.classList.contains(".swiper-wrapper") ||
               e.target.closest(".swiper-wrapper")
@@ -67,37 +61,37 @@ export default {
                 .classList.add("grabbing");
             }
           },
-          touchEnd: function(e) {
+          touchEnd: function (e) {
             document
               .querySelector(".swipe-sample .swiper-wrapper")
               .classList.remove("grabbing");
           },
-          sliderMove: function(e) {
+          sliderMove: function (e) {
             // console.log(e);
           },
 
           // Fix le last active qui marche pas en size auto
-          reachEnd: function() {
+          reachEnd: function () {
             // _this.wrapper.classList.add("overrideLastActive");
           },
-          fromEdge: function() {
+          fromEdge: function () {
             // _this.wrapper.classList.remove("overrideLastActive");
-          }
-        }
-      }
+          },
+        },
+      },
     };
   },
   computed: {
     wrapper() {
       return this.$refs.wrapper;
-    }
+    },
   },
   mounted() {
     if (process.browser) {
       const VueAwesomeSwiper = require("vue-awesome-swiper/dist/ssr");
       Vue.use(VueAwesomeSwiper);
     }
-  }
+  },
 };
 </script>
 

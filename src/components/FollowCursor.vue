@@ -1,14 +1,11 @@
-<template>
-  <div
-    class="cursor"
-    :class="cursorHover ? 'over_link' : null"
-    v-show="showCursor && siteLoaded"
-    ref="cursor"
-  >
-    <svg class="grab">
-      <use xlink:href="#grab" />
-    </svg>
-  </div>
+<template lang="pug">
+.cursor(
+  :class="cursorHover ? 'over_link' : null",
+  v-show="showCursor && siteLoaded",
+  ref="cursor"
+)
+  svg.grab
+    use(xlink:href="#grab")
 </template>
 <style lang="scss">
 html:not(.desktop) {
@@ -111,20 +108,20 @@ export default {
   props: {
     bounds: {
       type: String,
-      default: "body"
+      default: "body",
     },
     hovers: {
       type: Array,
-      default: () => ["a", "button"]
+      default: () => ["a", "button"],
     },
     disable: {
       type: Array,
-      default: () => ["iframe", ".calendly-overlay"]
+      default: () => ["iframe", ".calendly-overlay"],
     },
     customHovers: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   data() {
     return {
@@ -139,20 +136,20 @@ export default {
       dy: void 0,
       tx: void 0,
       ty: void 0,
-      key: -1
+      key: -1,
     };
   },
   computed: {
     cursor() {
       return this.$refs.cursor;
-    }
+    },
   },
   methods: {
-    getMouseCoordinates: function(e) {
+    getMouseCoordinates: function (e) {
       this.xmouse = e.clientX || e.pageX;
       this.ymouse = e.clientY || e.pageY;
     },
-    followMouse: function() {
+    followMouse: function () {
       this.key = requestAnimationFrame(this.followMouse);
 
       if (!this.x || !this.y) {
@@ -177,7 +174,7 @@ export default {
 
       // Etat Disable
       this.showCursor = true;
-      this.disable.forEach(el => {
+      this.disable.forEach((el) => {
         if (
           e.target.tagName.toLowerCase == el ||
           e.target.classList.contains(el) ||
@@ -190,7 +187,7 @@ export default {
 
       // Etat Hover
       let hover = false;
-      this.hovers.forEach(el => {
+      this.hovers.forEach((el) => {
         if (
           e.target.tagName.toLowerCase == el ||
           e.target.classList.contains(el) ||
@@ -207,7 +204,7 @@ export default {
 
       // Custom Hovers
       if (this.customHovers.length > 0) {
-        this.customHovers.forEach(el => {
+        this.customHovers.forEach((el) => {
           if (
             e.target.classList.contains(el.selector) ||
             e.target.closest("." + el.selector)
@@ -221,20 +218,20 @@ export default {
     },
     mouseLeaveHandler(e) {
       this.showCursor = false;
-    }
+    },
   },
   mounted() {
     const _this = this;
     this.yscroll = window.scrollY;
-    window.onscroll = function(e) {
+    window.onscroll = function (e) {
       _this.yscroll = window.scrollY;
     };
 
-    document.querySelectorAll(this.bounds).forEach(el => {
+    document.querySelectorAll(this.bounds).forEach((el) => {
       el.addEventListener("mousemove", this.mouseMoveHandler);
       el.addEventListener("mouseleave", this.mouseLeaveHandler);
     });
     this.followMouse();
-  }
+  },
 };
 </script>

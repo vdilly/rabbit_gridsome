@@ -1,16 +1,12 @@
-<template>
-  <div
-    class="teaser-slide"
-    :class="vimeo ? 'teaser-slide--vimeo' : ''"
+<template lang="pug">
+  .teaser-slide(:class="vimeo ? 'teaser-slide--vimeo' : ''"
     :lazy="!vimeo ? 'bg' : null"
     :lazy-src="
       !vimeo && image
         ? image
         : null
-    "
-  >
-    <iframe
-      ref="vimeo"
+    ")
+    iframe(ref="vimeo"
       v-if="vimeo"
       :src="
         'https://player.vimeo.com/video/' +
@@ -19,24 +15,26 @@
       "
       webkitallowfullscreen
       mozallowfullscreen
-      allowfullscreen
-    ></iframe>
-  </div>
+      allowfullscreen)
 </template>
 <script>
 import Player from "@vimeo/player";
 export default {
   props: ["vimeo", "image", "playInView"],
   mounted() {
-    if ("IntersectionObserver" in window && this.device.type == "desktop" && this.playInView) {
+    if (
+      "IntersectionObserver" in window &&
+      this.device.type == "desktop" &&
+      this.playInView
+    ) {
       let elem = this.$refs.vimeo;
       if (elem) {
         const player = new Player(elem);
-        let autoplayObserver = new IntersectionObserver(function(
+        let autoplayObserver = new IntersectionObserver(function (
           entries,
           observer
         ) {
-          entries.forEach(function(entry) {
+          entries.forEach(function (entry) {
             if (entry.isIntersecting) {
               player.play();
             } else {
@@ -47,7 +45,7 @@ export default {
         autoplayObserver.observe(elem);
       }
     }
-  }
+  },
 };
 </script>
 <style lang="scss">

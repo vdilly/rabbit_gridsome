@@ -1,17 +1,15 @@
-<template>
-  <div class="slider__wrapper">
-    <slot name="prepend"></slot>
-    <div class="slider__shadow" :class="shadowed ? 'shadowed': ''">
-      <div class="slider__overflow">
-        <ul :class="'slider js-slide-'+index + ' ' + animation" :style="translateX">
-          <slot></slot>
-        </ul>
-      </div>
-    </div>
-    <slot name="navigation" v-if="hasNavigation && slideCount > 1">
-      <Navigation @dotClick="dotClick"></Navigation>
-    </slot>
-  </div>
+<template lang="pug">
+.slider__wrapper
+  slot(name="prepend")
+  .slider__shadow(:class="shadowed ? 'shadowed' : ''")
+    .slider__overflow
+      ul.slider(
+        :class="'js-slide-' + index + ' ' + animation",
+        :style="translateX"
+      )
+        slot
+  slot(name="navigation", v-if="hasNavigation && slideCount > 1")
+    Navigation(@dotClick="dotClick")
 </template>
 <script>
 import Navigation from "./Navigation.vue";
@@ -20,20 +18,20 @@ export default {
     slideCount: Number,
     hasNavigation: {
       type: Boolean,
-      default: true
+      default: true,
     },
     animation: {
       type: String,
-      default: "translateX"
+      default: "translateX",
     },
     shadowed: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      index: 1
+      index: 1,
     };
   },
   computed: {
@@ -49,11 +47,11 @@ export default {
           "px);"
         );
       }
-    }
+    },
   },
   provide() {
     return {
-      slider: this
+      slider: this,
     };
   },
   components: { Navigation },
@@ -63,8 +61,8 @@ export default {
     },
     slideTo(index) {
       this.index = index;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

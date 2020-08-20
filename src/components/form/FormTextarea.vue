@@ -1,11 +1,8 @@
-<template>
-  <textarea class="form__field"></textarea>
-</template>
 <template lang="pug">
 textarea.form__field(
-  cols="30"
-  rows="10"
-  onkeyup="this.setAttribute('value', this.value);"
+  cols="30",
+  rows="10",
+  onkeyup="this.setAttribute('value', this.value);",
   ref="textarea"
 )
 </template>
@@ -13,7 +10,7 @@ textarea.form__field(
 export default {
   mounted() {
     this.$refs.textarea.setAttribute("value", this.$refs.textarea.value);
-  }
+  },
 };
 </script>
 <style lang="scss">
