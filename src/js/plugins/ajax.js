@@ -1,9 +1,37 @@
-export function ajaxPost(url, data, success, error) {
+/**
+ * 
+  ajaxPost(
+    process.env.GRIDSOME_BACKEND_URL + "/api/extern/jobapply/",
+    formData,
+    this.success,
+    this.error,
+    [
+      {
+        name: "X-AUTH-TOKEN",
+        value: process.env.GRIDSOME_X_AUTH_TOKEN,
+      },
+      {
+        name: "X-ACCESS-TOKEN",
+        value: process.env.GRIDSOME_X_ACCESS_TOKEN,
+      },
+    ]
+  );
+ */
+
+export function ajaxPost(url, data, success, error, headers) {
   const xhttp = new XMLHttpRequest();
   xhttp.open("POST", url, true);
+  if (headers) {
+    headers.forEach((header) => {
+      xhttp.setRequestHeader(header.name, header.value);
+    });
+  }
+
   xhttp.onload = function() {
-    // xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    if (this.readyState == 4 && this.status == 200) {
+    if (
+      this.readyState == 4 &&
+      (this.status == 200 || this.status == 201 || this.status == 202)
+    ) {
       success(this.responseText);
     } else {
       if (error) {

@@ -41,6 +41,7 @@ import smoothScroll from "~/js/plugins/smoothScroll";
 import imgSizeMixin from "./js/mixins/imgSize";
 import InterSectionObserverDirective from "~/js/directives/intersectionObserver.js";
 import parseWpUrl from "~/js/plugins/parseWpUrl";
+import parseWpRteUrl from "~/js/plugins/ParseWpRteUrl";
 
 const isProduction = process.env.ENV === "production";
 
@@ -77,6 +78,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   Vue.mixin({
     methods: {
       parseWpUrl: parseWpUrl,
+      parseWpRteUrl: parseWpRteUrl,
     },
   });
 
