@@ -1,5 +1,4 @@
-<template>
-  <li class="gridy__item">
-    <slot></slot>
-  </li>
+<template lang="pug">
+li.gridy__item
+  slot
 </template>

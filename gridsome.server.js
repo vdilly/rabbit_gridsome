@@ -7,9 +7,12 @@
 
 const createPagesTemplates = require("./server/pages");
 const createArticlesTemplates = require("./server/articles");
+const schemaForm = require("./server/schema-form");
+const schemaMenu = require("./server/schema-menu");
+const schemaImages = require("./server/schema-images");
 const axios = require("axios");
 module.exports = function(api) {
-  api.loadSource(async actions => {
+  api.loadSource(async (actions) => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
 
     /**
@@ -19,93 +22,13 @@ module.exports = function(api) {
       process.env.GRIDSOME_WP_URL + "/wp-json/acf/v3/options/option/"
     );
     const collection = actions.addCollection({
-      typeName: "AcfOption"
+      typeName: "AcfOption",
     });
     collection.addNode(data.acf);
 
-    // Type formulaires
-    actions.addSchemaTypes(`
-      type WordPressPage implements Node @infer{
-        form: Form
-      }
-      type Form {
-        formTitle: String
-        error: String
-        success: String
-        formSend: String
-        formAction: String
-        fields: [FormFields]
-      }
-      type FormFields {
-        type: String
-        label: String
-        requis: Boolean
-        checked: Boolean
-        acfFcLayout: String
-        defaultValue: String
-        options: [FormOption]
-        checkboxes: [FormCheckboxes]
-        radios: [FormRadios]
-        fields: [SubFormFields]
-      }
-      type SubFormFields {
-        type: String
-        label: String
-        requis: Boolean
-        checked: Boolean
-        acfFcLayout: String
-        defaultValue: String
-        options: [FormOption]
-        checkboxes: [FormCheckboxes]
-        radios: [FormRadios]
-      }
-      type FormOption {
-        value: String,
-        selected: Boolean
-      }
-      type FormCheckboxes {
-        label: String,
-        checked: Boolean
-      }
-      type FormRadios {
-        label: String,
-        selected: Boolean
-      }
-    `);
-
-    // Type Menu
-    actions.addSchemaTypes(`
-      type AcfOption implements Node @infer{
-        menu_header: MenuClone,
-        menu_footer: MenuClone
-      }
-      type MenuClone{
-        menu: [MenuEntry]
-      }
-      type MenuEntry{
-        acf_fc_layout: String
-        label_is_link: Boolean
-        label: String
-        liens: Liens
-        submenu : [SubMenuEntry]
-      }
-      type SubMenuEntry{
-        liens: Liens
-      }
-      type Liens {
-        title: String
-        url: String
-        target: String
-      }
-    `);
-
-    actions.addSchemaResolvers({
-      WordPressPage: {
-        async form(obj) {
-          return obj.acf;
-        }
-      }
-    });
+    schemaForm({ actions });
+    schemaMenu({ actions });
+    schemaImages({ actions });
   });
 
   api.createPages(async ({ graphql, createPage }) => {
@@ -117,11 +40,11 @@ module.exports = function(api) {
 
     createPagesTemplates({
       graphql,
-      createPage
+      createPage,
     });
     createArticlesTemplates({
       graphql,
-      createPage
+      createPage,
     });
   });
 };

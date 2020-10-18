@@ -1,15 +1,8 @@
-<template>
-  <Layout>
-    <Banner v-slot="banner" :pageTitle="about.title"></Banner>
-    <Container>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-        doloremque omnis animi, eligendi magni a voluptatum, vitae, consequuntur
-        rerum illum odit fugit assumenda rem dolores inventore iste
-        reprehenderit maxime! Iusto.
-      </p>
-    </Container>
-  </Layout>
+<template lang="pug">
+Layout
+  Banner(v-slot="banner", :pageTitle="about.title")
+  Container
+    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error doloremque omnis animi, eligendi magni a voluptatum, vitae, consequuntur rerum illum odit fugit assumenda rem dolores inventore iste reprehenderit maxime! Iusto.
 </template>
 
 <script>
@@ -26,15 +19,15 @@ export default {
         this.about.title,
         this.about.content
       );
-    }
+    },
   },
   metaInfo() {
     return {
       title: this.seo.title,
       link: this.seo.link,
-      meta: this.seo.meta
+      meta: this.seo.meta,
     };
-  }
+  },
 };
 </script>
 <page-query>

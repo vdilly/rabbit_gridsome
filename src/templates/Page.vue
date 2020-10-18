@@ -1,10 +1,8 @@
-<template>
-  <Layout>
-    <Banner v-slot="banner" :pageTitle="page.title"></Banner>
-    <Container class="container--small">
-      <RTE :rte="page.content"></RTE>
-    </Container>
-  </Layout>
+<template lang="pug">
+Layout
+  Banner(v-slot="banner", :pageTitle="page.title")
+  Container.container-small
+    RTE(rte="page.content")
 </template>
 
 <script>
@@ -21,15 +19,15 @@ export default {
         this.page.title,
         this.page.content
       );
-    }
+    },
   },
   metaInfo() {
     return {
       title: this.seo.title,
       link: this.seo.link,
-      meta: this.seo.meta
+      meta: this.seo.meta,
     };
-  }
+  },
 };
 </script>
 

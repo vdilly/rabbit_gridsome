@@ -1,23 +1,22 @@
-<template>
-  <select
-    class="form__field"
-    value
-    onchange="this.setAttribute('value', this.value);"
-    ref="select"
-  >
-    <option value selected></option>
-    <slot></slot>
-  </select>
+
+<template lang="pug">
+select.form__field(
+  value,
+  onchange="this.setAttribute('value', this.value);",
+  ref="select"
+)
+  option(value, selected)
+  slot
 </template>
 <script>
 export default {
   mounted() {
     const $select = this.$refs.select;
     $select.setAttribute("value", $select.value);
-    $select.nextElementSibling.addEventListener("click", function() {
+    $select.nextElementSibling.addEventListener("click", function () {
       $select.click();
     });
-  }
+  },
 };
 </script>
 <style lang="scss">

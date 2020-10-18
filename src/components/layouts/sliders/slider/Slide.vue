@@ -1,13 +1,12 @@
-<template>
-  <li class="slider__item">
-    <slot></slot>
-  </li>
+<template lang="pug">
+li.slider__item
+  slot
 </template>
 <script>
 export default {};
 </script>
 <style lang="scss">
-.slider__item{
+.slider__item {
   display: flex;
 }
 </style>

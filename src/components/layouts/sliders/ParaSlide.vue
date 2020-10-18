@@ -1,68 +1,15 @@
-<template>
-  <div class="paraslide" js-observe-scroll>
-    <ClientOnly>
-      <div v-swiper:mySwiper="swiperOption" class="paraslide-sample" ref="swiper">
-        <div class="swiper-wrapper" ref="wrapper">
-          <template>
-            <div class="swiper-slide" scroll-anim="y8" scroll-delay="0">
-              <img
-                src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
-                alt
-              />
-            </div>
-            <div class="swiper-slide" scroll-anim="y8" scroll-delay="1">
-              <img
-                src="https://images.pexels.com/photos/372042/pexels-photo-372042.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
-                alt
-              />
-            </div>
-            <div class="swiper-slide" scroll-anim="y8" scroll-delay="2">
-              <img
-                src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
-                alt
-              />
-            </div>
-            <div class="swiper-slide" scroll-anim="y8" scroll-delay="3">
-              <img
-                src="https://images.pexels.com/photos/756453/pexels-photo-756453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
-                alt
-              />
-            </div>
-            <div class="swiper-slide" scroll-anim="y8" scroll-delay="4">
-              <img
-                src="https://images.pexels.com/photos/2332415/pexels-photo-2332415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
-                alt
-              />
-            </div>
-            <div class="swiper-slide" scroll-anim="y8" scroll-delay="5">
-              <img
-                src="https://images.pexels.com/photos/1036627/pexels-photo-1036627.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
-                alt
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
-                alt
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="https://images.pexels.com/photos/975657/pexels-photo-975657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
-                alt
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="https://images.pexels.com/photos/371160/pexels-photo-371160.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
-                alt
-              />
-            </div>
-          </template>
-        </div>
-      </div>
-    </ClientOnly>
-  </div>
+<template lang="pug">
+.paraslide(js-observe-scroll)
+  ClientOnly
+    .paraslide-sample(v-swiper:mySwiper="swiperOption", ref="swiper")
+      .swiper-wrapper(ref="wrapper")
+        .swiper-slide(
+          v-for="(url, index) in photos",
+          :key="index",
+          scroll-anim="y8",
+          :scroll-delay="index"
+        )
+          img(:src="url")
 </template>
 
 <script>
@@ -72,6 +19,17 @@ export default {
   data() {
     const _this = this;
     return {
+      photos: [
+        "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630",
+        "https://images.pexels.com/photos/372042/pexels-photo-372042.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630",
+        "https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630",
+        "https://images.pexels.com/photos/756453/pexels-photo-756453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630",
+        "https://images.pexels.com/photos/2332415/pexels-photo-2332415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630",
+        "https://images.pexels.com/photos/1036627/pexels-photo-1036627.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630",
+        "https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630",
+        "https://images.pexels.com/photos/975657/pexels-photo-975657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630",
+        "https://images.pexels.com/photos/371160/pexels-photo-371160.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630",
+      ],
       swiperOption: {
         speed: 500,
         spaceBetween: 80,
@@ -84,7 +42,7 @@ export default {
         freeModeMomentumVelocityRatio: 0.5,
         touchStartPreventDefault: false, // Utile pour le Follow Cursor
         on: {
-          touchStart: function(e) {
+          touchStart: function (e) {
             if (
               e.target.classList.contains(".swiper-wrapper") ||
               e.target.closest(".swiper-wrapper")
@@ -94,14 +52,14 @@ export default {
                 .classList.add("grabbing");
             }
           },
-          touchEnd: function(e) {
+          touchEnd: function (e) {
             document
               .querySelector(".paraslide-sample .swiper-wrapper")
               .classList.remove("grabbing");
           },
-          sliderMove: function(e) {},
-          progress: function(progress) {},
-          setTranslate: function(translate) {
+          sliderMove: function (e) {},
+          progress: function (progress) {},
+          setTranslate: function (translate) {
             const progress = _this.swiper.progress;
             const length = _this.imgs.length;
             const range = length * 10;
@@ -110,18 +68,18 @@ export default {
               el.style.transform = `translate3d(${x}%,-50%,0)`;
             });
           },
-          transitionStart: function() {
-            _this.imgs.forEach(el => {
+          transitionStart: function () {
+            _this.imgs.forEach((el) => {
               el.style.transition = "all 1s ease-out";
             });
           },
-          transitionEnd: function() {
-            _this.imgs.forEach(el => {
+          transitionEnd: function () {
+            _this.imgs.forEach((el) => {
               el.style.transition = "all 0s ease-out";
             });
-          }
-        }
-      }
+          },
+        },
+      },
     };
   },
   computed: {
@@ -133,14 +91,14 @@ export default {
     },
     wrapper() {
       return this.$refs.wrapper;
-    }
+    },
   },
   mounted() {
     if (process.browser) {
       const VueAwesomeSwiper = require("vue-awesome-swiper/dist/ssr");
       Vue.use(VueAwesomeSwiper);
     }
-  }
+  },
 };
 </script>
 

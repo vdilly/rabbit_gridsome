@@ -1,46 +1,61 @@
 <template lang="pug">
-.swiper(js-observe-scroll)
+.swiper(js-observe-scroll, ref="root")
   ClientOnly
-    .swipe-sample(v-swiper:mySwiper="swiperOption")
+    .swipe(v-swiper:myswiper="swiperOption")
       .swiper-wrapper(ref="wrapper")
-        .swiper-slide(
-          v-for="i in 6",
-          :key="i",
-          scroll-anim="y8",
-          :scroll-delay="i"
-        )
-          .swiper-slide__inner
-            .swiper-slide__title-container
-              .swiper-slide__title(v-html="`Slide ${i}`")
-            .swiper-slide__bg
-      button.swiper__prev.swiper__control(slot="button-prev")
+        slot
+      button.swiper__prev.swiper__control(slot="button-prev", v-if="hasArrows")
         svg.icon
           use(xlink:href="#chevron")
-      button.swiper__next.swiper__control(slot="button-next")
+      button.swiper__next.swiper__control(slot="button-next", v-if="hasArrows")
         svg.icon
           use(xlink:href="#chevron")
-      .swiper-pagination
+      .swiper-pagination(v-if="hasPagination")
 </template>
 
 <script>
 import Vue from "vue";
 import "swiper/dist/css/swiper.css";
 export default {
+  props: ["hasArrows", "hasPagination"],
   data() {
-    const _this = this;
+    const vm = this;
     return {
       swiperOption: {
         speed: 500,
         // virtualTranslate: true,
-        spaceBetween: 0,
-        // slidesPerView: 3,
+        spaceBetween: 20,
         grabCursor: true,
         // effect: "fade",
+
         slidesPerView: "auto",
         centeredSlides: true,
-        touchRatio: 1.5,
+        freeMode: true,
+        freeModeMomentumRatio: 0.7,
+        freeModeMomentumVelocityRatio: 0.4,
+
+        touchRatio: 1,
         longSwipesRatio: 0.4,
-        // mousewheel: true,
+        mousewheel: {
+          forceToAxis: true,
+          // sensitivity: 18,
+          eventsTarget: ".swipe",
+        },
+        breakpoints: {
+          800: {
+            centeredSlides: false,
+            slidesPerView: 2,
+            slidesOffsetBefore: 50,
+            slidesOffsetAfter: 50,
+            freeMode: false,
+          },
+          500: {
+            spaceBetween: 20,
+            slidesPerView: 1,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
+          },
+        },
         navigation: {
           nextEl: ".swiper__next",
           prevEl: ".swiper__prev",
@@ -49,33 +64,18 @@ export default {
           el: ".swiper-pagination",
           clickable: true,
         },
-        touchStartPreventDefault: false, // Utile pour le Follow Cursor
+        touchStartPreventDefault: true, // Utile pour le Follow Cursor
         on: {
           touchStart: function (e) {
             if (
               e.target.classList.contains(".swiper-wrapper") ||
               e.target.closest(".swiper-wrapper")
             ) {
-              document
-                .querySelector(".swipe-sample .swiper-wrapper")
-                .classList.add("grabbing");
+              vm.$refs.wrapper.classList.add("grabbing");
             }
           },
           touchEnd: function (e) {
-            document
-              .querySelector(".swipe-sample .swiper-wrapper")
-              .classList.remove("grabbing");
-          },
-          sliderMove: function (e) {
-            // console.log(e);
-          },
-
-          // Fix le last active qui marche pas en size auto
-          reachEnd: function () {
-            // _this.wrapper.classList.add("overrideLastActive");
-          },
-          fromEdge: function () {
-            // _this.wrapper.classList.remove("overrideLastActive");
+            vm.$refs.wrapper.classList.remove("grabbing");
           },
         },
       },
@@ -96,17 +96,41 @@ export default {
 </script>
 
 <style lang="scss">
-.swipe-sample {
-  height: 500px;
+.swiper {
+  margin-left: calc(50% - (100vw / 2));
+  margin-right: calc(50% - (100vw / 2));
+  @media (max-width: 500px) {
+    margin: 0;
+  }
+  .swiper-container {
+    padding: 7rem 0;
+    margin: -7rem 0;
+    @media (max-width: 500px) {
+      padding: 7rem;
+      margin: -7rem;
+    }
+  }
+}
+.swipe {
+  .swiper-slide {
+    transition: 0.2s ease-out;
+    will-change: transform;
+    transform: translateY(0);
+  }
   .swiper-wrapper {
-    left: -15vw;
+    left: -25vw;
+    @include RWD(tablet) {
+      left: -17vw;
+    }
+    @media (max-width: 800px) {
+      left: unset;
+    }
 
     // Etat Grab
     &.grabbing {
       transition: 0.5s ease-out !important; // Important le ease-out
-      .swiper-slide__bg {
-        transform: scale(0.85);
-        transition: 0.2s ease-out;
+      .swiper-slide {
+        transform: scale(0.9);
       }
     }
     // Etat non actif (au grab, sur les non actif au pas grab et pas last active)
@@ -114,48 +138,12 @@ export default {
     &:not(.grabbing):not(.overrideLastActive)
       .swiper-slide:not(.swiper-slide-active),
     &.overrideLastActive:not(.grabbing) .swiper-slide:not(.swiper-slide-next) {
-      .swiper-slide__bg {
+      .swiper-slide {
         opacity: 0.5;
       }
       .swiper-slide__title {
         transition: ease 0.25s;
         transform: translateY(100%);
-      }
-    }
-  }
-
-  // Slide
-  .swiper-slide {
-    width: 106rem;
-    &__inner {
-      margin-left: 25rem;
-      width: calc(100% - 20rem);
-      height: 100%;
-      position: relative;
-    }
-    &__bg {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-      background-color: grey;
-      transition: 0.5s ease;
-    }
-    &__title {
-      font-size: 4rem;
-      color: blue;
-      transition: ease 0.5s;
-      line-height: 1em;
-      &-container {
-        position: absolute;
-        bottom: 25%;
-        left: 0;
-        transform: translateX(-20%);
-        z-index: 3;
-        overflow: hidden;
       }
     }
   }

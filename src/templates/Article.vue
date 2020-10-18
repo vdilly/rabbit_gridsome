@@ -1,17 +1,15 @@
-<template>
-  <Layout>
-    <Banner
-      v-slot="banner"
-      :pageTitle="post.title"
-      lazy="bg"
-      :lazy-src="bannerSrc"
-      :lazy-placeholder="bannerPlaceholder"
-    ></Banner>
-    <Container class="container--small">
-      <Ariane :ariane="$context.ariane"></Ariane>
-      <RTE :rte="post.content"></RTE>
-    </Container>
-  </Layout>
+<template lang="pug">
+Layout
+  Banner(
+    v-slot="banner",
+    :pageTitle="post.title",
+    lazy="bg",
+    :lazy-src="bannerSrc",
+    :lazy-placeholder="bannerPlaceholder"
+  )
+  Container.container--small
+    Ariane(:ariane="$context.ariane")
+    RTE(:rte="post.content")
 </template>
 
 <script>
@@ -38,15 +36,15 @@ export default {
         this.post.title,
         this.post.content
       );
-    }
+    },
   },
   metaInfo() {
     return {
       title: this.seo.title,
       link: this.seo.link,
-      meta: this.seo.meta
+      meta: this.seo.meta,
     };
-  }
+  },
 };
 </script>
 

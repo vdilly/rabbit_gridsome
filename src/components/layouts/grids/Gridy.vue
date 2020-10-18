@@ -1,7 +1,6 @@
-<template>
-  <ul class="unstyled gridy">
-    <slot></slot>
-  </ul>
+<template lang="pug">
+ul.unstyle.gridy
+  slot
 </template>
 <style lang="scss">
 /**
@@ -36,7 +35,7 @@ $gridy-margins: (0, 15, 25, 40, 50, 100);
 $gridy-viewports: (
   d: desktop,
   t: tablet_only,
-  m: mobile
+  m: mobile,
 );
 $gridy-numbers: (2, 3, 4);
 

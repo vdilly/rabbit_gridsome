@@ -1,7 +1,6 @@
-<template>
-  <div class="container">
-    <slot></slot>
-  </div>
+<template lang="pug">
+.container
+  slot
 </template>
 <style lang="scss">
 .container {

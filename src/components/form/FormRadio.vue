@@ -1,9 +1,15 @@
-<template>
-  <input type="radio" :name="name" :id="id" required="required" :selected="selected" />
+<template lang="pug">
+input(
+  type="radio",
+  :name="name",
+  :id="id",
+  required="required",
+  :selected="selected"
+)
 </template>
 <script>
 export default {
-  props: ["name", "id", "label", "required", "selected"]
+  props: ["name", "id", "label", "required", "selected"],
 };
 </script>
 <style lang="scss">
