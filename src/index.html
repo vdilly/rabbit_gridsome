@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html ${htmlAttrs}>
+
   <head>
     <!-- Cookie Consent by https://www.FreePrivacyPolicy.com -->
-    <script
-      type="text/javascript"
-      src="//www.FreePrivacyPolicy.com/cookie-consent/releases/3.0.0/cookie-consent.js"
-    ></script>
+    <script type="text/javascript"
+      src="//www.FreePrivacyPolicy.com/cookie-consent/releases/3.0.0/cookie-consent.js"></script>
     <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         cookieconsent.run({
           notice_banner_type: "headline",
           consent_type: "express",
@@ -20,12 +19,8 @@
     </script>
 
     <!-- GTAG -->
-    <script
-      type="text/plain"
-      cookie-consent="tracking"
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-155176140-1"
-    ></script>
+    <script type="text/plain" cookie-consent="tracking" async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-155176140-1"></script>
     <script type="text/plain" cookie-consent="tracking">
       window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-155176140-1', { 'anonymize_ip': true });
     </script>
@@ -48,6 +43,7 @@
           opacity: 1;
         }
       }
+
       /* Cookies */
       .cc_dialog.headline {
         background-color: #2d2d38 !important;
@@ -96,20 +92,29 @@
   </head>
 
   <body ${bodyAttrs}>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-    >
-      <symbol
-        viewBox="0 0 185.3 185.3"
-        id="chevron"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <symbol viewBox="0 -53 384 384" id="burger" xmlns="http://www.w3.org/2000/svg">
         <path
-          d="M92.7 144.4c-2.8 0-5.5-1-7.6-3.1l-82-82c-4.2-4.2-4.2-11 0-15.2 4.2-4.2 11-4.2 15.2 0l74.3 74.3 74.3-74.3c4.2-4.2 11-4.2 15.2 0 4.2 4.2 4.2 11 0 15.2l-81.9 81.9c-2 2.1-4.8 3.2-7.5 3.2z"
-        />
+          d="M368 154.7H16c-8.8 0-16-7.2-16-16s7.2-16 16-16h352c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 0M368 32H16C7.2 32 0 24.8 0 16S7.2 0 16 0h352c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 0M368 277.3H16c-8.8 0-16-7.2-16-16s7.2-16 16-16h352c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 0" />
+      </symbol>
+      <symbol viewBox="0 0 185.3 185.3" id="chevron" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M92.7 144.4c-2.8 0-5.5-1-7.6-3.1l-82-82c-4.2-4.2-4.2-11 0-15.2 4.2-4.2 11-4.2 15.2 0l74.3 74.3 74.3-74.3c4.2-4.2 11-4.2 15.2 0 4.2 4.2 4.2 11 0 15.2l-81.9 81.9c-2 2.1-4.8 3.2-7.5 3.2z" />
+      </symbol>
+      <symbol viewBox="0 0 22.9 22.9" id="close" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M.3 1.9C-.1 1.5-.1.8.3.3c.4-.4 1.1-.4 1.6 0l9.5 9.5L20.9.3c.4-.4 1.1-.4 1.6 0 .4.4.4 1.2 0 1.6L13 11.4l9.5 9.5c.4.4.4 1.1 0 1.6-.4.4-1.1.4-1.6 0L11.4 13l-9.5 9.5c-.4.4-1.1.4-1.6 0-.4-.4-.4-1.2 0-1.6l9.5-9.5L.3 1.9z" />
+      </symbol>
+      <symbol viewBox="0 0 512 512" id="close-circled" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M256 512C114.8 512 0 397.2 0 256S114.8 0 256 0s256 114.8 256 256-114.8 256-256 256zm0-475.4C135 36.6 36.6 135 36.6 256S135 475.4 256 475.4 475.4 377 475.4 256 377 36.6 256 36.6zm0 0" />
+        <path
+          d="M347.4 365.7c-4.7 0-9.4-1.8-12.9-5.4L151.6 177.4c-7.1-7.1-7.1-18.7 0-25.9 7.1-7.1 18.7-7.1 25.9 0l182.9 182.9c7.1 7.1 7.1 18.7 0 25.9-3.6 3.6-8.2 5.4-12.9 5.4zm0 0" />
+        <path
+          d="M164.6 365.7c-4.7 0-9.4-1.8-12.9-5.4-7.1-7.1-7.1-18.7 0-25.9l182.9-182.9c7.1-7.1 18.7-7.1 25.9 0 7.1 7.1 7.1 18.7 0 25.9L177.6 360.3c-3.6 3.6-8.2 5.4-12.9 5.4zm0 0" />
       </symbol>
     </svg>
     ${app} ${scripts}
   </body>
+
 </html>

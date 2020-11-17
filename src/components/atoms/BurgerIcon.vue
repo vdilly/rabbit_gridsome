@@ -1,8 +1,7 @@
 <template lang="pug">
-  div.burger-icon
-    span
-    span
-    span
+.burger-icon
+  svg.icon
+    use(xlink:href="#burger")
 </template>
 
 <style lang="scss">

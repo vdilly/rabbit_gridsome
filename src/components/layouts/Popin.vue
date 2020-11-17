@@ -9,7 +9,7 @@
       )
     transition(:name="panelType")
       .popin__panel(v-show="opened")
-        button.popin__close(@click="close", v-if="panelType == 'full-panel'")
+        button.popin__close(@click="close")
           slot(name="close")
         slot
 </template>

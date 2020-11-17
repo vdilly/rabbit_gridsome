@@ -11,7 +11,9 @@ Navbar
         @close="closeDrawers"
       )
         BurgerIcon(slot="trigger") 
-        div(slot="close") Close
+        div(slot="close") 
+          svg.burger-close.icon
+            use(xlink:href="#close-circled")
         MainMenuRwd1(ref="menuRwd")
 </template>
 
@@ -53,6 +55,17 @@ $header-bg: white;
   .logo {
     height: calc(100% - 2rem);
     width: 12rem;
+  }
+  .popin__close {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .burger-close {
+    height: 3rem;
+    width: 3rem;
+    fill: $color__text;
+    margin: 2rem;
   }
 }
 </style>

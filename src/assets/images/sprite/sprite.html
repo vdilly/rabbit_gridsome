@@ -19,7 +19,10 @@ They might well be outsourced to an external stylesheet of course.
 -->
 
 <style type="text/css">
+	.svg-burger-dims { width: 384px; height: 384px; }
 	.svg-chevron-dims { width: 185.3px; height: 185.3px; }
+	.svg-close-dims { width: 22.9px; height: 22.9px; }
+	.svg-close-circled-dims { width: 512px; height: 512px; }
 </style>
 <!--
 ====================================================================================================
@@ -42,7 +45,10 @@ for further details on how to create this embeddable sprite variant.
 -->
 
 <svg width="0" height="0" style="position:absolute">
+		<symbol viewBox="0 -53 384 384" id="burger" xmlns="http://www.w3.org/2000/svg"><path d="M368 154.7H16c-8.8 0-16-7.2-16-16s7.2-16 16-16h352c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 0M368 32H16C7.2 32 0 24.8 0 16S7.2 0 16 0h352c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 0M368 277.3H16c-8.8 0-16-7.2-16-16s7.2-16 16-16h352c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 0"/></symbol>
 		<symbol viewBox="0 0 185.3 185.3" id="chevron" xmlns="http://www.w3.org/2000/svg"><path d="M92.7 144.4c-2.8 0-5.5-1-7.6-3.1l-82-82c-4.2-4.2-4.2-11 0-15.2 4.2-4.2 11-4.2 15.2 0l74.3 74.3 74.3-74.3c4.2-4.2 11-4.2 15.2 0 4.2 4.2 4.2 11 0 15.2l-81.9 81.9c-2 2.1-4.8 3.2-7.5 3.2z"/></symbol>
+		<symbol viewBox="0 0 22.9 22.9" id="close" xmlns="http://www.w3.org/2000/svg"><path d="M.3 1.9C-.1 1.5-.1.8.3.3c.4-.4 1.1-.4 1.6 0l9.5 9.5L20.9.3c.4-.4 1.1-.4 1.6 0 .4.4.4 1.2 0 1.6L13 11.4l9.5 9.5c.4.4.4 1.1 0 1.6-.4.4-1.1.4-1.6 0L11.4 13l-9.5 9.5c-.4.4-1.1.4-1.6 0-.4-.4-.4-1.2 0-1.6l9.5-9.5L.3 1.9z"/></symbol>
+		<symbol viewBox="0 0 512 512" id="close-circled" xmlns="http://www.w3.org/2000/svg"><path d="M256 512C114.8 512 0 397.2 0 256S114.8 0 256 0s256 114.8 256 256-114.8 256-256 256zm0-475.4C135 36.6 36.6 135 36.6 256S135 475.4 256 475.4 475.4 377 475.4 256 377 36.6 256 36.6zm0 0"/><path d="M347.4 365.7c-4.7 0-9.4-1.8-12.9-5.4L151.6 177.4c-7.1-7.1-7.1-18.7 0-25.9 7.1-7.1 18.7-7.1 25.9 0l182.9 182.9c7.1 7.1 7.1 18.7 0 25.9-3.6 3.6-8.2 5.4-12.9 5.4zm0 0"/><path d="M164.6 365.7c-4.7 0-9.4-1.8-12.9-5.4-7.1-7.1-7.1-18.7 0-25.9l182.9-182.9c7.1-7.1 18.7-7.1 25.9 0 7.1 7.1 7.1 18.7 0 25.9L177.6 360.3c-3.6 3.6-8.2 5.4-12.9 5.4zm0 0"/></symbol>
 </svg>
 
 <!--
@@ -72,6 +78,17 @@ embedded above. They may be styled via CSS.
 			<h3>A) Inline SVG with embedded sprite</h3>
 			<ul>
 
+				<li title="burger">
+					<div class="icon-box">
+						
+						<!-- burger -->
+						<svg class="svg-burger-dims">
+							<use xlink:href="#burger"></use>
+						</svg>
+						
+					</div>
+					<h2>burger</h2>
+				</li>
 				<li title="chevron">
 					<div class="icon-box">
 						
@@ -82,6 +99,28 @@ embedded above. They may be styled via CSS.
 						
 					</div>
 					<h2>chevron</h2>
+				</li>
+				<li title="close">
+					<div class="icon-box">
+						
+						<!-- close -->
+						<svg class="svg-close-dims">
+							<use xlink:href="#close"></use>
+						</svg>
+						
+					</div>
+					<h2>close</h2>
+				</li>
+				<li title="close-circled">
+					<div class="icon-box">
+						
+						<!-- close-circled -->
+						<svg class="svg-close-circled-dims">
+							<use xlink:href="#close-circled"></use>
+						</svg>
+						
+					</div>
+					<h2>close-circled</h2>
 				</li>
 			</ul>
 
@@ -104,6 +143,17 @@ SVG sprite. They may be styled via CSS. (IE 9-11 with polyfill only)
 			<h3>B) Inline SVG with external sprite (IE 9-11 with polyfill only)</h3>
 			<ul>
 				
+				<li title="burger">
+					<div class="icon-box">
+						
+						<!-- burger -->
+						<svg class="svg-burger-dims">
+							<use xlink:href="sprite.svg#burger"></use>
+						</svg>
+						
+					</div>
+					<h2>burger</h2>
+				</li>
 				<li title="chevron">
 					<div class="icon-box">
 						
@@ -115,6 +165,28 @@ SVG sprite. They may be styled via CSS. (IE 9-11 with polyfill only)
 					</div>
 					<h2>chevron</h2>
 				</li>
+				<li title="close">
+					<div class="icon-box">
+						
+						<!-- close -->
+						<svg class="svg-close-dims">
+							<use xlink:href="sprite.svg#close"></use>
+						</svg>
+						
+					</div>
+					<h2>close</h2>
+				</li>
+				<li title="close-circled">
+					<div class="icon-box">
+						
+						<!-- close-circled -->
+						<svg class="svg-close-circled-dims">
+							<use xlink:href="sprite.svg#close-circled"></use>
+						</svg>
+						
+					</div>
+					<h2>close-circled</h2>
+				</li>
 			</ul>
 
 <!--
@@ -123,7 +195,7 @@ SVG sprite. They may be styled via CSS. (IE 9-11 with polyfill only)
 
 		</section>
 		<footer>
-			<p>Generated at Mon, 06 Jan 2020 08:49:34 GMT by <a href="https://github.com/jkphl/svg-sprite" target="_blank">svg-sprite</a>.</p>
+			<p>Generated at Tue, 17 Nov 2020 17:39:40 GMT by <a href="https://github.com/jkphl/svg-sprite" target="_blank">svg-sprite</a>.</p>
 		</footer>
 	</body>
 </html>
