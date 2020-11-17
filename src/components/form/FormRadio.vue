@@ -57,4 +57,10 @@ input[type="radio"] {
     border-color: $color__error;
   }
 }
+.form.material {
+  // Exception label des checkboxes/radios
+  input[type="radio"] + label {
+    font-weight: 400;
+  }
+}
 </style>

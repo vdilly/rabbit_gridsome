@@ -1,5 +1,5 @@
 <template lang="pug">
-  input.form__checkbox(type="checkbox")
+input.form__checkbox(type="checkbox")
 </template>
 <script>
 export default {};
@@ -50,6 +50,12 @@ export default {};
 
   .form.validate &:required:invalid + label:before {
     border-color: $color__error;
+  }
+}
+.form.material {
+  // Exception label des checkboxes/radios
+  input[type="checkbox"] + label {
+    font-weight: 400;
   }
 }
 </style>
