@@ -1,33 +1,35 @@
 <template lang="pug">
-  div.popin(:class="[opened? 'opened': null, panelType]")
-    button.popin__trigger(@click="open")
-      slot(name="trigger")
-    div.popin__pop(@click="clickout")
-      transition(name="fade")
-        div.popin__overlay(v-if="overlayed && opened && panelType != 'full-panel' && panelType != 'anchor-panel'")
-      transition(:name="panelType")
-        div.popin__panel(v-show="opened")
-          button.popin__close(@click="close", v-if="panelType == 'full-panel'")
-            slot(name="close")
-          slot
+.popin(:class="[opened ? 'opened' : null, panelType]")
+  button.popin__trigger(@click="open")
+    slot(name="trigger")
+  .popin__pop(@click="clickout")
+    transition(name="fade")
+      .popin__overlay(
+        v-if="overlayed && opened && panelType != 'full-panel' && panelType != 'anchor-panel'"
+      )
+    transition(:name="panelType")
+      .popin__panel(v-show="opened")
+        button.popin__close(@click="close", v-if="panelType == 'full-panel'")
+          slot(name="close")
+        slot
 </template>
 
 <script>
 export default {
   props: {
     overlayed: {
-      default: true
+      default: true,
     },
     preventBodyScroll: {
-      default: true
+      default: true,
     },
     panelType: {
-      default: "full-panel" // side-left, side-right, center, full, anchor
-    }
+      default: "full-panel", // side-left, side-right, center, full, anchor
+    },
   },
   data() {
     return {
-      opened: false
+      opened: false,
     };
   },
   methods: {
@@ -64,8 +66,8 @@ export default {
       ) {
         this.close(e);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -95,6 +97,9 @@ export default {
     position: fixed;
     z-index: 2;
     background-color: white;
+  }
+  &__trigger {
+    display: inline-flex;
   }
 }
 
