@@ -28,8 +28,8 @@ module.exports = async function({ actions, axios }) {
       lazy: {
         type: "String",
         resolve(obj) {
-          return obj.mediaDetails.sizes.avatar
-            ? obj.mediaDetails.sizes.avatar.sourceUrl
+          return obj.mediaDetails.sizes.lazy
+            ? obj.mediaDetails.sizes.lazy.sourceUrl
             : null;
         },
       },
