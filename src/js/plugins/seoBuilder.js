@@ -1,11 +1,16 @@
 import parseWpUrl from "~/js/plugins/parseWpUrl"
+import htmlToText from "html-to-text";
 export default function(yoast, postTitle, postContent) {
 	let _this = this
 	const title = yoast.yoastWpseoTitle ? yoast.yoastWpseoTitle : postTitle,
 		desc = yoast.yoastWpseoMetadesc
 			? yoast.yoastWpseoMetadesc
 			: postContent
-			? postContent.substring(0, 600) + "..."
+			? htmlToText
+          .fromString(postContent, {
+            wordwrap: null,
+          })
+          .substring(0, 600) + "..."
 			: "",
 		img = yoast.yoastWpseoFacebookImage
 			? yoast.yoastWpseoFacebookImage
