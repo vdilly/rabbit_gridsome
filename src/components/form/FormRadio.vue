@@ -4,12 +4,32 @@ input(
   :name="name",
   :id="id",
   required="required",
-  :selected="selected"
+  :checked="shouldBeChecked",
+  :value="value",
+  @click="click",
+  ref="input"
 )
 </template>
 <script>
 export default {
-  props: ["name", "id", "label", "required", "selected"],
+  model: {
+    prop: "modelValue",
+    event: "change",
+  },
+
+  props: ["name", "id", "label", "required", "selected", "value", "modelValue"],
+  computed: {
+    shouldBeChecked() {
+      return this.modelValue == this.value;
+    },
+  },
+  methods: {
+    click() {
+      // Pour qu'au clic on ait la value, le click doit s'envoyer après le change /!\ conflit possible car ça change le déroulé natif click then change
+      this.$emit("change", this.value);
+      this.$emit("click");
+    },
+  },
 };
 </script>
 <style lang="scss">
