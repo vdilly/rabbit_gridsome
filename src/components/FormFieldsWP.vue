@@ -61,7 +61,7 @@ FormGroup(
     FormCheckbox(
       :name="systemString(field.label)",
       :id="systemString(checkbox.label)",
-      :required="checkbox.requis",
+      :required="field.requis",
       :checked="checkbox.checked"
     )
 
@@ -76,7 +76,7 @@ FormGroup(
       :label="radio.label",
       :name="systemString(field.label)",
       :id="systemString(radio.label)",
-      :required="radio.requis",
+      :required="field.requis",
       :selected="radio.selected"
     )
 </template>
