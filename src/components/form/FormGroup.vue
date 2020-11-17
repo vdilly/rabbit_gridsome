@@ -22,6 +22,20 @@ export default {
 }
 .form.material {
   .form__group {
+    display: flex;
+    flex-direction: column;
+    & > * {
+      max-width: 100%;
+    }
+    &.form__field--checkboxes,
+    &.form__field--radios {
+      label {
+        order: 0;
+      }
+      .form__group {
+        order: 1;
+      }
+    }
   }
   .form__label {
     @extend %form__label;

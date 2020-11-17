@@ -5,10 +5,6 @@ input.form__checkbox(type="checkbox")
 export default {};
 </script>
 <style lang="scss">
-// Pas de label par défaut dans les groupes de checkbox (on affiche un titre à la place)
-.form__field--checkboxes > label {
-  display: none;
-}
 .form__checkbox {
   position: absolute;
   height: 1px;

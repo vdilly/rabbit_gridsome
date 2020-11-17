@@ -33,9 +33,6 @@ export default {
 };
 </script>
 <style lang="scss">
-.form__field--radios > label {
-  display: none;
-}
 input[type="radio"] {
   position: absolute;
   height: 1px;
