@@ -1,27 +1,28 @@
 <template lang="pug">
-form.form.material(
-  :class="validate ? 'validate' : ''",
-  :method="method",
-  :action="action",
-  @submit.prevent="submit",
-  ref="form"
-)
-  .form__content
-    slot
-    //- Actions
-    .form__actions.align-center
-      slot(name="cancel")
-      Btn.form__send(@click="validate = true", type="submit") Envoyer
-  //- Etats de validation
-  transition(name="fade")
-    .form__pending.form__state(v-if="state != 'form'")
-      Loader
-  transition(name="fade")
-    .form__success.form__state(v-if="state == 'success'")
-      div Formulaire bien envoyé
-  transition(name="fade")
-    .form__error.form__state(v-if="state == 'error'")
-      div Une erreur est survenue, #[a(href="javascript:history.go(0)") cliquer-ici] pour réessayer
+SmoothReflow
+  form.form.material(
+    :class="validate ? 'validate' : ''",
+    :method="method",
+    :action="action",
+    @submit.prevent="submit",
+    ref="form"
+  )
+    .form__content(v-show="state == 'form'")
+      slot
+      //- Actions
+      .form__actions.align-center
+        slot(name="cancel")
+        Btn.form__send(@click="validate = true", type="submit") Envoyer
+    //- Etats de validation
+    transition(name="fade")
+      .form__pending.form__state(v-if="state == 'pending'")
+        Loader
+    transition(name="fade")
+      .form__success.form__state(v-if="state == 'success'")
+        div Formulaire bien envoyé
+    transition(name="fade")
+      .form__error.form__state(v-if="state == 'error'")
+        div Une erreur est survenue, #[a(href="#", @click="state = 'form'") cliquer-ici] pour réessayer
 </template>
 
 <script>
@@ -53,6 +54,7 @@ export default {
         this.state = "pending";
         ajaxPost(this.ajaxTo, new FormData(e.target), this.success, this.error);
       } else {
+        this.error();
         console.warn("no Ajax Target on form ", e.target);
       }
     },
