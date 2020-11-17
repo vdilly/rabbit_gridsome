@@ -116,7 +116,13 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
     },
   });
 
-  // Scrollbehavior on link
+  // ROUTE OPTIONS
+  const pageTransitionTime = 500;
+  router.afterEach(function () {
+    setTimeout(function () {
+      document.querySelector("html").classList.remove("no-scroll"); // Remove no scroll ajouté par la popin
+    }, pageTransitionTime)
+  })
   router.options.scrollBehavior = function(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
@@ -129,7 +135,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
     setTimeout(function() {
       // Force le retour top après un changement de page, timeout à gérer par rapport au temps de l'animation de page
       window.scrollTo(0, 0);
-    }, 500);
+    }, pageTransitionTime);
     return window.scrollHeight; // On retourne le scroll actuel pour tricker la transition de page, sinon il remonte au top avant d'appliquer la transition ça flickr
   };
 }
