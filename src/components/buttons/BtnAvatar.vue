@@ -1,5 +1,10 @@
 <template lang="pug">
-component.btn-avatar(:is="forceDiv ? 'div' : href ? 'a' : 'button'" :href="href", @click="$emit('click')")
+component.btn-avatar(
+  v-feedback,
+  :is="forceDiv ? 'div' : href ? 'a' : 'button'",
+  :href="href",
+  @click="$emit('click')"
+)
   .flexbox
     slot(name="pre")
     .btn-avatar__text
@@ -12,12 +17,12 @@ export default {
   props: {
     href: {
       type: String,
-      default: null
+      default: null,
     },
     forceDiv: {
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 };
 </script>
 

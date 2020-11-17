@@ -40,6 +40,7 @@ import Debugger from "~/js/plugins/debug";
 import smoothScroll from "~/js/plugins/smoothScroll";
 import imgSizeMixin from "./js/mixins/imgSize";
 import InterSectionObserverDirective from "~/js/directives/intersectionObserver.js";
+import FeedbackDirective from "~/js/directives/feedback.js";
 import parseWpUrl from "~/js/plugins/parseWpUrl";
 import parseWpRteUrl from "~/js/plugins/ParseWpRteUrl";
 
@@ -84,6 +85,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
 
   // Directives
   Vue.directive("intersect", InterSectionObserverDirective);
+  Vue.directive("feedback", FeedbackDirective);
 
   // HEAD
   head.link.push({

@@ -6,3 +6,55 @@
     transform: scale(1);
   }
 }
+@keyframes feedback {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  7% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  22% {
+    transform: scale(0.9, 1.1) translateY(-2rem);
+  }
+  37% {
+    transform: scale(1, 1) translateY(0);
+  }
+  75% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+.feedback {
+  position: relative;
+  overflow: hidden;
+  .pulse {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    padding-bottom: 150%;
+    border-radius: 50%;
+    z-index: 3;
+    background-color: rgba(#d4d4d4, 0.5);
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.25s ease;
+
+    &.clicked {
+      animation: feedback 0.5s ease;
+    }
+  }
+  &.dark.pulse {
+    background-color: rgba(black, 0.1);
+  }
+}
