@@ -1,5 +1,5 @@
 <template lang="pug">
-transition(name="pageTransition", duration="500")
+transition(name="page", appear, mode="out-in")
   router-view(:key="$route.fullPath")
 </template>
 
@@ -33,31 +33,18 @@ export default {
 </script>
 
 <style lang="scss">
-@keyframes pageTransition {
-  0% {
-    transform: rotate(-10deg) translateY(100%) translateX(-50%);
-  }
-  100% {
-    transform: rotate(3deg) translateY(-100%) translateX(-50%);
-  }
+.page-enter-active {
+  transition: opacity 0.5s ease;
 }
-.page-transition-overlay {
-  background-color: $color__core;
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 50%;
-  width: 150%;
-  height: 150%;
-  z-index: 2;
-  z-index: 99999999999;
-  transform: rotate(3deg) translateY(-100%) translateX(-50%);
-  transition: 1.5s ease;
+.page-leave-active {
+  transition: opacity 0.5s ease;
 }
-.pageTransition-enter .page-transition-overlay {
-  transform: rotate(-10deg) translateY(100%) translateX(-50%);
-}
-#app + #app .header {
+
+.page-enter,
+.page-leave-to {
   opacity: 0;
+  .navbar {
+    transform: translateY(-100%);
+  }
 }
 </style>
