@@ -31,7 +31,7 @@ export default {
     },
     parsedRte() {
       let rte = this.rte;
-      rte = this.parseWpUrl(rte);
+      rte = this.parseWpRteUrl(rte);
       return rte;
     }
   },
