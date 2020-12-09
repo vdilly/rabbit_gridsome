@@ -1,4 +1,19 @@
 const months = [
+  "Janvier",
+  "Février",
+  "Mars",
+  "Avril",
+  "Mai",
+  "Juin",
+  "Juillet",
+  "Août",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Décembre"
+];
+
+const monthsOffset = [
   "Décembre",
   "Janvier",
   "Février",
@@ -11,7 +26,7 @@ const months = [
   "Septembre",
   "Octobre",
   "Novembre"
-];
+]
 
 function formatDate(string) {
   let date = new Date(string);
