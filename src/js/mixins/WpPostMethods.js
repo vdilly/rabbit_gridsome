@@ -1,5 +1,6 @@
 // Méthodes pour retrieve des infos à partir d'objets "post" de wordpress
 
+const { htmlToText } = require('html-to-text');
 export default {
   methods: {
     getLink(post){
@@ -10,10 +11,17 @@ export default {
         ? post.featuredMedia.sourceUrl
         : defaultThumbnail;
     },
-    getExcerpt(post){
+    getExcerpt(post) {
       return post.excerpt
         ? post.excerpt
-        : post.content.substring(0, 600) + "...";
+        : htmlToText(post.content, {
+          wordwrap: null,
+          tags: {
+            a: { format: "skip" },
+            img: { format: "skip" }
+          },
+        })
+        .substring(0, 600) + "...";
     }
   }
 }

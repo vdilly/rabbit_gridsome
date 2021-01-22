@@ -1,14 +1,42 @@
 <template lang="pug">
-  Layout
-    Banner(slot="banner" :pageTitle="title")
-    Container
-      ul.blog__list.blog__list--sticky.gridy.gridy-d-2-40(v-show="stickyArticleList && pageInfo.currentPage == 1")
-        li.blog__item.blog__item--sticky.gridy__item(v-for="(edge, index) in stickyArticleList" :key="edge.node.slug")
-          TeaserBlog(:link="getLink(edge.node)" :thumbnail="getThumbnail(edge.node, blog.acf.blogDefaultThumbnail.sourceUrl)" :excerpt="getExcerpt(edge.node)" :title="edge.node.title" :date="edge.node.date" :tags="edge.node.tags" js-observe-scroll scroll-anim="y8" :scroll-delay="index % 3")
-      ul.blog__list.gridy.gridy-d-3-40(domChange)
-        li.blog__item.gridy__item(v-for="(edge, index) in articleList" :key="edge.node.slug")
-          TeaserBlog(:link="getLink(edge.node)" :thumbnail="getThumbnail(edge.node, blog.acf.blogDefaultThumbnail.sourceUrl)" :excerpt="getExcerpt(edge.node)" :title="edge.node.title" :date="edge.node.date" :tags="edge.node.tags" js-observe-scroll scroll-anim="y8" :scroll-delay="index % 3")
-      Pager.pagination(:info="pageInfo" linkClass="pagination__link")
+Layout
+  Banner(slot="banner", :pageTitle="title")
+  Container
+    ul.blog__list.blog__list--sticky.gridy.gridy-d-2-40(
+      v-show="stickyArticleList && pageInfo.currentPage == 1"
+    )
+      li.blog__item.blog__item--sticky.gridy__item(
+        v-for="(edge, index) in stickyArticleList",
+        :key="edge.node.slug"
+      )
+        TeaserBlog(
+          :link="getLink(edge.node)",
+          :thumbnail="getThumbnail(edge.node, blog.acf.blogDefaultThumbnail.sourceUrl)",
+          :excerpt="getExcerpt(edge.node)",
+          :title="edge.node.title",
+          :date="edge.node.date",
+          :tags="edge.node.tags",
+          js-observe-scroll,
+          scroll-anim="y8",
+          :scroll-delay="index % 3"
+        )
+    ul.blog__list.gridy.gridy-d-3-40(domChange)
+      li.blog__item.gridy__item(
+        v-for="(edge, index) in articleList",
+        :key="edge.node.slug"
+      )
+        TeaserBlog(
+          :link="getLink(edge.node)",
+          :thumbnail="getThumbnail(edge.node, blog.acf.blogDefaultThumbnail.sourceUrl)",
+          :excerpt="getExcerpt(edge.node)",
+          :title="edge.node.title",
+          :date="edge.node.date",
+          :tags="edge.node.tags",
+          js-observe-scroll,
+          scroll-anim="y8",
+          :scroll-delay="index % 3"
+        )
+    Pager.pagination(:info="pageInfo", linkClass="pagination__link")
 </template>
 
 <script>
@@ -38,15 +66,15 @@ export default {
     },
     seo() {
       return this.seoBuilder(this.$page.blog.yoastMeta, this.title, "");
-    }
+    },
   },
   metaInfo() {
     return {
       title: this.seo.title,
       link: this.seo.link,
-      meta: this.seo.meta
+      meta: this.seo.meta,
     };
-  }
+  },
 };
 </script>
 
