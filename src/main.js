@@ -120,6 +120,7 @@ export default function(Vue, { app, router, head, isClient, appOptions }) {
   const pageTransitionTime = 500;
   router.afterEach(function () {
     setTimeout(function () {
+      if (!process.isClient) return;
       document.querySelector("html").classList.remove("no-scroll"); // Remove no scroll ajouté par la popin
     }, pageTransitionTime)
   })
