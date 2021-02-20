@@ -3,7 +3,8 @@ $delay: 0.2s;
 [js-observe-scroll] {
   &[scroll-anim],
   [scroll-anim] {
-    transition: 0.8s ease;
+    transition: transform 0.8s ease, opacity .8s ease;
+    will-change: transform, opacity;
 
     &[scroll-delay] {
       @for $i from 1 through 10 {
