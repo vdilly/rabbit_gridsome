@@ -28,6 +28,12 @@
 // Embed
 .wp-block-embed {
   margin-bottom: $mb-item;
+  iframe{
+    max-width: 100%;
+  }
+  @include RWD(mobile){
+    max-width: 100%;
+  }
 }
 
 

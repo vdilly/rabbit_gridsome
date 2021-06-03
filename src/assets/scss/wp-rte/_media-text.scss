@@ -2,12 +2,15 @@
   display: grid;
   grid-template-rows: auto;
   align-items: center;
-  grid-template-areas: "media-text-media media-text-content";
   grid-template-columns: 50% auto;
+  grid-template-areas: "media-text-media media-text-content";
   align-items: start;
   margin-bottom: $mb-item;
   @include RWD(mobile) {
     display: block;
+  }
+  &.has-media-on-the-right{
+    grid-template-areas: "media-text-content media-text-media";
   }
 }
 .wp-block-media-text .wp-block-media-text__media {

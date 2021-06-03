@@ -1,41 +1,20 @@
-const months = [
-  "Janvier",
-  "Février",
-  "Mars",
-  "Avril",
-  "Mai",
-  "Juin",
-  "Juillet",
-  "Août",
-  "Septembre",
-  "Octobre",
-  "Novembre",
-  "Décembre"
-];
 
-const monthsOffset = [
-  "Décembre",
-  "Janvier",
-  "Février",
-  "Mars",
-  "Avril",
-  "Mai",
-  "Juin",
-  "Juillet",
-  "Août",
-  "Septembre",
-  "Octobre",
-  "Novembre"
-]
 
-function formatDate(string) {
+function formatDate(string, override) {
   let date = new Date(string);
-  let d, m, y;
-  d = date.getDate();
-  m = months[date.getMonth()];
-  y = date.getFullYear();
-  date = d + " " + m + " " + y;
-  return date;
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  };
+  
+  return date.toLocaleDateString(process.env.GRIDSOME_BUILD_LANG, options);
+}
+
+function formatDateFromFr(date) { // utilisé que pour les offres d'emploi so far
+  if (!date) return null;
+  let from = date.split('-')
+  return [from[2], from[1], from[0]].join('-');
 }
 
 function getDuration(string) {
@@ -44,18 +23,29 @@ function getDuration(string) {
 
   let duration = now.getTime() - date.getTime();
   duration = Math.floor(duration / 1000 / 60 / 60 / 24);
-  duration = "Il y a " + duration + " jours";
+  const langs = {
+    fr : `Il y a ${duration} jours`,
+    en : `${duration} days ago`,
+    ca : `${duration} days ago`,
+    de : `Vor ${duration} Tagen`,
+    it : `${duration} giorni fa`,
+    es : `Hace ${duration} días`
+  }
 
-  return duration;
+  return langs[process.env.GRIDSOME_BUILD_LANG] ? langs[process.env.GRIDSOME_BUILD_LANG] : langs.fr;
 }
 
 export default {
   methods: {
-    formatDate(string) {
-      return formatDate(string);
+    formatDate(string, override) {
+      if (!override) override = null;
+      return formatDate(string, override);
+    },
+    formatDateFromFr(string) {
+      return formatDateFromFr(string);
     },
     getDuration(string) {
       return getDuration(string);
-    }
-  }
+    },
+  },
 };
