@@ -1,5 +1,6 @@
-export default function(string, debug = false) {
+export default function (string, debug = false) {
   const urls = [
+    process.env.GRIDSOME_WP_URL,
     process.env.GRIDSOME_WP_FRAMEWORK_URL,
     process.env.GRIDSOME_WP_LOCAL_URL,
     process.env.GRIDSOME_WP_PERSO_URL,
