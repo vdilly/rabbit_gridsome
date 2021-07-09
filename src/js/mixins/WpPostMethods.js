@@ -3,15 +3,16 @@
 const { htmlToText } = require('html-to-text');
 export default {
   methods: {
-    getLink(post){
+    getLink(post) {
       return this.$page.metadata.siteUrl + "/blog/" + post.slug + "/";
     },
-    getThumbnail(post, defaultThumbnail){
+    getThumbnail(post, defaultThumbnail) {
       return post.featuredMedia
         ? post.featuredMedia.sourceUrl
         : defaultThumbnail;
     },
-    getExcerpt(post) {
+    getExcerpt(post, limit) {
+      limit = limit ? limit : 600;
       return post.excerpt
         ? post.excerpt
         : htmlToText(post.content, {
@@ -21,7 +22,7 @@ export default {
             img: { format: "skip" }
           },
         })
-        .substring(0, 600) + "...";
+          .substring(0, limit) + "...";
     }
   }
 }
