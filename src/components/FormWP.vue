@@ -1,5 +1,5 @@
 <template lang="pug">
-FormMaterial(:ajaxTo="form.formAction")
+FormMaterial(:ajaxTo="form.formAction" :form="form")
   h2.form-title(v-html="form.formTitle")
   template(v-for="(field, index) in form.fields")
     FormFieldset(

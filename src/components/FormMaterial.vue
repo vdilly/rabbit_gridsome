@@ -5,21 +5,25 @@ SmoothReflow
     :method="method",
     :action="action",
     @submit.prevent="submit",
-    ref="form"
+    ref="form",
+    enctype="multipart/form-data"
   )
     .form__content(v-show="state == 'form'")
       slot
       //- Actions
       .form__actions.align-center
         slot(name="cancel")
-        Btn.form__send(@click="validate = true", type="submit") Envoyer
+        Btn.form__send(@click="validate = true", type="submit")
+          span(v-html="form && form.formSend ? form.formSend : 'Envoyer'")
     //- Etats de validation
     transition(name="fade")
       .form__pending.form__state(v-if="state == 'pending'")
         Loader
     transition(name="fade")
       .form__success.form__state(v-if="state == 'success'")
-        div Formulaire bien envoyé
+        div(
+          v-html="form && form.success ? form.success : 'Formulaire bien envoyé'"
+        )
     transition(name="fade")
       .form__error.form__state(v-if="state == 'error'")
         div Une erreur est survenue, #[a(href="#", @click="state = 'form'") cliquer-ici] pour réessayer
@@ -39,6 +43,9 @@ export default {
       default: null,
     },
     ajaxTo: {
+      default: null,
+    },
+    form: {
       default: null,
     },
   },
