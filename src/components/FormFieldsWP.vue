@@ -42,6 +42,15 @@ FormGroup(
     :required="field.requis",
     :value="field.default_value"
   )
+  FormFile(
+    v-if="field.acfFcLayout == 'file'",
+    :type="field.type",
+    :name="id",
+    :id="id",
+    :placeholder="field.placeholder",
+    :required="field.requis",
+    :value="field.default_value"
+  )
   FormCheckbox(
     v-if="field.acfFcLayout == 'single_checkbox'",
     :label="field.label",
@@ -81,6 +90,7 @@ FormGroup(
     )
 </template>
 <script>
+import FormFile from "./form/FormFile.vue";
 import FormGroup from "~/components/form/FormGroup.vue";
 import FormSelect from "~/components/form/FormSelect.vue";
 import FormCountrySelect from "~/components/form/FormCountrySelect.vue";
@@ -107,6 +117,7 @@ export default {
     FormCheckbox,
     FormRadio,
     FormFieldsWp: () => import("~/components/FormFieldsWP.vue"),
+    FormFile,
   },
   methods: {
     systemString: systemString,
