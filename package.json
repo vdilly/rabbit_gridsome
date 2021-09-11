@@ -1,5 +1,5 @@
 {
-  "name": "framework-dato-gridsome",
+  "name": "Rabbit",
   "private": true,
   "scripts": {
     "build": "gridsome build",
