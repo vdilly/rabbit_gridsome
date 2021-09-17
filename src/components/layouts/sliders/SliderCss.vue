@@ -1,6 +1,10 @@
 <template lang="pug">
 .sliderTemoignage
-  ul.slider(:class="'slide-' + currentSlide")
+  ul.slider(
+    :class="'slide-' + currentSlide",
+    v-touch:swipe.left="nextSlide",
+    v-touch:swipe.right="prevSlide"
+  )
     li.slide(v-for="(item, index) in slider", :key="index")
       img(
         src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630"
