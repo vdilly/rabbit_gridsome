@@ -1,5 +1,5 @@
 <template>
-  <div v-if="rte" class="rte" v-html="parsedRte">
+  <div v-if="rte" class="rte" v-html="parsedRte" js-observer-scroll>
     <!-- <template v-for="(item, index) in filteredRte">
       <div
         v-if="!isCustomItem(item)"
@@ -25,7 +25,7 @@ export default {
     filteredRte() {
       // V1
       const _this = this;
-      return this.rte.filter(function(item) {
+      return this.rte.filter(function (item) {
         return !_this.isEmptyParagraph(item.innerHtml);
       });
     },
@@ -33,7 +33,7 @@ export default {
       let rte = this.rte;
       rte = this.parseWpRteUrl(rte);
       return rte;
-    }
+    },
   },
   methods: {
     isCustomItem(item) {
@@ -43,26 +43,46 @@ export default {
         ) != -1
       );
     },
-    isEmptyParagraph: function(string) {
+    isEmptyParagraph: function (string) {
       return string.replace(/\n/g, "").length == 0;
-    }
+    },
   },
   mounted() {
     // Slider
-    document.querySelectorAll(".wp-block-gallery").forEach(function(el) {
+    document.querySelectorAll(".wp-block-gallery").forEach(function (el) {
       var $dots = el.querySelectorAll(".wp-block-gallery .slider__dot-btn");
-      $dots.forEach($dot => {
-        $dot.addEventListener("click", function() {
+      $dots.forEach(($dot) => {
+        $dot.addEventListener("click", function () {
           var index = this.getAttribute("data-to-slide");
           el.setAttribute("data-slide", index);
         });
       });
     });
-  }
+  },
 };
 </script>
 
 <style lang="scss">
+.rte {
+  &[js-observe-scroll] {
+    & > * {
+      transition: 0.5s ease;
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{($i + 1) * 0.1s};
+        }
+      }
+    }
+    &:not([js-observe-scroll="in-view"]) {
+      & > * {
+        transform: translateY(8rem);
+        opacity: 0;
+      }
+    }
+    &[js-observe-scroll="in-view"] {
+    }
+  }
+}
 .h1 {
   @extend .h1-raw;
   &-raw {
