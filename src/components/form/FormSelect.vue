@@ -1,6 +1,6 @@
 
 <template lang="pug">
-select.form__field(
+select.form__field.input-box(
   value,
   onchange="this.setAttribute('value', this.value);",
   ref="select"
