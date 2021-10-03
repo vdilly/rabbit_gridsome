@@ -20,6 +20,7 @@
   GRIDSOME_WP_PERSO_URL = "https://vdillyprod.tech/rabbit/admin"
   GRIDSOME_WP_LOCAL_URL = "http://wordpress.local"
   GRIDSOME_WP_FRAMEWORK_URL = "https://vdillyprod.tech/rabbit/admin"
+  NODE_VERSION = "10.24.1"
 [context.branch-deploy.environment]
   GRIDSOME_SITE_URL = "https://develop--rabbit.netlify.app"
 
