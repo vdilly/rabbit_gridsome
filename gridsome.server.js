@@ -11,7 +11,7 @@ const schemaForm = require("./server/schema-form");
 const schemaMenu = require("./server/schema-menu");
 const schemaImages = require("./server/schema-images");
 const axios = require("axios");
-module.exports = function(api) {
+module.exports = function (api) {
   api.loadSource(async (actions) => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
 
@@ -38,11 +38,11 @@ module.exports = function(api) {
      *  PAGES
      */
 
-    createPagesTemplates({
+    await createPagesTemplates({
       graphql,
       createPage,
     });
-    createArticlesTemplates({
+    await createArticlesTemplates({
       graphql,
       createPage,
     });
