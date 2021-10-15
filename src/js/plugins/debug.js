@@ -3,7 +3,7 @@
  *
  */
 
-export default function() {
+export default function () {
   if (process.env.GRIDSOME_BROWSER_ENV != "prod") {
     let error;
     try {
@@ -21,6 +21,11 @@ export default function() {
     }
     if (stackTrace && stackTrace.indexOf(".") > -1) {
       stackTrace = stackTrace.split(".")[1];
+    }
+    if (stackTrace.length < 20) {
+      while (stackTrace.length < 20) {
+        stackTrace += " ";
+      }
     }
 
     var args = Array.prototype.slice.call(arguments);
