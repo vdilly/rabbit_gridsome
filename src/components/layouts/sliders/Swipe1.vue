@@ -42,11 +42,11 @@ export default {
         longSwipesRatio: 0.4,
         // mousewheel: true,
         navigation: {
-          nextEl: ".swiper__next",
-          prevEl: ".swiper__prev",
+          nextEl: ".swiper .swiper__next",
+          prevEl: ".swiper .swiper__prev",
         },
         pagination: {
-          el: ".swiper-pagination",
+          el: ".swiper .swiper-pagination",
           clickable: true,
         },
         touchStartPreventDefault: false, // Utile pour le Follow Cursor
